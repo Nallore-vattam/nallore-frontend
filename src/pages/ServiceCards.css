@@ -228,9 +228,12 @@
 
 /* Card Header & Icon */
 .service-card-header {
-  padding: 2rem 2rem 1rem 2rem;
-  text-align: center;
+  padding: 1.2rem 1rem 0.5rem 1rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 
 /* Colored Card Variants */
 .service-card-1 .service-icon-large { background: var(--card-1-color); }
@@ -286,10 +289,7 @@
   text-align: center !important;
 }
 
-/* Features Section - Colored Subdomain Text */
-.service-features-section {
-  margin: 1.5rem 0 !important;
-}
+
 
 .service-features-title {
   font-size: 1rem !important;
@@ -299,88 +299,7 @@
   text-align: center !important;
 }
 
-.service-features {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.5rem !important;
-  justify-content: center !important;
-}
 
-/* Colored Subdomain badges */
-.service-card-1 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #6d8aae !important;
-  border: 1px solid rgba(59, 130, 246, 0.4) !important;
-}
-
-.service-card-2 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #82bea2 !important;
-  border: 1px solid rgba(16, 185, 129, 0.4) !important;
-}
-
-.service-card-3 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #906161 !important;
-  border: 1px solid rgba(239, 68, 68, 0.4) !important;
-}
-
-.service-card-4 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #6f63a0 !important;
-  border: 1px solid rgba(139, 92, 246, 0.4) !important;
-}
-
-.service-card-5 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #9c7d59 !important;
-  border: 1px solid rgba(249, 115, 22, 0.4) !important;
-}
-
-.service-card-6 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #558c92 !important;
-  border: 1px solid rgba(6, 182, 212, 0.4) !important;
-}
-
-.service-card-7 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #a26587 !important;
-  border: 1px solid rgba(236, 72, 153, 0.4) !important;
-}
-
-.service-card-8 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #97af6b !important;
-  border: 1px solid rgba(132, 204, 22, 0.4) !important;
-}
-
-.service-card-9 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #6a749e !important;
-  border: 1px solid rgba(99, 102, 241, 0.4) !important;
-}
-
-.service-card-10 .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #4f7f76 !important;
-  border: 1px solid rgba(20, 184, 166, 0.4) !important;
-}
-
-.service-features .badge {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid #e2e8f0;
-  color: #eff0f1;
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
-}
-
-.service-features .badge:hover {
-  transform: translateY(-2px);
-  background: #f1f5f9;
-}
 
 .service-card-footer {
   padding: 1.5rem 2rem !important;
@@ -677,30 +596,6 @@
 
 
 
-/* Optional: keep icons & links also white */
-.service-detail-card a,
-.service-detail-card i,
-.service-detail-card svg,
-.service-detail-card h1,
-.service-detail-card h2,
-.service-detail-card h3,
-.service-detail-card h4,
-.service-detail-card h5,
-.service-detail-card h6,
-.service-detail-card p,
-.service-detail-card span,
-.service-detail-card .card-title,
-.service-detail-card .card-text {
-  color: #ffffff !important;
-}
-
-/* Fix mobile text color */
-@media (max-width: 768px) {
-  .service-detail-card,
-  .service-detail-card * {
-    color: #ffffff !important;
-  }
-}
 
 
 .service-detail-card .text-muted,
@@ -835,3 +730,148 @@
 .service-detail-page .hindi-font {
   color: #ffffff !important;
 }
+
+
+/* Modern Wrapper Box */
+.feature-chip-box {
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+  max-width: 85%;        /* 🔥 VERY IMPORTANT */
+  margin: 0 auto;        /* center */
+}
+
+
+/* Hover animation */
+
+
+/* Fix spacing around the chip container inside the card */
+.service-features {
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.service-detail-card .card-body {
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+
+
+/* Compact white container */
+.feature-list-box {
+  background: #ffffff;
+  padding: 12px 16px;          /* reduced padding */
+  border-radius: 14px;         /* smaller corners */
+  border: 1px solid rgba(0,0,0,0.06);
+  max-width: 85%;              /* fixed compact width */
+  margin: 0 auto 15px auto;    /* less space below */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;                    /* smaller gap between rows */
+}
+
+/* One item per row — compact style */
+.feature-item {
+  background: rgba(240, 242, 250, 0.9);
+  border: 1px solid #d4d7e6;
+  border-radius: 10px;
+  padding: 6px 10px;           /* reduced height */
+  font-size: 0.8rem;           /* smaller text */
+  width: 100%;
+  color: #003366;
+  text-align: center;          /* optional */
+}
+
+
+/* FORCE the main service icon to be a perfect circle */
+.service-icon-large {
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 60px !important;
+  min-height: 60px !important;
+  max-width: 60px !important;
+  max-height: 60px !important;
+
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 1.4rem !important;  /* icon size inside */
+}
+
+/* Gold hover glow */
+.service-detail-card:hover .service-icon-large {
+  transform: scale(1.12) !important;
+  border: 2px solid #FFC107 !important;
+  box-shadow:
+    0 0 10px rgba(255, 193, 7, 0.9),
+    0 0 25px rgba(255, 193, 7, 0.6),
+    0 0 45px rgba(255, 193, 7, 0.3) !important;
+}
+/* Mobile icon size fix */
+@media (max-width: 576px) {
+  .service-icon-large {
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px !important;
+    min-height: 45px !important;
+    max-width: 45px !important;
+    max-height: 45px !important;
+    font-size: 1.1rem !important;
+  }
+}
+/* Make service card perfectly vertical */
+.service-detail-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* center all content */
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .service-icon-large {
+    margin-bottom: 0.5rem !important;
+    margin-top: 0.5rem !important;
+  }
+}
+@media (max-width: 576px) {
+  .service-card-body {
+    padding: 1rem !important;
+  }
+}
+.service-card-header {
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-top: 1rem !important;
+  padding-bottom: 0 !important;
+  text-align: center !important;
+}
+.service-icon-large {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 576px) {
+  .service-icon-large {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.2rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .service-card-header {
+    padding-top: 0.7rem !important;
+  }
+}
+

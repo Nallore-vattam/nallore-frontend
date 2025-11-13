@@ -203,52 +203,46 @@ const Services = () => {
               <Col lg={6} key={service.key}>
                 <Card className={`service-detail-card ${getColorClass(index)} h-100`}>
                   <Card.Body className="p-4">
-                    <div className="d-flex align-items-start mb-3">
-                      <div className="service-icon-large me-3">
-                        <span>{service.icon}</span>
-                      </div>
-                      <div className="flex-grow-1">
-                        <Card.Title className={`${getFontClass()} mb-2 fw-bold`}>
-                          {safeTranslate(service.key, service.title)}
-                        </Card.Title>
-                        <Card.Text className={getFontClass()}>
-                          {safeTranslate(service.description, service.description)}
-                        </Card.Text>
-                      </div>
-                    </div>
+                    <div className="text-center mb-3">
+  <div className="service-icon-large mx-auto mb-2">
+    <span>{service.icon}</span>
+  </div>
 
-                    {/* Enhanced Features Section for 10 features */}
-                    {service.features.length > 0 && (
-                      <div className="service-features mb-3">
-                        <div className="d-flex justify-content-between align-items-center mb-2">
-                          <h6 className={`${getFontClass()} mb-0 fw-semibold`}>
-                            {safeTranslate('keyFeatures', 'Key Initiatives')}:
-                          </h6>
-                          <small className="text-muted">
-                            {service.features.length} {safeTranslate('features', 'features')}
-                          </small>
-                        </div>
-                        
-                        {/* Option 1: Scrollable features area */}
-                        <div 
-                          className="features-scrollable"
-                          style={{ 
-                            maxHeight: '120px', 
-                            overflowY: 'auto',
-                            padding: '12px',
-                            backgroundColor: '#f8f9fa',
-                            borderRadius: '8px',
-                            border: '1px solid #e9ecef'
-                          }}
-                        >
-                          <div className="d-flex flex-wrap gap-2">
-                            {service.features.map((feature, idx) => renderFeatureBadge(feature, idx))}
-                          </div>
-                        </div>
+  <Card.Title className={`${getFontClass()} mb-2 fw-bold`}>
+    {safeTranslate(service.key, service.title)}
+  </Card.Title>
 
-                       
-                      </div>
-                    )}
+  <Card.Text className={getFontClass()}>
+    {safeTranslate(service.description, service.description)}
+  </Card.Text>
+</div>
+
+                    {/* NEW Modern Chips Section */}
+{service.features.length > 0 && (
+  <div className="service-features mb-3">
+    <div className="d-flex justify-content-between align-items-center mb-2">
+      <h6 className={`${getFontClass()} mb-0 fw-semibold`}>
+        {safeTranslate('keyFeatures', 'Key Initiatives')}:
+      </h6>
+      <small className="text-muted">
+        {service.features.length} {safeTranslate('features', 'features')}
+      </small>
+    </div>
+
+<div className="feature-list-box">
+  {service.features.map((feature, idx) => (
+    <div key={idx} className={`feature-item ${getFontClass()}`}>
+      <span className="feature-icon-circle"></span>
+      <span className="feature-text">
+        {safeTranslate(feature, feature)}
+      </span>
+    </div>
+  ))}
+</div>
+
+  </div>
+)}
+
 
                     <div className="service-meta d-flex justify-content-between text-muted small mb-3">
                       <span className={getFontClass()}>
