@@ -1,0 +1,363 @@
+/* === Fullscreen Section === */
+.services-preview-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 50% 40%, #2b2a85 0%, #2b2a85 25%, #2b2a85 70%);
+  background-size: 200% 200%;
+  animation: auroraMove 18s ease-in-out infinite alternate;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes auroraMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* === Orbit System === */
+.orbit-system {
+  position: relative;
+  width: 80vmin;
+  height: 80vmin;
+  margin: 0;
+  padding: 0;
+  border: 1px solid transparent;
+}
+
+/* === Center Project Name === */
+.center-project-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+}
+
+.glow-backdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  height: 130px;
+  transform: translate(-50%, -50%);
+  background: rgba(246, 242, 238, 0.45);
+  border-radius: 70px;
+  filter: blur(45px);
+  box-shadow: 0 0 150px rgba(255, 215, 150, 0.8);
+  z-index: -1;
+  margin: 0;
+  padding: 0;
+}
+
+.servicepre-logo {
+  width: 160px;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+/* Hover effects */
+.servicepre-logo.scale-hover:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+}
+
+.servicepre-logo.glow-hover:hover {
+  filter: drop-shadow(0 0 12px rgba(74, 144, 226, 0.4));
+  transform: scale(1.03);
+}
+
+.servicepre-logo.bounce-hover:hover {
+  animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* === Orbiting Domains (Planets) === */
+.orbit-domain {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  margin: 0;
+  padding: 0;
+  pointer-events: auto;
+}
+
+.domain-pill {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 25px;
+  backdrop-filter: blur(8px);
+  background: rgba(239, 233, 233, 0.85);
+  box-shadow: 0 0 8px rgba(255, 210, 150, 0.2);
+  font-weight: 600;
+  font-size: 1rem;
+  color: #362f25;
+  border: 1px solid rgba(255, 220, 180, 0.2);
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1);
+  white-space: nowrap;
+  margin: 0;
+  line-height: 1.2;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.domain-pill:hover {
+  transform: scale(1.08);
+  background: rgba(255, 240, 210, 0.9);
+}
+
+/* === Color accents === */
+.domain-0 .domain-pill { color: #ae355d; }
+.domain-1 .domain-pill { color: #376a9d; }
+.domain-2 .domain-pill { color: #b99347; }
+.domain-3 .domain-pill { color: #b8508e; }
+.domain-4 .domain-pill { color: #4f86ae; }
+.domain-5 .domain-pill { color: #8b6a34; }
+.domain-6 .domain-pill { color: #833aa8; }
+.domain-7 .domain-pill { color: #2e66b4; }
+.domain-8 .domain-pill { color: #7a423d; }
+.domain-9 .domain-pill { color: #3c6bb6; }
+
+.services-preview-section,
+.orbit-system {
+  overflow: visible;
+}
+
+/* Remove any default margins and padding from parent elements */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure no gaps in the layout */
+* {
+  box-sizing: border-box;
+}
+
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+
+/* Tablets and small desktops */
+@media (max-width: 1024px) {
+  .orbit-system {
+    width: 90vmin;
+    height: 90vmin;
+  }
+  
+  .glow-backdrop {
+    width: 240px;
+    height: 110px;
+    filter: blur(35px);
+  }
+  
+  .servicepre-logo {
+    width: 140px;
+  }
+  
+  .domain-pill {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    min-width: 90px;
+  }
+}
+
+/* Large mobile devices */
+@media (max-width: 768px) {
+  .services-preview-section {
+    height: 100vh;
+    min-height: 667px;
+    background: linear-gradient(180deg, #001428 0%, #002244 60%);
+    animation: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .orbit-system {
+    display: none;
+  }
+
+  .glow-backdrop {
+    width: 200px;
+    height: 90px;
+    filter: blur(30px);
+    border-radius: 50px;
+  }
+
+  .servicepre-logo {
+    width: 120px;
+  }
+
+  .domain-pill {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    min-width: 80px;
+    border-radius: 20px;
+  }
+
+  /* Mobile carousel starts here */
+  .mobile-header {
+    max-width: 680px;
+    width: 100%;
+    padding: 10px 18px;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .mobile-header h2 { font-size: 1.4rem; margin-bottom: 6px; color: #fff; }
+  .mobile-header p { color: rgba(255,255,255,0.85); font-size: 0.95rem; }
+
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    margin: 8px 0;
+  }
+
+  .carousel-bg-band {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    top: 40%;
+    height: 140px;
+    border-radius: 24px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02) 0%, rgba(91,110,245,0.04) 50%, rgba(255,255,255,0.02) 100%);
+    filter: blur(28px) saturate(1.02);
+    animation: bgDrift 9s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes bgDrift {
+    0% { transform: translateX(-2%); }
+    50% { transform: translateX(2%); }
+    100% { transform: translateX(-2%); }
+  }
+
+  .carousel-card {
+    position: absolute;
+    width: 280px;
+    height: 320px;
+    border-radius: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 650ms cubic-bezier(.2,.9,.25,1), opacity 500ms ease, filter 600ms ease;
+    box-shadow: 0 18px 50px rgba(2,6,23,0.55);
+    opacity: 0;
+    z-index: 1;
+    padding: 14px;
+    box-sizing: border-box;
+  }
+
+  .carousel-card.active {
+    opacity: 1;
+    transform: translateX(0) scale(1.05);
+    filter: blur(0);
+    z-index: 4;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .carousel-card.side {
+    opacity: 0.82;
+    transform: translateX(120px) scale(0.92) rotateY(-12deg);
+    filter: blur(1.6px);
+    z-index: 3;
+  }
+
+  .carousel-card.side-left {
+    transform: translateX(-120px) scale(0.92) rotateY(12deg);
+  }
+
+  .carousel-card.hidden {
+    opacity: 0;
+    transform: scale(0.82);
+    pointer-events: none;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .icon-circle {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #fff;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .card-title { font-size: 1.05rem; font-weight: 800; color: #fff; margin: 6px 0; }
+  .card-sub { font-size: 0.85rem; color: rgba(255,255,255,0.92); margin: 0 12px; line-height: 1.3; }
+
+  .carousel-indicators {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    transition: all 240ms ease;
+    cursor: pointer;
+  }
+
+  .indicator.active {
+    width: 40px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(124,58,237,1), rgba(91,110,245,1));
+  }
+
+  @media (max-width: 420px) {
+    .carousel-wrapper { height: 320px; max-width: 360px; }
+    .carousel-card { width: 240px; height: 300px; }
+    .icon-circle { width: 64px; height: 64px; font-size: 24px; }
+    .carousel-card.side { transform: translateX(96px) scale(0.9) rotateY(-10deg); }
+    .carousel-card.side-left { transform: translateX(-96px) scale(0.9) rotateY(10deg); }
+  }
+}
+
+/* Fix for iOS Safari viewport height */
+@supports (-webkit-touch-callout: none) {
+  .services-preview-section {
+    height: -webkit-fill-available;
+  }
+}

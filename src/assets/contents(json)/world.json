@@ -1,0 +1,9 @@
+{
+  "name": "service8",
+  "icon": "🏥",
+  "title": "Health Camps",
+  "description": "Free medical checkups and healthcare services for community members",
+  "features": ["General Checkup", "Dental Care", "Eye Testing", "Health Awareness"],
+  "duration": "Quarterly",
+  "eligibility": "All community members"
+}

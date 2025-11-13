@@ -1,0 +1,9 @@
+{
+  "name": "service7",
+  "icon": "🎓",
+  "title": "Education Scholarship",
+  "description": "Financial support for deserving students to pursue higher education",
+  "features": ["Tuition Fee Support", "Book Allowance", "Mentorship Program", "Career Guidance"],
+  "duration": "Annual",
+  "eligibility": "Students aged 16-25"
+}

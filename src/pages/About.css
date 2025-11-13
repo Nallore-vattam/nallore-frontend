@@ -1,0 +1,415 @@
+/* Hierarchical Team Cards Structure */
+/* ================================= */
+
+/* State Coordinator - Single Large Card */
+.state-coordinator-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 60px 0;
+}
+
+.state-coordinator-card {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(30, 27, 75, 0.15);
+  transition: all 0.4s ease;
+  border: 3px solid var(--gold-color);
+  background: linear-gradient(135deg, #ffffff 0%, #fefce8 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.state-coordinator-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(30, 27, 75, 0.2);
+}
+
+.state-badge {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold-color);
+  color: var(--text-dark);
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+}
+
+.state-coordinator-img {
+  height: 280px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  transition: transform 0.4s ease;
+}
+
+.state-coordinator-card:hover .state-coordinator-img {
+  transform: scale(1.05);
+}
+
+/* Advisors - 3 Medium Cards */
+.advisors-section {
+  background: var(--card-bg);
+  padding: 60px 0;
+}
+
+.advisor-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(30, 27, 75, 0.1);
+  transition: all 0.4s ease;
+  border: 2px solid var(--accent-color);
+  background: white;
+}
+
+.advisor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(30, 27, 75, 0.15);
+  border-color: var(--btn-primary);
+}
+
+.advisor-img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+  transition: transform 0.4s ease;
+}
+
+.advisor-card:hover .advisor-img {
+  transform: scale(1.03);
+}
+
+/* Zonal Coordinators - 12 Small Cards */
+.zonal-coordinators-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 60px 0;
+}
+
+.zonal-coordinator-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(30, 27, 75, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: white;
+}
+
+.zonal-coordinator-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(30, 27, 75, 0.12);
+  border-color: var(--accent-color);
+}
+
+.zonal-coordinator-img {
+  height: 150px;
+  object-fit: cover;
+  border-radius: 11px 11px 0 0;
+}
+
+/* Domain Admins - 10 Compact Cards */
+.domain-admins-section {
+  background: var(--card-bg);
+  padding: 60px 0;
+}
+
+.domain-admin-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(30, 27, 75, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  background: white;
+}
+
+.domain-admin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(30, 27, 75, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.domain-admin-img {
+  height: 120px;
+  object-fit: cover;
+  border-radius: 9px 9px 0 0;
+}
+
+/* District Coordinators - 39 Compact Cards */
+.district-coordinators-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 60px 0;
+}
+
+.district-coordinator-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(30, 27, 75, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  background: white;
+}
+
+.district-coordinator-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(30, 27, 75, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.district-coordinator-img {
+  height: 120px;
+  object-fit: cover;
+  border-radius: 9px 9px 0 0;
+}
+
+/* Font Size Hierarchy */
+.state-coordinator-card .card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.state-coordinator-card .card-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.advisor-card .card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.advisor-card .card-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.zonal-coordinator-card .card-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.zonal-coordinator-card .card-subtitle {
+  font-size: 0.9rem;
+}
+
+.domain-admin-card .card-title,
+.district-coordinator-card .card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.domain-admin-card .card-subtitle,
+.district-coordinator-card .card-subtitle {
+  font-size: 0.8rem;
+}
+
+/* Small Font Utilities */
+.x-small { 
+  font-size: 0.8rem !important; 
+}
+
+.xx-small { 
+  font-size: 0.7rem !important; 
+}
+
+/* Card Body Padding Hierarchy */
+.state-coordinator-card .card-body {
+  padding: 2rem;
+}
+
+.advisor-card .card-body {
+  padding: 1.5rem;
+}
+
+.zonal-coordinator-card .card-body {
+  padding: 1.25rem;
+}
+
+.domain-admin-card .card-body,
+.district-coordinator-card .card-body {
+  padding: 1rem;
+}
+
+/* Section Title Styling */
+.team-section .section-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.team-section .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-accent);
+  border-radius: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .state-coordinator-img {
+    height: 240px;
+  }
+  
+  .advisor-img {
+    height: 180px;
+  }
+  
+  .zonal-coordinator-img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 992px) {
+  .state-coordinator-section,
+  .advisors-section,
+  .zonal-coordinators-section,
+  .domain-admins-section,
+  .district-coordinators-section {
+    padding: 50px 0;
+  }
+  
+  .state-coordinator-img {
+    height: 220px;
+  }
+  
+  .advisor-img {
+    height: 160px;
+  }
+  
+  .zonal-coordinator-img {
+    height: 130px;
+  }
+  
+  .domain-admin-img,
+  .district-coordinator-img {
+    height: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .state-coordinator-section,
+  .advisors-section,
+  .zonal-coordinators-section,
+  .domain-admins-section,
+  .district-coordinators-section {
+    padding: 40px 0;
+  }
+  
+  .state-coordinator-img {
+    height: 200px;
+  }
+  
+  .advisor-img {
+    height: 140px;
+  }
+  
+  .zonal-coordinator-img {
+    height: 120px;
+  }
+  
+  .domain-admin-img,
+  .district-coordinator-img {
+    height: 100px;
+  }
+  
+  .state-coordinator-card .card-body {
+    padding: 1.5rem;
+  }
+  
+  .advisor-card .card-body {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .state-coordinator-img {
+    height: 180px;
+  }
+  
+  .advisor-img {
+    height: 120px;
+  }
+  
+  .zonal-coordinator-img {
+    height: 100px;
+  }
+  
+  .domain-admin-img,
+  .district-coordinator-img {
+    height: 90px;
+  }
+  
+  .state-coordinator-card .card-title {
+    font-size: 1.3rem;
+  }
+  
+  .advisor-card .card-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Animation Delays for Staggered Appearance */
+.state-coordinator-card {
+  animation: fadeInUp 0.6s ease 0.1s forwards;
+  opacity: 0;
+}
+
+.advisor-card:nth-child(1) { animation: fadeInUp 0.6s ease 0.2s forwards; opacity: 0; }
+.advisor-card:nth-child(2) { animation: fadeInUp 0.6s ease 0.3s forwards; opacity: 0; }
+.advisor-card:nth-child(3) { animation: fadeInUp 0.6s ease 0.4s forwards; opacity: 0; }
+
+.zonal-coordinator-card {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.domain-admin-card,
+.district-coordinator-card {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* Grid Gaps */
+.state-coordinator-section .row {
+  margin: 0;
+}
+
+.advisors-section .row,
+.zonal-coordinators-section .row {
+  gap: 1.5rem 0;
+}
+
+.domain-admins-section .row,
+.district-coordinators-section .row {
+  gap: 1rem 0;
+}
+
+/* Card Text Styling */
+.team-card .card-text {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.state-coordinator-card .card-text {
+  font-size: 1rem;
+}
+
+.advisor-card .card-text {
+  font-size: 0.9rem;
+}
+
+.zonal-coordinator-card .card-text {
+  font-size: 0.85rem;
+}
+
+/* Ensure proper image fallback */
+.team-card img {
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+}

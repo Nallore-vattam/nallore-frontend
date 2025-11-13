@@ -1,0 +1,9 @@
+{
+  "name": "service3",
+  "icon": "🌱",
+  "title": "Agricultural Training",
+  "description": "Modern farming techniques and sustainable agriculture practices",
+  "features": ["Organic Farming", "Water Management", "Crop Rotation", "Market Linkages"],
+  "duration": "Seasonal",
+  "eligibility": "Farmers & Agri-enthusiasts"
+}

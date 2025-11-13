@@ -1,0 +1,9 @@
+{
+  "name": "service10",
+  "icon": "🎭",
+  "title": "Cultural Events",
+  "description": "Preserving and promoting our rich cultural heritage",
+  "features": ["Festival Celebrations", "Traditional Arts", "Music & Dance", "Heritage Workshops"],
+  "duration": "Monthly",
+  "eligibility": "All age groups"
+}

@@ -1,0 +1,104 @@
+{
+  "domains": [
+    {
+      "name": "service1",
+      "icon": "🎓",
+      "key": "studentDomain",
+      "title": "studentDomain",
+      "description": "studentDomainDesc",
+      "features": ["disciplineAmongStudents", "cleanlinessInSchools", "studentFriendshipGroups", "leadershipTraining", "culturalAwareness", "thirukkuralLearning", "villageLevelCompetitions", "nationalIntegration", "protectingTraditionalArts", "morningAssemblyAndPrayers"],
+      "duration": "academicYear",
+      "eligibility": "studentsAllAges"
+    },
+    {
+      "name": "service2",
+      "icon": "🏘️",
+      "key": "villageDomain",
+      "title": "villageDomain",
+      "description": "villageDomainDesc",
+      "features": ["roadConstruction", "nationalServiceVolunteering", "technicalEducation", "constructionPlanning", "modernAgriculturalTechnology", "organicFarmingAwareness", "newInventionsAndInnovations", "solarPowerGeneration", "waterManagement", "industrialGrowthAndEmploymentCreation"],
+      "duration": "ongoing",
+      "eligibility": "allVillagers"
+    },
+    {
+      "name": "service3",
+      "icon": "🔬",
+      "key": "domainOfBiology",
+      "title": "domainOfBiology",
+      "description": "domainOfBiologyDesc",
+      "features": ["agricultureWithoutChemicals", "naturalManureUsage", "modernFarmingMethods", "rainwaterHarvestingPonds", "seedProtection", "treePlanting", "goatAndCowRearing", "organicCertification", "cropInsuranceAwareness", "agriculturalExhibitions"],
+      "duration": "seasonal",
+      "eligibility": "farmersResearchers"
+    },
+    {
+      "name": "service4",
+      "icon": "🏛️",
+      "key": "governmentDomain",
+      "title": "governmentDomain",
+      "description": "governmentDomainDesc",
+      "features": ["lawAndOrderAwareness", "publicServiceInitiatives", "eGovernanceImplementation", "healthAndSanitationAwareness", "villageLevelDevelopmentPrograms", "publicGrievanceRedressal", "localGovernmentInvolvement", "socialWelfarePrograms", "cleanEnvironmentDrives", "taxAwarenessAndHonesty"],
+      "duration": "ongoing",
+      "eligibility": "allCitizens"
+    },
+    {
+      "name": "service5",
+      "icon": "⚙️",
+      "key": "settingsDomain",
+      "title": "settingsDomain",
+      "description": "settingsDomainDesc",
+      "features": ["treePlantingCampaigns", "treeProtection", "creatingHerbalGardens", "forestPreservationAwareness", "wasteManagement", "plasticFreeMovement", "environmentFriendlyLifestyle", "naturalResourceConservation", "riverAndLakeProtection", "creatingEcoFriendlyYouthClubs"],
+      "duration": "continuous",
+      "eligibility": "authorizedPersonnel"
+    },
+    {
+      "name": "service6",
+      "icon": "👩",
+      "key": "womensDomain",
+      "title": "womensDomain",
+      "description": "womensDomainDesc",
+      "features": ["savingsAwareness", "womenEmpowerment", "womenEntrepreneurshipTraining", "homeIndustryPromotion", "selfEmploymentPrograms", "herbalProductMaking", "tailoringAndEmbroidery", "foodProductPreparation", "handmadeCrafts", "healthAndHygieneTraining"],
+      "duration": "ongoing",
+      "eligibility": "womenAllAges"
+    },
+    {
+      "name": "service7",
+      "icon": "🌟",
+      "key": "youthDomain",
+      "title": "youthDomain",
+      "description": "youthDomainDesc",
+      "features": ["entrepreneurshipAndInnovation", "skillDevelopment", "businessMotivation", "jobCreation", "industrialGuidanceAndMentoring", "timeManagementTraining", "modernBusinessTrends", "exportAwareness", "startupEncouragement", "womenEntrepreneurs"],
+      "duration": "annual",
+      "eligibility": "youth15_30"
+    },
+    {
+      "name": "service8",
+      "icon": "🌍",
+      "key": "worldDomain",
+      "title": "worldDomain",
+      "description": "worldDomainDesc",
+      "features": ["globalBrotherhood", "nonViolenceAwareness", "worldPeaceEfforts", "environmentalProtection", "universalEducationAndHealthCare", "povertyEradicationPrograms", "goodGovernanceAwareness", "promotingTamilCultureGlobally", "exchangeProgramsWithOtherNations", "worldUnityAndHarmony"],
+      "duration": "ongoing",
+      "eligibility": "allMembers"
+    },
+    {
+      "name": "service9",
+      "icon": "🌿",
+      "key": "environmentalDomain",
+      "title": "environmentalDomain",
+      "description": "environmentalDomainDesc",
+      "features": ["treePlantingCampaigns", "treeProtection", "creatingHerbalGardens", "forestPreservationAwareness", "wasteManagement", "plasticFreeMovement", "environmentFriendlyLifestyle", "naturalResourceConservation", "riverAndLakeProtection", "creatingEcoFriendlyYouthClubs"],
+      "duration": "continuous",
+      "eligibility": "allCommunityMembers"
+    },
+    {
+      "name": "service10",
+      "icon": "📢",
+      "key": "awarenessDomain",
+      "title": "awarenessDomain",
+      "description": "awarenessDomainDesc",
+      "features": ["tradeAndCommerce", "cooperativeSocieties", "culturalOrganizations", "farmersAssociations", "youthClubsAndWelfareGroups", "sportsAndRecreationClubs", "serviceOrganizations", "consumerAwarenessGroups", "environmentalOrganizations", "educationalInstitutionsInvolvement"],
+      "duration": "monthly",
+      "eligibility": "generalPublic"
+    }
+  ]
+}

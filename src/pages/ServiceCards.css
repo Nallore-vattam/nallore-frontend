@@ -1,0 +1,837 @@
+/* Service Cards Styling - Balanced Dark Cards */
+:root {
+   --card-1-color: #011288;
+  --card-1-bg: linear-gradient(135deg, #011288 0%,  #011288 100%);
+  --card-2-color: #0887d6;
+  --card-2-bg: linear-gradient(135deg,  #0887d6 0%, #0887d6 100%);
+  --card-3-color: #22d410;
+  --card-3-bg: linear-gradient(135deg,#22d410 0%, #22d410 100%);
+  --card-4-color: #9cd001;
+  --card-4-bg: linear-gradient(135deg, #9cd001 0%, #9cd001 100%);
+  --card-5-color: #fe5b00;
+  --card-5-bg: linear-gradient(135deg, #fe5b00 0%, #fe5b00 100%);
+  --card-6-color: #fe0000;
+  --card-6-bg: linear-gradient(135deg, #fe0000 0%, #fe0000 100%);
+  --card-7-color: #9e2932;
+  --card-7-bg: linear-gradient(135deg, #9e2932 0%, #9e2932 100%);
+  --card-8-color: #570a00;
+  --card-8-bg: linear-gradient(135deg, #570a00 0%, #570a00 100%);
+  --card-9-color: #e7b401;
+  --card-9-bg: linear-gradient(135deg, #e7b401 0%, #e7b401 100%);
+  --card-10-color: #012d1c;
+  --card-10-bg: linear-gradient(135deg, #012d1c 0%, #012d1c 100%);
+}
+
+/* Services Page Base Styles */
+.services-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafb 0%, #f1f5f9 100%);
+  padding-top: 80px;
+}
+
+.services-page-header {
+  background: #ffffff;
+  padding: 4rem 0;
+  text-align: center;
+  color: #d9e0ec;
+  border-bottom: 2px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+}
+
+.services-page-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.services-page-subtitle {
+  font-size: 1.3rem;
+  color: #fcfdfd;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.service-navigation-container {
+  background: #ffffff;
+  padding: 2rem 0;
+  border-bottom: 2px solid #e2e8f0;
+  position: sticky;
+  top: 80px;
+  z-index: 100;
+}
+.service-nav-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f8f9fb;
+  margin-bottom: 1.5rem;
+}
+
+.service-nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.service-nav-btn {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid #cbd5e1;
+  background: #f8fafc;
+  color: #ffffff;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+
+.service-nav-btn:hover,
+.service-nav-btn.active {
+  background: linear-gradient(135deg, #a5b4fc, #93c5fd);
+  color: #f7f8f9;
+  box-shadow: 0 4px 12px rgba(147, 197, 253, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Services Container - Limited Display */
+.services-container {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* Limited Display - Show only first 4 cards by default */
+.services-grid .service-detail-card:nth-child(n+5) {
+  display: none;
+}
+
+.services-grid.show-all .service-detail-card {
+  display: flex !important;
+}
+
+/* View More/Less Toggle */
+.services-toggle-container {
+  text-align: center;
+  margin: 3rem 0 1rem 0;
+}
+.services-toggle-btn {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.services-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Balanced Dark Cards with Brighter Accents */
+.service-card-1 {
+  background: var(--card-1-bg) !important;
+  border: 1px solid var(--card-1-color) !important;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3) !important;
+}
+
+.service-card-2 {
+  background: var(--card-2-bg) !important;
+  border: 1px solid var(--card-2-color) !important;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3) !important;
+}
+
+.service-card-3 {
+  background: var(--card-3-bg) !important;
+  border: 1px solid var(--card-3-color) !important;
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3) !important;
+}
+
+.service-card-4 {
+  background: var(--card-4-bg) !important;
+  border: 1px solid var(--card-4-color) !important;
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3) !important;
+}
+
+.service-card-5 {
+  background: var(--card-5-bg) !important;
+  border: 1px solid var(--card-5-color) !important;
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3) !important;
+}
+
+.service-card-6 {
+  background: var(--card-6-bg) !important;
+  border: 1px solid var(--card-6-color) !important;
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3) !important;
+}
+
+.service-card-7 {
+  background: var(--card-7-bg) !important;
+  border: 1px solid var(--card-7-color) !important;
+  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3) !important;
+}
+
+.service-card-8 {
+  background: var(--card-8-bg) !important;
+  border: 1px solid var(--card-8-color) !important;
+  box-shadow: 0 8px 25px rgba(132, 204, 22, 0.3) !important;
+}
+
+.service-card-9 {
+  background: var(--card-9-bg) !important;
+  border: 1px solid var(--card-9-color) !important;
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3) !important;
+}
+
+.service-card-10 {
+  background: var(--card-10-bg) !important;
+  border: 1px solid var(--card-10-color) !important;
+  box-shadow: 0 8px 25px rgba(20, 184, 166, 0.3) !important;
+}
+/* Service Cards */
+.service-detail-card {
+  border: none;
+  border-radius: 18px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+}
+
+.service-detail-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Header & Icon */
+.service-card-header {
+  padding: 2rem 2rem 1rem 2rem;
+  text-align: center;
+}
+
+/* Colored Card Variants */
+.service-card-1 .service-icon-large { background: var(--card-1-color); }
+.service-card-2 .service-icon-large { background: var(--card-2-color); }
+.service-card-3 .service-icon-large { background: var(--card-3-color); }
+.service-card-4 .service-icon-large { background: var(--card-4-color); }
+.service-card-5 .service-icon-large { background: var(--card-5-color); }
+.service-card-6 .service-icon-large { background: var(--card-6-color); }
+.service-card-7 .service-icon-large { background: var(--card-7-color); }
+.service-card-8 .service-icon-large { background: var(--card-8-color); }
+.service-card-9 .service-icon-large { background: var(--card-9-color); }
+.service-card-10 .service-icon-large { background: var(--card-10-color); }
+
+
+.service-icon-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  margin: 0 auto 1rem auto;
+}
+.service-detail-card:hover .service-icon-large {
+  transform: scale(1.1) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4) !important;
+}
+
+
+.service-card-body {
+  padding: 1.5rem 2rem;
+  flex-grow: 1;
+}
+
+
+.service-detail-card .card-title {
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+  color:#f9fafb!important;
+}
+
+.service-detail-card .card-text {
+  color: #f8f9fa !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+}
+
+/* Features Section - Colored Subdomain Text */
+.service-features-section {
+  margin: 1.5rem 0 !important;
+}
+
+.service-features-title {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #f1f5f9 !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+}
+
+.service-features {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  justify-content: center !important;
+}
+
+/* Colored Subdomain badges */
+.service-card-1 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #6d8aae !important;
+  border: 1px solid rgba(59, 130, 246, 0.4) !important;
+}
+
+.service-card-2 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #82bea2 !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+}
+
+.service-card-3 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #906161 !important;
+  border: 1px solid rgba(239, 68, 68, 0.4) !important;
+}
+
+.service-card-4 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #6f63a0 !important;
+  border: 1px solid rgba(139, 92, 246, 0.4) !important;
+}
+
+.service-card-5 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #9c7d59 !important;
+  border: 1px solid rgba(249, 115, 22, 0.4) !important;
+}
+
+.service-card-6 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #558c92 !important;
+  border: 1px solid rgba(6, 182, 212, 0.4) !important;
+}
+
+.service-card-7 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #a26587 !important;
+  border: 1px solid rgba(236, 72, 153, 0.4) !important;
+}
+
+.service-card-8 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #97af6b !important;
+  border: 1px solid rgba(132, 204, 22, 0.4) !important;
+}
+
+.service-card-9 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #6a749e !important;
+  border: 1px solid rgba(99, 102, 241, 0.4) !important;
+}
+
+.service-card-10 .badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #4f7f76 !important;
+  border: 1px solid rgba(20, 184, 166, 0.4) !important;
+}
+
+.service-features .badge {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #e2e8f0;
+  color: #eff0f1;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.service-features .badge:hover {
+  transform: translateY(-2px);
+  background: #f1f5f9;
+}
+
+.service-card-footer {
+  padding: 1.5rem 2rem !important;
+  border-top: 1px solid rgba(255,255,255,0.15) !important;
+  background: rgba(255,255,255,0.08) !important;
+}
+
+/* Brighter Buttons with White Text */
+.service-card-1 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-1-dark) 0%, var(--card-1-color) 100%) !important;
+  color: #ffffff !important;
+}
+
+.service-card-2 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-2-dark) 0%, var(--card-2-color) 100%) !important;
+  color: #ffffff !important;
+}
+
+.service-card-3 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-3-dark) 0%, var(--card-3-color) 100%) !important;
+  color: #ffffff !important;
+}
+
+.service-card-4 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-4-dark) 0%, var(--card-4-color) 100%) !important;
+  color: #ffffff !important;
+}
+
+.service-card-5 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-5-dark) 0%, var(--card-5-color) 100%) !important;
+  color: #ffffff !important;
+}
+
+.service-card-6 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-6-dark) 0%, var(--card-6-color) 100%) !important;
+  color: #ffffff !important;
+}
+
+.service-card-7 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-7-dark) 0%, var(--card-7-color) 100%) !important;
+  color: #ffffff !important;
+}
+
+.service-card-8 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-8-dark) 0%, var(--card-8-color) 100%) !important;
+  color: #ffffff !important;
+}
+
+.service-card-9 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-9-dark) 0%, var(--card-9-color) 100%) !important;
+  color: #ffffff !important;
+}
+
+.service-card-10 .service-action-btn {
+  background: linear-gradient(135deg, var(--card-10-dark) 0%, var(--card-10-color) 100%) !important;
+  color: #ffffff !important;
+}
+/* Action Button */
+.service-action-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: white;
+  background: linear-gradient(135deg, #e0dfe8, #e0dfe8);
+}
+
+.service-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Service Sidebar Scroll - Fixed Text Visibility */
+.service-sidebar-scroll-container {
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #374151;
+}
+
+/* Custom scrollbar styling for balanced dark theme */
+.service-sidebar-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.service-sidebar-scroll-container::-webkit-scrollbar-track {
+  background: #4b5563;
+  border-radius: 3px;
+}
+
+.service-sidebar-scroll-container::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 3px;
+}
+
+.service-sidebar-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* For Firefox */
+.service-sidebar-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 #4b5563;
+}
+
+/* Ensure the sidebar has a fixed width if needed */
+.service-sidebar {
+  width: 100%;
+}
+
+.service-sidebar-card {
+  height: auto;
+  max-height: 80vh;
+  background: #374151 !important;
+  border: 1px solid #4b5563 !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+}
+
+.service-sidebar-header {
+  background: #4b5563 !important;
+  border-bottom: 1px solid #6b7280 !important;
+}
+
+.service-sidebar-header h6 {
+  color: #f9fafb !important;
+  font-weight: 700;
+}
+
+/* Fixed: Sidebar links text visibility */
+.service-sidebar-link {
+  background: #4b5563 !important;
+  border-bottom: 1px solid #6b7280 !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+}
+
+.service-sidebar-link:hover {
+  background: #6b7280 !important;
+  color: #ffffff !important;
+  transform: translateX(5px);
+}
+
+.service-sidebar-link.active {
+  background: #6b7280 !important;
+  color: #ffffff !important;
+  border-left: 4px solid #ffffff;
+}
+
+.service-sidebar-icon {
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+.service-sidebar-link:hover .service-sidebar-icon {
+  color: #ffffff !important;
+  transform: scale(1.1);
+}
+
+.service-sidebar-link.active .service-sidebar-icon {
+  color: #ffffff !important;
+}
+
+/* Fixed: Sidebar text content visibility */
+.service-sidebar-link .fw-bold {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.service-sidebar-link .text-muted {
+  color: #d1d5db !important;
+  font-weight: 400 !important;
+}
+
+.service-sidebar-link:hover .fw-bold,
+.service-sidebar-link:hover .text-muted {
+  color: #ffffff !important;
+}
+
+.service-sidebar-link.active .fw-bold,
+.service-sidebar-link.active .text-muted {
+  color: #ffffff !important;
+}
+
+/* No Scroll - Remove any scroll-related styles */
+.service-navigation-container,
+.services-container {
+  overflow: visible !important;
+}
+
+.services-grid {
+  overflow: visible !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-page-title {
+    font-size: 2.2rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-nav-buttons {
+    gap: 0.5rem;
+  }
+  
+  .service-nav-btn {
+    min-width: 100px;
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .services-toggle-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-page-header {
+    padding: 3rem 1rem;
+  }
+  
+  .services-page-title {
+    font-size: 1.8rem;
+  }
+  
+  .services-page-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .service-detail-card:hover {
+    transform: translateY(-5px) !important;
+  }
+  
+  .service-features {
+    gap: 0.4rem;
+  }
+  
+  .service-features .badge {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Loading State */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #4b5563;
+  border-top: 4px solid #f8fafc;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Card Animations */
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-detail-card {
+  animation: cardEntrance 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.service-detail-card:nth-child(1) { animation-delay: 0.1s; }
+.service-detail-card:nth-child(2) { animation-delay: 0.2s; }
+.service-detail-card:nth-child(3) { animation-delay: 0.3s; }
+.service-detail-card:nth-child(4) { animation-delay: 0.4s; }
+.service-detail-card:nth-child(5) { animation-delay: 0.5s; }
+.service-detail-card:nth-child(6) { animation-delay: 0.6s; }
+.service-detail-card:nth-child(7) { animation-delay: 0.7s; }
+.service-detail-card:nth-child(8) { animation-delay: 0.8s; }
+.service-detail-card:nth-child(9) { animation-delay: 0.9s; }
+.service-detail-card:nth-child(10) { animation-delay: 1s; }
+
+
+
+/* Optional: keep icons & links also white */
+.service-detail-card a,
+.service-detail-card i,
+.service-detail-card svg,
+.service-detail-card h1,
+.service-detail-card h2,
+.service-detail-card h3,
+.service-detail-card h4,
+.service-detail-card h5,
+.service-detail-card h6,
+.service-detail-card p,
+.service-detail-card span,
+.service-detail-card .card-title,
+.service-detail-card .card-text {
+  color: #ffffff !important;
+}
+
+/* Fix mobile text color */
+@media (max-width: 768px) {
+  .service-detail-card,
+  .service-detail-card * {
+    color: #ffffff !important;
+  }
+}
+
+
+.service-detail-card .text-muted,
+.service-detail-card .small.text-muted {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+
+/* Fix muted text color inside service cards */
+.service-detail-page .text-muted {
+  color: #ffffff !important; /* pure white */
+  opacity: 0.9;
+}
+
+/* Optional: slightly softer white for readability on bright backgrounds */
+.service-detail-page .service-card-3 .text-muted,
+.service-detail-page .service-card-4 .text-muted,
+.service-detail-page .service-card-5 .text-muted {
+  color: #f8f9fa !important;
+  opacity: 0.95;
+}
+
+/* 🔧 Fix black Tamil headings & descriptions in service detail cards */
+.service-detail-page .service-detail-header h1,
+.service-detail-page .service-detail-header h2,
+.service-detail-page .service-detail-header h3,
+.service-detail-page .service-detail-header h4,
+.service-detail-page .service-detail-header h5,
+.service-detail-page .service-detail-header h6,
+.service-detail-page .service-detail-header p,
+.service-detail-page .service-detail-header .tamil-font {
+  color: #ffffff !important; /* pure white text */
+}
+
+.service-detail-page .service-card-3 h1,
+.service-detail-page .service-card-3 h2,
+.service-detail-page .service-card-3 h6,
+.service-detail-page .service-card-3 p,
+.service-detail-page .service-card-3 .tamil-font,
+.service-detail-page .service-card-5 h1,
+.service-detail-page .service-card-5 h2,
+.service-detail-page .service-card-5 h6,
+.service-detail-page .service-card-5 p,
+.service-detail-page .service-card-5 .tamil-font {
+  color: #f5f4f4 !important; /* dark text on bright cards like yellow/green */
+  font-weight: 600;
+}
+/* Ensure consistent icon color */
+.service-detail-page .service-detail-icon i {
+  color: #ffffff !important;
+}
+
+.service-navigation .nav-link,
+.service-navigation .nav-link .tamil-font,
+.service-navigation .nav-link span {
+  color: #ffffff !important; /* white text for all service nav items */
+}
+
+/* Hover and Active states */
+.service-navigation .nav-link:hover,
+.service-navigation .nav-link.active {
+  color: #fff !important;
+  opacity: 0.9;
+}
+
+/* 🌙 Final text color fix for service cards and Tamil headings */
+
+/* All service detail text inside cards */
+.service-detail-page .card,
+.service-detail-page .card-body,
+.service-detail-page .card-title,
+.service-detail-page .card-text,
+.service-detail-page .tamil-font,
+.service-detail-page .fw-bold {
+  color: #ffffff !important; /* Force white text */
+}
+
+/* Handle feature titles and descriptions */
+.service-detail-page .feature-card h6,
+.service-detail-page .feature-card p,
+.service-detail-page .feature-card small,
+.service-detail-page .feature-card .tamil-font {
+  color: #ffffff !important;
+}
+
+/* Override dark Bootstrap heading defaults */
+.service-detail-page h1,
+.service-detail-page h2,
+.service-detail-page h3,
+.service-detail-page h4,
+.service-detail-page h5,
+.service-detail-page h6 {
+  color: #ffffff !important;
+}
+
+/* 🔲 Optional — readable dark text on bright cards (yellow/green) */
+.service-detail-page .service-card-3 *,
+.service-detail-page .service-card-5 * {
+  color: #1a1a1a !important;
+  font-weight: 600;
+}
+
+/* 🧭 Service navigation bar fix */
+.service-navigation .nav-link,
+.service-navigation .nav-link .tamil-font,
+.service-navigation .nav-link span {
+  color: #ffffff !important;
+}
+.service-navigation .nav-link:hover,
+.service-navigation .nav-link.active {
+  opacity: 0.9;
+  color: #ffffff !important;
+}
+
+/* 🌟 Final universal white text fix for all fonts inside service details */
+.service-detail-page .service-detail-header,
+.service-detail-page .service-detail-header * {
+  color: #ffffff !important;
+}
+
+/* Optional: make white slightly softer on dark green background */
+.service-detail-page .service-detail-header h1,
+.service-detail-page .service-detail-header h2,
+.service-detail-page .service-detail-header p {
+  color: #f8f9fa !important;
+}
+
+/* Ensure all language font classes show white */
+.service-detail-page .tamil-font,
+.service-detail-page .english-font,
+.service-detail-page .hindi-font {
+  color: #ffffff !important;
+}

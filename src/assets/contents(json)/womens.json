@@ -1,0 +1,9 @@
+{
+  "name": "service6",
+  "icon": "👩",
+  "title": "Women Empowerment",
+  "description": "Programs focused on women entrepreneurship and leadership",
+  "features": ["Self-Help Groups", "Business Training", "Legal Awareness", "Health Programs"],
+  "duration": "Ongoing",
+  "eligibility": "Women & Girls"
+}

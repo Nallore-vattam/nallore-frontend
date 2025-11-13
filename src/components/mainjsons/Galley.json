@@ -1,0 +1,111 @@
+{
+  "hero": {
+    "title": "Gallery",
+    "subtitle": "Explore our community events and activities"
+  },
+  "domains": [
+    {
+      "id": "student-field",
+      "name": "Student Field",
+      "subDomains": [
+        "Career Guidance",
+        "Skill Development",
+        "Education Support"
+      ]
+    },
+    {
+      "id": "youth-field",
+      "name": "Youth Field",
+      "subDomains": [
+        "Sports",
+        "Arts",
+        "Leadership"
+      ]
+    },
+    {
+      "id": "womens-field",
+      "name": "Women Field",
+      "subDomains": [
+        "Empowerment",
+        "Health",
+        "Entrepreneurship"
+      ]
+    },
+    {
+      "id": "village-field",
+      "name": "Village Field",
+      "subDomains": [
+        "Infrastructure",
+        "Agriculture",
+        "Development"
+      ]
+    },
+    {
+      "id": "environmental",
+      "name": "Environmental",
+      "subDomains": [
+        "Tree Plantation",
+        "Cleanliness",
+        "Conservation"
+      ]
+    }
+  ],
+  "galleryImages": [
+    {
+      "id": 1,
+      "src": "src/assets/images/Enviromental Field/enviromental_01.jpg",
+      "domain": "student-field",
+      "subDomain": "Career Guidance",
+      "title": "Career Workshop"
+    },
+    {
+      "id": 2,
+      "src": "src/assets/images/FieldofAwareness/awareness_01.jpg",
+      "domain": "youth-field",
+      "subDomain": "Sports",
+      "title": "Sports Event"
+    },
+    {
+      "id": 3,
+      "src": "src/assets/images/FieldofBiology/biology_01.jpg",
+      "domain": "womens-field",
+      "subDomain": "Empowerment",
+      "title": "Women Meeting"
+    },
+    {
+      "id": 4,
+      "src": "src/assets/images/GovtDomain/govt_01.jpg",
+      "domain": "environmental",
+      "subDomain": "Tree Plantation",
+      "title": "Tree Planting"
+    },
+     {
+      "id": 5,
+      "src": "src/assets/images/SettingsDomain/settings_01.jpg",
+      "domain": "village-field",
+      "subDomain": "Infrastructure",
+      "title": "Road Development"
+    },
+    {
+      "id": 6,
+      "src": "src/assets/images/StudentField/students_01.jpg",
+      "domain": "student-field",
+      "subDomain": "Education Support",
+      "title": "Study Session"
+    },
+    {
+      "id": 7,
+      "src": "src/assets/images/VillageField/village_01.jpg",
+      "domain": "village-field",
+      "subDomain": "Infrastructure",
+      "title": "Road Development"
+    },
+    {
+      "id": 8,
+      "src": "src/assets/images/WomensField/womesn_01.jpg",
+      "domain": "student-field",
+      "subDomain": "Education Support",
+      "title": "Study Session"
+    }
+  ]
+}

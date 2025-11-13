@@ -1,0 +1,564 @@
+/* ========== ATTRACTIVE GALLERY CARD STYLES ========== */
+
+/* Modern Gallery Grid */
+.gallery-grid {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Attractive Gallery Card */
+.gallery-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 25px rgba(30, 27, 75, 0.12),
+        0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    background: white;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(30, 27, 75, 0.2),
+        0 15px 30px rgba(139, 92, 246, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+}
+
+/* Gallery Image with Modern Effects */
+.gallery-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    filter: brightness(0.95);
+    transform-origin: center;
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.08);
+    filter: brightness(1.05) contrast(1.1);
+}
+
+/* Enhanced Overlay with Gradient - FIXED SPACING */
+.gallery-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 25px 25px;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.8) 25%,
+        rgba(0, 0, 0, 0.5) 50%,
+        transparent 100%
+    );
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 12px; /* ✅ Added gap for consistent spacing */
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Overlay Content - FIXED SPACING */
+.overlay-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* ✅ Added gap between elements */
+}
+
+.gallery-item-title {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0; /* ✅ Removed margin since we use gap */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    line-height: 1.3;
+}
+
+.gallery-item-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0; /* ✅ Removed margin since we use gap */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    line-height: 1.4;
+}
+
+.gallery-item-description {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0; /* ✅ Removed margin since we use gap */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Category & Domain Info - FIXED SPACING */
+.gallery-meta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* ✅ Added gap between meta items */
+    margin-bottom: 15px;
+}
+
+.domain-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.domain-icon {
+    width: 16px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+.event-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.event-icon {
+    width: 16px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+/* Category Badge - Modern Design */
+.category-badge {
+    background: linear-gradient(135deg, var(--accent-color), var(--btn-primary));
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    margin-bottom: 10px; /* ✅ Added margin for separation */
+}
+
+.gallery-item:hover .category-badge {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Action Buttons in Overlay */
+.gallery-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease 0.1s;
+}
+
+.gallery-item:hover .gallery-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-action-btn {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    justify-content: center;
+}
+
+.gallery-action-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* 🌿 MODERN GALLERY FILTER BUTTONS */
+.gallery-filter-btn {
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    color: var(--text-dark) !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 25px;
+    padding: 12px 24px !important;
+    font-weight: 600;
+    font-size: 0.9rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    min-width: max-content;
+    height: 44px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(30, 27, 75, 0.08);
+    position: relative;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.gallery-filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.gallery-filter-btn:hover::before {
+    left: 100%;
+}
+
+.gallery-filter-btn:hover {
+    background: linear-gradient(135deg, #f8fafc, #ffffff);
+    border-color: var(--accent-color) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+    color: var(--accent-color) !important;
+}
+
+.gallery-filter-btn.active {
+background: linear-gradient(135deg, #4a6cf7, #4a6cf7);
+    color: white !important;
+    border-color: transparent !important;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(99, 102, 241, 0.3),
+        0 4px 15px rgba(139, 92, 246, 0.2);
+}
+
+.gallery-filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: white;
+    border-radius: 1px;
+}
+
+/* Enhanced Filter Container */
+.gallery-filter-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    gap: 10px;
+    padding: 20px;
+    scroll-behavior: smooth;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1000;
+    background: linear-gradient(135deg, #f8fafc, #ffffff);
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 20px rgba(30, 27, 75, 0.05);
+    
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.gallery-filter-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Gallery Filters Section */
+.gallery-filters-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 30px 0 !important;
+    border: none !important;
+    background: transparent !important;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Enhanced Modal Navigation */
+.modal-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, var(--accent-color), var(--btn-primary)) !important;
+    color: white !important;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.modal-nav-btn:hover {
+    background: linear-gradient(135deg, var(--btn-primary), var(--accent-color)) !important;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.6);
+}
+
+.modal-prev-btn {
+    left: 20px;
+}
+
+.modal-next-btn {
+    right: 20px;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+    }
+    
+    .gallery-img {
+        height: 280px;
+    }
+    
+    .gallery-item-overlay {
+        padding: 35px 30px 30px;
+    }
+}
+
+/* Laptop */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .gallery-img {
+        height: 220px;
+    }
+    
+    .gallery-item-overlay {
+        padding: 25px 20px 20px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .gallery-img {
+        height: 180px;
+    }
+    
+    .gallery-item-overlay {
+        padding: 20px 15px 15px;
+        gap: 8px;
+    }
+    
+    .gallery-item-title {
+        font-size: 1.1rem;
+    }
+    
+    .gallery-item-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .gallery-meta-info {
+        gap: 6px;
+    }
+    
+    .gallery-filter-btn {
+        padding: 10px 18px !important;
+        font-size: 0.85rem !important;
+        height: 40px;
+    }
+    
+    .modal-nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+    }
+    
+    .gallery-img {
+        height: 150px;
+    }
+    
+    .gallery-item-overlay {
+        padding: 15px 12px 12px;
+        gap: 6px;
+    }
+    
+    .gallery-item-title {
+        font-size: 1rem;
+    }
+    
+    .gallery-item-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .gallery-item-description {
+        font-size: 0.8rem;
+    }
+    
+    .gallery-meta-info {
+        gap: 4px;
+    }
+    
+    .domain-info,
+    .event-info {
+        font-size: 0.8rem;
+    }
+    
+    .gallery-filter-btn {
+        padding: 8px 16px !important;
+        font-size: 0.8rem !important;
+        height: 36px;
+    }
+}
+
+/* Animation for card appearance */
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.gallery-item {
+    animation: cardAppear 0.6s ease forwards;
+}
+
+/* Stagger animation for multiple cards */
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.2s; }
+.gallery-item:nth-child(3) { animation-delay: 0.3s; }
+.gallery-item:nth-child(4) { animation-delay: 0.4s; }
+.gallery-item:nth-child(5) { animation-delay: 0.5s; }
+.gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Ensure gallery page has proper stacking context */
+.gallery-page {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.admin-gallery .btn-primary {
+  background-color: #0d6efd !important;
+  color: #fff !important;
+}
+
+.admin-gallery .btn-danger {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+.admin-gallery .btn-secondary {
+  background-color: #6c757d !important;
+  color: #fff !important;
+}
+.admin-gallery .btn-success {
+  background-color: #198754 !important; /* Bootstrap success green */
+  color: #fff !important;
+  border-color: #198754 !important;
+}
+
+
+/* Only reset plain buttons, not Bootstrap color variants */
+.btn:not(.btn-primary):not(.btn-secondary):not(.btn-danger):not(.btn-success):not(.btn-warning):not(.btn-info):not(.btn-dark) {
+  background-color: initial !important;
+  color: initial !important;
+}

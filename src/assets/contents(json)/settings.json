@@ -1,0 +1,9 @@
+{
+  "name": "service5",
+  "icon": "🔧",
+  "title": "Skill Development",
+  "description": "Vocational training and skill enhancement programs",
+  "features": ["Computer Skills", "Handicrafts", "Technical Training", "Soft Skills"],
+  "duration": "3-6 Months",
+  "eligibility": "Youth & Adults"
+}
