@@ -105,12 +105,6 @@
   transform: translateY(-3px);
 }
 
-/* Services Container - Limited Display */
-.services-container {
-  padding: 3rem 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
 .services-grid {
   display: grid;
@@ -375,118 +369,6 @@
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
-/* Service Sidebar Scroll - Fixed Text Visibility */
-.service-sidebar-scroll-container {
-  max-height: 70vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background: #374151;
-}
-
-/* Custom scrollbar styling for balanced dark theme */
-.service-sidebar-scroll-container::-webkit-scrollbar {
-  width: 6px;
-}
-
-.service-sidebar-scroll-container::-webkit-scrollbar-track {
-  background: #4b5563;
-  border-radius: 3px;
-}
-
-.service-sidebar-scroll-container::-webkit-scrollbar-thumb {
-  background: #6b7280;
-  border-radius: 3px;
-}
-
-.service-sidebar-scroll-container::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
-}
-
-/* For Firefox */
-.service-sidebar-scroll-container {
-  scrollbar-width: thin;
-  scrollbar-color: #6b7280 #4b5563;
-}
-
-/* Ensure the sidebar has a fixed width if needed */
-.service-sidebar {
-  width: 100%;
-}
-
-.service-sidebar-card {
-  height: auto;
-  max-height: 80vh;
-  background: #374151 !important;
-  border: 1px solid #4b5563 !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-}
-
-.service-sidebar-header {
-  background: #4b5563 !important;
-  border-bottom: 1px solid #6b7280 !important;
-}
-
-.service-sidebar-header h6 {
-  color: #f9fafb !important;
-  font-weight: 700;
-}
-
-/* Fixed: Sidebar links text visibility */
-.service-sidebar-link {
-  background: #4b5563 !important;
-  border-bottom: 1px solid #6b7280 !important;
-  color: #ffffff !important;
-  transition: all 0.3s ease !important;
-  text-decoration: none !important;
-}
-
-.service-sidebar-link:hover {
-  background: #6b7280 !important;
-  color: #ffffff !important;
-  transform: translateX(5px);
-}
-
-.service-sidebar-link.active {
-  background: #6b7280 !important;
-  color: #ffffff !important;
-  border-left: 4px solid #ffffff;
-}
-
-.service-sidebar-icon {
-  color: #ffffff !important;
-  transition: all 0.3s ease !important;
-}
-
-.service-sidebar-link:hover .service-sidebar-icon {
-  color: #ffffff !important;
-  transform: scale(1.1);
-}
-
-.service-sidebar-link.active .service-sidebar-icon {
-  color: #ffffff !important;
-}
-
-/* Fixed: Sidebar text content visibility */
-.service-sidebar-link .fw-bold {
-  color: #ffffff !important;
-  font-weight: 600 !important;
-}
-
-.service-sidebar-link .text-muted {
-  color: #d1d5db !important;
-  font-weight: 400 !important;
-}
-
-.service-sidebar-link:hover .fw-bold,
-.service-sidebar-link:hover .text-muted {
-  color: #ffffff !important;
-}
-
-.service-sidebar-link.active .fw-bold,
-.service-sidebar-link.active .text-muted {
-  color: #ffffff !important;
-}
-
 /* No Scroll - Remove any scroll-related styles */
 .service-navigation-container,
 .services-container {
@@ -728,7 +610,7 @@
 .service-detail-page .tamil-font,
 .service-detail-page .english-font,
 .service-detail-page .hindi-font {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 
 
@@ -740,12 +622,11 @@
   border: 1px solid rgba(0,0,0,0.06);
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 
-  max-width: 85%;        /* 🔥 VERY IMPORTANT */
-  margin: 0 auto;        /* center */
+  max-width: 85%;       
+  margin: 0 auto;        
 }
 
 
-/* Hover animation */
 
 
 /* Fix spacing around the chip container inside the card */
@@ -875,3 +756,157 @@
   }
 }
 
+h6 {
+  color: white !important;
+}
+
+
+/* Center the main content after removing sidebar */
+.service-content,
+.service-content-container,
+.service-detail-page .col-lg-9 {
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+/* Force content width to be centered */
+.service-detail-page .col-lg-9 {
+  max-width: 1000px;   /* adjust if needed */
+  width: 100%;
+}
+
+.services-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.service-detail-page .row {
+  margin: 0 auto !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.service-detail-page .col-lg-9,
+.service-detail-page .service-content {
+  max-width: 1400px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.service-detail-page .service-detail-header {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-fade {
+  opacity: 0;
+  animation: pageFade 1.2s ease-out forwards;
+}
+
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tilt-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+  transform: perspective(900px) rotateX(8deg) rotateY(-8deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.float-icon {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.bounce-in {
+  animation: bounceIn 0.8s ease-out forwards;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  80% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.glow-border {
+  border: 2px solid transparent;
+  animation: glowingBorder 2s linear infinite;
+}
+
+@keyframes glowingBorder {
+  0% { box-shadow: 0 0 8px #ffea00; }
+  50% { box-shadow: 0 0 22px #ffc107; }
+  100% { box-shadow: 0 0 8px #ffea00; }
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shineMove 2.5s infinite;
+}
+
+@keyframes shineMove {
+  0% { left: -120%; }
+  100% { left: 140%; }
+}
+
+.parallax {
+  transform-style: preserve-3d;
+  perspective: 900px;
+}
+
+.parallax:hover .parallax-item {
+  transform: translateZ(20px);
+}
+
+.wave span {
+  display: inline-block;
+  opacity: 0;
+  animation: waveShow 0.6s forwards;
+}
+
+@keyframes waveShow {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.service-navigation,
+.service-navigation *,
+.service-navigation-container *,
+.service-navigation-container .nav-item *,
+.service-navigation-container .nav-link * {
+  color: #ffffff !important;
+}

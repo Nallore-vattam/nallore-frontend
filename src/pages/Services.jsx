@@ -1,5 +1,5 @@
 // src/pages/Services.jsx
-import React, { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { Container, Row, Col, Card, Badge, Button, Accordion, Spinner, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useLanguage } from '../context/LanguageContext';
@@ -9,6 +9,26 @@ import './ServiceCards.css';
 
 const Services = () => {
   const { currentLanguage, t, isTranslating } = useLanguage();
+
+  // ===== Scroll Reveal (local to this page) =====
+  useEffect(() => {
+    const reveals = () => Array.from(document.querySelectorAll('.reveal'));
+
+    const handleScroll = () => {
+      reveals().forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    };
+
+    // Run on load and on scroll
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const getFontClass = () => {
     switch (currentLanguage) {
@@ -33,7 +53,7 @@ const Services = () => {
 
   // Memoize processed services for better performance
   const services = useMemo(() => {
-    return domainsData.domains.map((domain, index) => ({
+    return domainsData.domains.map((domain) => ({
       key: domain.key,
       icon: domain.icon, 
       title: domain.title,
@@ -166,7 +186,7 @@ const Services = () => {
   ], []);
 
   return (
-    <div className="services-page">
+    <div className="services-page page-fade">
       {/* Modern Hero Section */}
       <section className="page-hero services-hero">
         <div className="floating-elements">
@@ -177,14 +197,14 @@ const Services = () => {
         <Container>
           <Row>
             <Col lg={8} className="mx-auto">
-              <div className="hero-content-box">
+              <div className="hero-content-box hero-fade">
                 <h1 className={`hero-title ${getFontClass()} fw-bold`}>
                   {safeTranslate('ourServices', 'Our Services')}
                 </h1>
                 <p className={`hero-subtitle ${getFontClass()}`}>
                   {safeTranslate('servicesSubtitle', 'Comprehensive community development programs designed to create lasting impact and sustainable change')}
                 </p>
-                </div>
+              </div>
             </Col>
           </Row>
         </Container>
@@ -196,53 +216,55 @@ const Services = () => {
       </div>
 
       {/* Services Grid Section - 2 Cards Per Row */}
-      <section id="services-grid" className="section services-grid-section">
+      <section id="services-grid" className="section services-grid-section reveal">
         <Container>
           <Row className="g-4">
             {services.map((service, index) => (
               <Col lg={6} key={service.key}>
-                <Card className={`service-detail-card ${getColorClass(index)} h-100`}>
+                {/* Add stagger + tilt + small float icon; inline animationDelay for reliable stagger */}
+                <Card
+                  className={`service-detail-card ${getColorClass(index)} h-100 tilt-card stagger`}
+                  style={{ animationDelay: `${index * 120}ms` }}
+                >
                   <Card.Body className="p-4">
                     <div className="text-center mb-3">
-  <div className="service-icon-large mx-auto mb-2">
-    <span>{service.icon}</span>
-  </div>
+                      <div className="service-icon-large mx-auto mb-2 float-icon" aria-hidden>
+                        <span>{service.icon}</span>
+                      </div>
 
-  <Card.Title className={`${getFontClass()} mb-2 fw-bold`}>
-    {safeTranslate(service.key, service.title)}
-  </Card.Title>
+                      <Card.Title className={`${getFontClass()} mb-2 fw-bold`}>
+                        {safeTranslate(service.key, service.title)}
+                      </Card.Title>
 
-  <Card.Text className={getFontClass()}>
-    {safeTranslate(service.description, service.description)}
-  </Card.Text>
-</div>
+                      <Card.Text className={getFontClass()}>
+                        {safeTranslate(service.description, service.description)}
+                      </Card.Text>
+                    </div>
 
                     {/* NEW Modern Chips Section */}
-{service.features.length > 0 && (
-  <div className="service-features mb-3">
-    <div className="d-flex justify-content-between align-items-center mb-2">
-      <h6 className={`${getFontClass()} mb-0 fw-semibold`}>
-        {safeTranslate('keyFeatures', 'Key Initiatives')}:
-      </h6>
-      <small className="text-muted">
-        {service.features.length} {safeTranslate('features', 'features')}
-      </small>
-    </div>
+                    {service.features.length > 0 && (
+                      <div className="service-features mb-3">
+                        <div className="d-flex justify-content-between align-items-center mb-2">
+                          <h6 className={`${getFontClass()} mb-0 fw-semibold`}>
+                            {safeTranslate('keyFeatures', 'Key Initiatives')}:
+                          </h6>
+                          <small className="text-muted">
+                            {service.features.length} {safeTranslate('features', 'features')}
+                          </small>
+                        </div>
 
-<div className="feature-list-box">
-  {service.features.map((feature, idx) => (
-    <div key={idx} className={`feature-item ${getFontClass()}`}>
-      <span className="feature-icon-circle"></span>
-      <span className="feature-text">
-        {safeTranslate(feature, feature)}
-      </span>
-    </div>
-  ))}
-</div>
-
-  </div>
-)}
-
+                        <div className="feature-list-box">
+                          {service.features.map((feature, idx) => (
+                            <div key={idx} className={`feature-item ${getFontClass()}`}>
+                              <span className="feature-icon-circle" />
+                              <span className="feature-text">
+                                {safeTranslate(feature, feature)}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     <div className="service-meta d-flex justify-content-between text-muted small mb-3">
                       <span className={getFontClass()}>
@@ -255,7 +277,7 @@ const Services = () => {
                       </span>
                     </div>
 
-                    <div className="service-actions">
+                    <div className="service-actions d-flex gap-2">
                       <LinkContainer to={`/services/${service.key}`}>
                         <Button variant="primary" className="me-2">
                           <i className="bi bi-info-circle me-2"></i>
@@ -263,10 +285,9 @@ const Services = () => {
                         </Button>
                       </LinkContainer>
                       <Button className="btn-white-glow">
-  <i className="bi bi-send me-2"></i>
-  {safeTranslate('applyNow', 'Apply Now')}
-</Button>
-
+                        <i className="bi bi-send me-2"></i>
+                        {safeTranslate('applyNow', 'Apply Now')}
+                      </Button>
                     </div>
                   </Card.Body>
                 </Card>
@@ -277,7 +298,7 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-<section className="section process-section bg-light" style={{marginTop: '10px',marginBottom:'10px'}}>
+      <section className="section process-section bg-light reveal" style={{ marginTop: '10px', marginBottom: '10px' }}>
         <Container>
           <h2 className={`section-title text-center mb-5 ${getFontClass()} fw-bold`}>
             {safeTranslate('howItWorks', 'How It Works')}
@@ -285,9 +306,10 @@ const Services = () => {
           <Row className="text-center g-4">
             {processSteps.map((step, index) => (
               <Col lg={3} md={6} key={index}>
-                <div className="process-card p-4 bg-white h-100 rounded shadow-sm position-relative">
-                  <div className="process-step-number position-absolute top-0 start-50 translate-middle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold">
-                  </div>
+                <div
+                  className="process-card p-4 bg-white h-100 rounded shadow-sm position-relative fade-in-up"
+                  style={{ animationDelay: `${index * 120}ms` }}
+                >
                   <div className="process-icon mb-3 text-primary mt-3">
                     <i className={`bi ${step.icon} fs-2`}></i>
                   </div>
@@ -306,7 +328,7 @@ const Services = () => {
 
       {/* FAQ Section */}
       {faqs.length > 0 && (
-        <section className="section faq-section">
+        <section className="section faq-section reveal">
           <Container>
             <h2 className={`section-title text-center mb-5 ${getFontClass()} fw-bold`}>
               {safeTranslate('frequentlyAskedQuestions', 'Frequently Asked Questions')}
@@ -337,7 +359,6 @@ const Services = () => {
         </section>
       )}
 
-     
     </div>
   );
 };

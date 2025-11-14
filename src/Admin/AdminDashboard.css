@@ -1,0 +1,38 @@
+.stat-card {
+  text-align: center;
+  border-radius: 14px;
+  background: white;
+  padding: 20px 0;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.stat-card h3 {
+  font-size: 2.4rem;
+  margin-bottom: 5px;
+}
+
+.admin-tool-card {
+  cursor: pointer;
+  border-radius: 14px;
+  transition: 0.25s;
+}
+
+.admin-tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.tool-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 20px auto 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool-icon i {
+  color: white;
+  font-size: 28px;
+}

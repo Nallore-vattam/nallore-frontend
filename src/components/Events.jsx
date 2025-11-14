@@ -1,66 +1,39 @@
-import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { useLanguage } from '../context/LanguageContext';
-import './Events.css';
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { useLanguage } from "../context/LanguageContext";
+import "./Events.css";
+
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
 const Events = () => {
   const { currentLanguage, t } = useLanguage();
 
-  const safeTranslate = (key, fallback = '') => {
-    try {
-      const translated = t(key);
-      return translated && translated !== key ? translated : fallback;
-    } catch (error) {
-      return fallback;
-    }
-  };
-
   const getFontClass = () => {
     switch (currentLanguage) {
-      case 'ta':
-        return 'tamil-font';
-      case 'hi':
-        return 'hindi-font';
+      case "ta":
+        return "tamil-font";
+      case "hi":
+        return "hindi-font";
       default:
-        return 'english-font';
+        return "english-font";
     }
   };
 
-  const events = [
-    { 
-      id: 1,
-      title: t('event1'),
-      date: '2025-01-15',
-      location: 'Community Hall',
-      category: 'Cultural'
-    },
-    { 
-      id: 2,
-      title: t('event2'),
-      date: '2025-02-20',
-      location: 'Health Center',
-      category: 'Health'
-    },
-    { 
-      id: 3,
-      title: t('event3'),
-      date: '2025-03-10',
-      location: 'School Campus',
-      category: 'Education'
-    }
-  ];
+  const [events, setEvents] = useState([]);
+  const [blogs, setBlogs] = useState([]);
 
-  const getCategoryColor = (category) => {
-    switch (category) {
-      case 'Cultural': return '#e74c3c';
-      case 'Health': return '#3498db';
-      case 'Education': return '#2ecc71';
-      default: return '#95a5a6';
-    }
-  };
+  useEffect(() => {
+    (async () => {
+      const ev = await fetch(`${API_BASE}/api/events?upcoming=true&limit=6`).then((r) => r.json());
+      setEvents(ev);
+
+      const bl = await fetch(`${API_BASE}/api/blog?limit=3`).then((r) => r.json());
+      setBlogs(bl);
+    })();
+  }, []);
 
   const handleRedirect = () => {
-    window.location.href = '/about#events';
+    window.location.href = "/about#events";
   };
 
   return (
@@ -68,33 +41,45 @@ const Events = () => {
       <Container>
         <div className="text-center mb-5">
           <h2 className={`section-title ${getFontClass()} display-5 fw-bold`}>
-            {t('eventsTitle')}
+            {t("eventsTitle")}
           </h2>
         </div>
 
-        {/* Upcoming Events Preview */}
-        <Row className="mt-4">
-          <Col lg={12}>
-            <Card className="upcoming-events-card border-0 shadow-sm">
+        <Row>
+          {/* LEFT SIDE: UPCOMING EVENTS */}
+          <Col lg={8}>
+            <Card className="upcoming-events-card shadow-sm mb-4">
               <Card.Body className="p-4">
                 <h4 className={`${getFontClass()} fw-bold mb-4`}>
                   <i className="bi bi-calendar-week me-2 text-primary"></i>
-                  {safeTranslate('upcomingEventsOverview', 'Upcoming Events Overview')}
+                  {t("upcomingEventsOverview")}
                 </h4>
+
                 <Row className="g-3">
+                  {events.length === 0 && (
+                    <div className="text-muted">No upcoming events</div>
+                  )}
+
                   {events.map((event) => (
-                    <Col lg={4} md={6} key={event.id}>
-                      <div className="upcoming-event-item">
-                        <div
-                          className="event-dot"
-                          style={{ backgroundColor: getCategoryColor(event.category) }}
-                        ></div>
-                        <div className="upcoming-event-content">
-                          <div className={`upcoming-event-title ${getFontClass()} fw-semibold`}>
+                    <Col lg={6} md={12} key={event.id}>
+                      <div className="upcoming-event-item d-flex">
+                        <img
+                          src={event.image || "/images/fallback.png"}
+                          alt={event.title}
+                          style={{
+                            width: 100,
+                            height: 70,
+                            objectFit: "cover",
+                            borderRadius: 6,
+                            marginRight: 12,
+                          }}
+                        />
+                        <div>
+                          <div className={`${getFontClass()} fw-semibold`}>
                             {event.title}
                           </div>
-                          <div className="upcoming-event-date text-muted small">
-                            {event.date} — {event.location}
+                          <div className="small text-muted">
+                            {event.date} • {event.location}
                           </div>
                         </div>
                       </div>
@@ -102,19 +87,53 @@ const Events = () => {
                   ))}
                 </Row>
 
-                {/* Redirect Button */}
-                <div className="text-center mt-5">
-                  <Button 
+                {/* VIEW MORE BUTTON */}
+                <div className="text-center mt-4">
+                  <Button
                     className="action-btn-event px-4 py-2"
                     onClick={handleRedirect}
                   >
                     <i className="bi bi-arrow-right-circle me-2"></i>
-                    {safeTranslate('viewMore', 'View More in About Page')}
+                    {t("viewMore") || "View More in About Page"}
                   </Button>
                 </div>
-
               </Card.Body>
             </Card>
+          </Col>
+
+          {/* RIGHT SIDE: BLOG PREVIEW */}
+          <Col lg={4}>
+            <h5 className={`fw-bold mb-3 ${getFontClass()}`}>
+              {t("latestArticles") || "Latest Articles"}
+            </h5>
+
+            {blogs.map((blog) => (
+              <Card key={blog.id} className="mb-3 shadow-sm border-0">
+                <div className="d-flex">
+                  <img
+                    src={blog.thumbnail || "/images/fallback.png"}
+                    alt={blog.title}
+                    style={{
+                      width: 100,
+                      height: 70,
+                      objectFit: "cover",
+                      borderRadius: "6px 0 0 6px",
+                    }}
+                  />
+                  <Card.Body className="p-2">
+                    <Card.Title className={`fs-6 ${getFontClass()}`}>
+                      {blog.title}
+                    </Card.Title>
+                    <Card.Text className="small text-muted">
+                      {(blog.content || "").slice(0, 80)}...
+                    </Card.Text>
+                    <a href={`/blog/${blog.id}`} className="small fw-bold text-primary">
+                      {t("readMore") || "Read More"}
+                    </a>
+                  </Card.Body>
+                </div>
+              </Card>
+            ))}
           </Col>
         </Row>
       </Container>

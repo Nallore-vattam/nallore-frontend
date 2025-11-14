@@ -6,8 +6,6 @@ import { useLanguage } from '../context/LanguageContext';
 import ServicePagination from '../components/ServicePagination';
 import ServiceNavigation from '../components/ServiceNavigation';
 import domainsData from '../components/mainjsons/Services.json';
-import ServiceSidebar from './serviceSidebar';
-
 import './ServiceCards.css';
 
 const ServiceDetail = () => {
@@ -76,10 +74,7 @@ const ServiceDetail = () => {
 
       <Container fluid>
         <Row>
-          {/* Sidebar */}
-          <Col lg={3} className="d-none d-lg-block">
-            <ServiceSidebar currentServiceKey={serviceKey} />
-          </Col>
+       
           
           {/* Main Content */}
           <Col lg={9}>

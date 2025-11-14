@@ -363,8 +363,15 @@ const translations = {
     yearsofservice:'Years of Service',
     livesimpacted:'Lives Impacted',
     chooseDomain: "Choose Your Domain",
-   selectCategory: "Select a category to explore opportunities."
+   selectCategory: "Select a category to explore opportunities.",
 
+   stateLeadership: "State Leadership",
+   seniorAdvisors: "Senior Advisors",
+   zonalCoordinators: "Zonal Coordinators",
+   domainAdministrators: "Domain Administrators",
+   districtCoordinators: "District Coordinators",
+
+   
 
   },
   ta: {
@@ -731,7 +738,15 @@ const translations = {
     yearsofservice:'சேவை வழங்கிய ஆண்டுகள்',
     livesimpacted:'மாற்றத்தை ஏற்படுத்திய வாழ்க்கைகள்',
     chooseDomain: "உங்கள் துறையை தேர்வு செய்யவும்",
-    selectCategory: "வாய்ப்புகளை ஆராய ஒரு பிரிவைத் தேர்ந்தெடுக்கவும்."
+    selectCategory: "வாய்ப்புகளை ஆராய ஒரு பிரிவைத் தேர்ந்தெடுக்கவும்.",
+   
+    stateLeadership: "மாநில தலைவர்",
+    seniorAdvisors: "மூத்த ஆலோசகர்கள்",
+    zonalCoordinators: "மண்டல ஒருங்கிணைப்பாளர்கள்",
+    domainAdministrators : "கள நிர்வாகிகள்",
+    districtCoordinators: "மாவட்ட ஒருங்கிணைப்பாளர்கள்",
+
+
   
   },
   hi: {
@@ -1076,7 +1091,15 @@ youtubeTitle: "हमारा YouTube चैनल",
     livesimpacted:'प्रभावित जीवन',
 
     chooseDomain: "अपना क्षेत्र चुनें",
-    selectCategory: "अवसरों का पता लगाने के लिए एक श्रेणी चुनें।"
+    selectCategory: "अवसरों का पता लगाने के लिए एक श्रेणी चुनें।",
+    
+    stateLeadership:"राज्य नेतृत्व",
+    seniorAdvisors: "वरिष्ठ सलाहकार",
+    zonalCoordinators: "ज़ोनल समन्वयक",
+    domainAdministrators: "डोमेन प्रशासक",
+    districtCoordinators: "जिला समन्वयक",
+
+
 
 
   }
