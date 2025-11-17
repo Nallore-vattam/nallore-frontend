@@ -43,7 +43,7 @@ function App() {
               <Route path="events" element={<AdminEvents />} />
               <Route path="blog" element={<AdminBlog />} />
               <Route path="team" element={<AdminTeam />} />
-<Route path="gallery/manage" element={<AdminGallery />} />
+<Route path="gallery" element={<AdminGallery />} />
               <Route path="gallery-upload" element={<AdminGalleryUpload />} />
             </Route>
 
