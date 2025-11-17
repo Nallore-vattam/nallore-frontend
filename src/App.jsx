@@ -38,8 +38,11 @@ function App() {
         <div className="App">
           <Routes>
 
-            <Route 
-  path="/admin" 
+<Route path="/admin/login" element={<AdminLogin />} />
+
+{/* PROTECTED ADMIN AREA */}
+<Route
+  path="/admin"
   element={
     <AdminProtectedRoute>
       <AdminLayout />
@@ -53,7 +56,6 @@ function App() {
   <Route path="gallery" element={<AdminGallery />} />
   <Route path="gallery-upload" element={<AdminGalleryUpload />} />
 </Route>
-
 
             <Route
               path="*"
