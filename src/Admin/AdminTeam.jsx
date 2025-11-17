@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./AdminStyles.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
@@ -22,13 +23,18 @@ export default function AdminTeam() {
   }, []);
 
   async function loadTeam() {
-    const res = await fetch(`${API_BASE}/api/team`);
-    const data = await res.json();
-    setTeam(data);
+    try {
+      const res = await fetch(`${API_BASE}/api/team`);
+      const data = await res.json();
+      setTeam(data || []);
+    } catch (err) {
+      console.error("LOAD TEAM ERROR:", err);
+    }
   }
 
   const handleFileChange = (e) => {
     const f = e.target.files[0];
+    if (!f) return;
     setFile(f);
     setPreview(URL.createObjectURL(f));
   };
@@ -54,83 +60,98 @@ export default function AdminTeam() {
       return;
     }
 
-    const imageUrl = await uploadToCloudinary();
-    const token = localStorage.getItem("adminToken");
+    try {
+      const imageUrl = await uploadToCloudinary();
+      const token = localStorage.getItem("adminToken");
 
-    const res = await fetch(`${API_BASE}/api/admin/team`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-token": token,
-      },
-      body: JSON.stringify({
-        name,
-        role,
-        level,
-        image: imageUrl,
-      }),
-    });
+      const res = await fetch(`${API_BASE}/api/admin/team`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-token": token,
+        },
+        body: JSON.stringify({
+          name,
+          role,
+          level,
+          image: imageUrl,
+        }),
+      });
 
-    if (!res.ok) return alert("Error adding member");
+      if (!res.ok) throw new Error("Add member failed");
 
-    await loadTeam();
-    resetForm();
+      await loadTeam();
+      resetForm();
+    } catch (err) {
+      console.error("ADD MEMBER ERROR:", err);
+      alert("Error adding member");
+    }
   }
 
   // ---------------- START EDIT ----------------
   function startEdit(member) {
     setEditId(member.id);
-    setName(member.name);
-    setRole(member.role);
-    setLevel(member.level);
-    setPreview(member.image);
+    setName(member.name || "");
+    setRole(member.role || "");
+    setLevel(member.level || "state");
+    setPreview(member.image || null);
     setFile(null);
   }
 
   // ---------------- UPDATE MEMBER ----------------
   async function updateMember() {
-    let imageUrl = preview;
-    const token = localStorage.getItem("adminToken");
+    try {
+      let imageUrl = preview;
+      const token = localStorage.getItem("adminToken");
 
-    if (file) {
-      imageUrl = await uploadToCloudinary();
+      if (file) {
+        imageUrl = await uploadToCloudinary();
+      }
+
+      const res = await fetch(`${API_BASE}/api/admin/team/${editId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-token": token,
+        },
+        body: JSON.stringify({
+          name,
+          role,
+          level,
+          image: imageUrl,
+          description: "",
+        }),
+      });
+
+      if (!res.ok) throw new Error("Update failed");
+
+      await loadTeam();
+      resetForm();
+    } catch (err) {
+      console.error("UPDATE MEMBER ERROR:", err);
+      alert("Error updating member");
     }
-
-    const res = await fetch(`${API_BASE}/api/admin/team/${editId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-token": token,
-      },
-      body: JSON.stringify({
-        name,
-        role,
-        level,
-        image: imageUrl,
-        description: "",
-      }),
-    });
-
-    if (!res.ok) return alert("Error updating member");
-
-    await loadTeam();
-    resetForm();
   }
 
   // ---------------- DELETE MEMBER ----------------
   async function deleteMember(id) {
     if (!confirm("Delete this member?")) return;
-    const token = localStorage.getItem("adminToken");
+    try {
+      const token = localStorage.getItem("adminToken");
 
-    const res = await fetch(`${API_BASE}/api/admin/team/${id}`, {
-      method: "DELETE",
-      headers: {
-        "x-admin-token": token,
-      },
-    });
+      const res = await fetch(`${API_BASE}/api/admin/team/${id}`, {
+        method: "DELETE",
+        headers: {
+          "x-admin-token": token,
+        },
+      });
 
-    if (res.ok) {
-      setTeam(team.filter((m) => m.id !== id));
+      if (!res.ok) throw new Error("Delete failed");
+
+      setTeam((prev) => prev.filter((m) => m.id !== id));
+    } catch (err) {
+      console.error("DELETE MEMBER ERROR:", err);
+      alert("Error deleting member");
     }
   }
 
@@ -150,7 +171,6 @@ export default function AdminTeam() {
 
       {/* FORM */}
       <div className="mb-4">
-
         <input
           className="form-control mb-2"
           placeholder="Full Name"
@@ -197,15 +217,15 @@ export default function AdminTeam() {
         {/* Buttons */}
         {editId ? (
           <>
-            <button className="btn btn-warning mt-3 me-2" onClick={updateMember}>
+            <button className="admin-btn admin-btn-warning mt-3 me-2" onClick={updateMember}>
               Update Member
             </button>
-            <button className="btn btn-secondary mt-3" onClick={resetForm}>
+            <button className="admin-btn admin-btn-secondary mt-3" onClick={resetForm}>
               Cancel
             </button>
           </>
         ) : (
-          <button className="btn btn-success mt-3" onClick={addMember}>
+          <button className="admin-btn admin-btn-success mt-3" onClick={addMember}>
             Add Member
           </button>
         )}
@@ -223,7 +243,7 @@ export default function AdminTeam() {
             <div className="d-flex align-items-center">
               <img
                 src={member.image}
-                alt=""
+                alt={member.name || ""}
                 style={{
                   width: "50px",
                   height: "50px",
@@ -240,19 +260,25 @@ export default function AdminTeam() {
               </div>
             </div>
 
-            <div>
+            <div className="admin-actions">
               <button
-                className="btn btn-success btn-sm me-2"
+                type="button"
+                className="admin-icon-btn edit-btn"
                 onClick={() => startEdit(member)}
+                title={`Edit ${member.name}`}
+                aria-label={`Edit ${member.name}`}
               >
-                Edit
+                <i className="bi bi-pencil-fill" />
               </button>
 
               <button
-                className="btn btn-danger btn-sm"
+                type="button"
+                className="admin-icon-btn delete-btn"
                 onClick={() => deleteMember(member.id)}
+                title={`Delete ${member.name}`}
+                aria-label={`Delete ${member.name}`}
               >
-                Delete
+                <i className="bi bi-trash-fill" />
               </button>
             </div>
           </li>

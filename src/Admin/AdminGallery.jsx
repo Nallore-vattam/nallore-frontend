@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./AdminStyles.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
@@ -21,15 +22,8 @@ export default function AdminGallery() {
       const catRes = await fetch(`${API_BASE}/api/gallery/categories`);
       const imgRes = await fetch(`${API_BASE}/api/gallery/images`);
 
-      if (!catRes.ok || !imgRes.ok) {
-        console.error("API failed:", catRes.status, imgRes.status);
-      }
-
       const cats = await catRes.json();
       const imgs = await imgRes.json();
-
-      console.log("Loaded categories:", cats);
-      console.log("Loaded images:", imgs);
 
       setCategories(Array.isArray(cats) ? cats : []);
       setItems(Array.isArray(imgs) ? imgs : []);
@@ -42,8 +36,8 @@ export default function AdminGallery() {
 
   function startEdit(item) {
     setEditItem(item.id);
-    setTitle(item.title);
-    setCategoryKey(item.category_key);
+    setTitle(item.title || "");
+    setCategoryKey(item.category_key || "");
   }
 
   async function saveEdit(id) {
@@ -70,10 +64,10 @@ export default function AdminGallery() {
   }
 
   async function deleteItem(id) {
-    const token = localStorage.getItem("adminToken");
     if (!confirm("Delete this image?")) return;
-
     try {
+      const token = localStorage.getItem("adminToken");
+
       await fetch(`${API_BASE}/api/admin/gallery/${id}`, {
         method: "DELETE",
         headers: {
@@ -108,9 +102,7 @@ export default function AdminGallery() {
 
         {items.map((item) => {
           const safeSrc =
-            item?.src ||
-            item?.image ||
-            "https://via.placeholder.com/300x200?text=No+Image";
+            item?.src || item?.image || "https://via.placeholder.com/300x200?text=No+Image";
 
           return (
             <div className="col-6 col-md-4 col-lg-3" key={item.id}>
@@ -144,17 +136,11 @@ export default function AdminGallery() {
                         ))}
                     </select>
 
-                    <button
-                      className="btn btn-success btn-sm me-2"
-                      onClick={() => saveEdit(item.id)}
-                    >
+                    <button className="admin-btn admin-btn-success btn-sm me-2" onClick={() => saveEdit(item.id)}>
                       Save
                     </button>
 
-                    <button
-                      className="btn btn-secondary btn-sm"
-                      onClick={() => setEditItem(null)}
-                    >
+                    <button className="admin-btn admin-btn-secondary btn-sm" onClick={() => setEditItem(null)}>
                       Cancel
                     </button>
                   </div>
@@ -165,20 +151,28 @@ export default function AdminGallery() {
                   </div>
                 )}
 
-                <div className="card-footer d-flex justify-content-between">
-                  <button
-                    className="btn btn-sm btn-primary"
-                    onClick={() => startEdit(item)}
-                  >
-                    Edit
-                  </button>
+                <div className="card-footer d-flex justify-content-end">
+                  <div className="admin-actions">
+                    <button
+                      type="button"
+                      className="admin-icon-btn edit-btn"
+                      onClick={() => startEdit(item)}
+                      title={`Edit ${item.title}`}
+                      aria-label={`Edit ${item.title}`}
+                    >
+                      <i className="bi bi-pencil-fill" />
+                    </button>
 
-                  <button
-                    className="btn btn-sm btn-danger"
-                    onClick={() => deleteItem(item.id)}
-                  >
-                    Delete
-                  </button>
+                    <button
+                      type="button"
+                      className="admin-icon-btn delete-btn"
+                      onClick={() => deleteItem(item.id)}
+                      title={`Delete ${item.title}`}
+                      aria-label={`Delete ${item.title}`}
+                    >
+                      <i className="bi bi-trash-fill" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

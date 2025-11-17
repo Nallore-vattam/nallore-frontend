@@ -2317,28 +2317,3 @@ p.tamil-font {
 .contact-page h6 {
   color: #000 !important;
 }
-
-.btn-primary {
-  background-color: #0d6efd !important;
-  border-color: #0d6efd !important;
-  color: #fff !important;
-}
-
-.btn-danger {
-  background-color: #fd0d0d !important;
-  border-color: #fd0d0d !important;
-  color: #fff !important;
-}
-
-
-.btn-warning {
-  background-color: #fdfd0d !important;
-  border-color: #fded0d !important;
-  color: #fff !important;
-}
-
-.btn-secondary {
-  background-color: #797a7a !important;
-  border-color: #848483 !important;
-  color: #fff !important;
-}

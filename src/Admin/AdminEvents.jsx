@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./AdminStyles.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
@@ -24,20 +25,25 @@ export default function AdminEvents() {
 
   // Load events (admin protected)
   async function loadEvents() {
-    const token = localStorage.getItem("adminToken");
+    try {
+      const token = localStorage.getItem("adminToken");
 
-    const res = await fetch(`${API_BASE}/api/admin/events`, {
-      headers: {
-        "x-admin-token": token,
-      },
-    });
+      const res = await fetch(`${API_BASE}/api/admin/events`, {
+        headers: {
+          "x-admin-token": token,
+        },
+      });
 
-    const data = await res.json();
-    setEvents(data);
+      const data = await res.json();
+      setEvents(data || []);
+    } catch (err) {
+      console.error("LOAD EVENTS ERROR:", err);
+    }
   }
 
   const handleFileChange = (e) => {
     const f = e.target.files[0];
+    if (!f) return;
     setFile(f);
     setPreview(URL.createObjectURL(f));
   };
@@ -64,91 +70,98 @@ export default function AdminEvents() {
       return;
     }
 
-    const imageUrl = await uploadToCloudinary();
-    const token = localStorage.getItem("adminToken");
+    try {
+      const imageUrl = await uploadToCloudinary();
+      const token = localStorage.getItem("adminToken");
 
-    const res = await fetch(`${API_BASE}/api/admin/events`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-token": token,
-      },
-      body: JSON.stringify({
-        title,
-        date,
-        location,
-        category,
-        image: imageUrl,
-      }),
-    });
+      const res = await fetch(`${API_BASE}/api/admin/events`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-token": token,
+        },
+        body: JSON.stringify({
+          title,
+          date,
+          location,
+          category,
+          image: imageUrl,
+        }),
+      });
 
-    if (!res.ok) {
+      if (!res.ok) throw new Error("Add event failed");
+
+      await loadEvents();
+      resetForm();
+    } catch (err) {
+      console.error("ADD EVENT ERROR:", err);
       alert("Error adding event");
-      return;
     }
-
-    await loadEvents();
-    resetForm();
   }
 
   // ---------------- START EDIT ----------------
-  function startEdit(event) {
-    setEditId(event.id);
-    setTitle(event.title);
-    setDate(event.date);
-    setLocation(event.location);
-    setCategory(event.category || "");
-    setPreview(event.image);
+  function startEdit(ev) {
+    setEditId(ev.id);
+    setTitle(ev.title || "");
+    setDate(ev.date || "");
+    setLocation(ev.location || "");
+    setCategory(ev.category || "");
+    setPreview(ev.image || null);
     setFile(null);
   }
 
   // ---------------- UPDATE EVENT ----------------
   async function updateEvent() {
-    let imageUrl = preview;
-    const token = localStorage.getItem("adminToken");
+    try {
+      let imageUrl = preview;
+      const token = localStorage.getItem("adminToken");
 
-    if (file) imageUrl = await uploadToCloudinary();
+      if (file) imageUrl = await uploadToCloudinary();
 
-    const res = await fetch(`${API_BASE}/api/admin/events/${editId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-token": token,
-      },
-      body: JSON.stringify({
-        title,
-        date,
-        location,
-        category,
-        image: imageUrl,
-      }),
-    });
+      const res = await fetch(`${API_BASE}/api/admin/events/${editId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-token": token,
+        },
+        body: JSON.stringify({
+          title,
+          date,
+          location,
+          category,
+          image: imageUrl,
+        }),
+      });
 
-    if (!res.ok) {
+      if (!res.ok) throw new Error("Update failed");
+
+      await loadEvents();
+      resetForm();
+    } catch (err) {
+      console.error("UPDATE EVENT ERROR:", err);
       alert("Failed to update event");
-      return;
     }
-
-    await loadEvents();
-    resetForm();
   }
 
   // ---------------- DELETE EVENT ----------------
   async function deleteEvent(id) {
     if (!confirm("Delete this event?")) return;
 
-    const token = localStorage.getItem("adminToken");
+    try {
+      const token = localStorage.getItem("adminToken");
 
-    const res = await fetch(`${API_BASE}/api/admin/events/${id}`, {
-      method: "DELETE",
-      headers: {
-        "x-admin-token": token,
-      },
-    });
+      const res = await fetch(`${API_BASE}/api/admin/events/${id}`, {
+        method: "DELETE",
+        headers: {
+          "x-admin-token": token,
+        },
+      });
 
-    if (res.ok) {
-      setEvents(events.filter((e) => e.id !== id));
-    } else {
+      if (!res.ok) throw new Error("Delete failed");
+
+      setEvents((prev) => prev.filter((e) => e.id !== id));
+    } catch (err) {
+      console.error("DELETE EVENT ERROR:", err);
       alert("Failed to delete");
     }
   }
@@ -169,7 +182,6 @@ export default function AdminEvents() {
       <h2 className="fw-bold mb-4">Manage Events</h2>
 
       <div className="mb-4">
-
         {/* Title */}
         <input
           className="form-control mb-2"
@@ -210,6 +222,7 @@ export default function AdminEvents() {
         {preview && (
           <img
             src={preview}
+            alt="Preview"
             style={{
               width: "180px",
               height: "120px",
@@ -223,16 +236,16 @@ export default function AdminEvents() {
         {/* Buttons */}
         {editId ? (
           <>
-            <button className="btn btn-warning mt-3 me-2" onClick={updateEvent}>
+            <button className="admin-btn admin-btn-warning mt-3 me-2" onClick={updateEvent}>
               Update Event
             </button>
 
-            <button className="btn btn-secondary mt-3" onClick={resetForm}>
+            <button className="admin-btn admin-btn-secondary mt-3" onClick={resetForm}>
               Cancel
             </button>
           </>
         ) : (
-          <button className="btn btn-primary mt-3" onClick={addEvent}>
+          <button className="admin-btn admin-btn-primary mt-3" onClick={addEvent}>
             Add Event
           </button>
         )}
@@ -260,22 +273,29 @@ export default function AdminEvents() {
                   borderRadius: "8px",
                   marginTop: "8px",
                 }}
+                alt={ev.title || ""}
               />
             </div>
 
-            <div>
+            <div className="admin-actions">
               <button
-                className="btn btn-success btn-sm me-2"
+                type="button"
+                className="admin-icon-btn edit-btn"
                 onClick={() => startEdit(ev)}
+                title={`Edit ${ev.title}`}
+                aria-label={`Edit ${ev.title}`}
               >
-                Edit
+                <i className="bi bi-pencil-fill" />
               </button>
 
               <button
-                className="btn btn-danger btn-sm"
+                type="button"
+                className="admin-icon-btn delete-btn"
                 onClick={() => deleteEvent(ev.id)}
+                title={`Delete ${ev.title}`}
+                aria-label={`Delete ${ev.title}`}
               >
-                Delete
+                <i className="bi bi-trash-fill" />
               </button>
             </div>
           </li>

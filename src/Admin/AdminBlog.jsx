@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import "./AdminStyles.css";
 
-const API_BASE = import.meta.env.VITE_API_BASE;
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
 export default function AdminBlog() {
   const [blogs, setBlogs] = useState([]);
@@ -21,23 +22,28 @@ export default function AdminBlog() {
     loadBlogs();
   }, []);
 
-  // ⭐ Load blogs (requires admin token)
+  // Load blogs (requires admin token)
   async function loadBlogs() {
-    const token = localStorage.getItem("adminToken");
+    try {
+      const token = localStorage.getItem("adminToken");
 
-    const res = await fetch(`${API_BASE}/api/admin/blog`, {
-      headers: {
-        "x-admin-token": token
-      }
-    });
+      const res = await fetch(`${API_BASE}/api/admin/blog`, {
+        headers: {
+          "x-admin-token": token,
+        },
+      });
 
-    const data = await res.json();
-    setBlogs(data);
+      const data = await res.json();
+      setBlogs(data || []);
+    } catch (err) {
+      console.error("LOAD BLOGS ERROR:", err);
+    }
   }
 
   // Handle image change
   const handleFileChange = (e) => {
     const f = e.target.files[0];
+    if (!f) return;
     setFile(f);
     setPreview(URL.createObjectURL(f));
   };
@@ -48,13 +54,10 @@ export default function AdminBlog() {
     data.append("file", file);
     data.append("upload_preset", "gallery_upload");
 
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dsvfhsusq/image/upload",
-      {
-        method: "POST",
-        body: data,
-      }
-    );
+    const res = await fetch("https://api.cloudinary.com/v1_1/dsvfhsusq/image/upload", {
+      method: "POST",
+      body: data,
+    });
 
     const json = await res.json();
     return json.secure_url;
@@ -67,83 +70,98 @@ export default function AdminBlog() {
       return;
     }
 
-    const imageUrl = await uploadToCloudinary();
-    const token = localStorage.getItem("adminToken");
+    try {
+      const imageUrl = await uploadToCloudinary();
+      const token = localStorage.getItem("adminToken");
 
-    const res = await fetch(`${API_BASE}/api/admin/blog`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-token": token,
-      },
-      body: JSON.stringify({
-        title,
-        content,
-        thumbnail: imageUrl,
-        author,
-      }),
-    });
+      const res = await fetch(`${API_BASE}/api/admin/blog`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-token": token,
+        },
+        body: JSON.stringify({
+          title,
+          content,
+          thumbnail: imageUrl,
+          author,
+        }),
+      });
 
-    if (!res.ok) return alert("Blog not added");
+      if (!res.ok) throw new Error("Add blog failed");
 
-    await loadBlogs();
-    resetForm();
+      await loadBlogs();
+      resetForm();
+    } catch (err) {
+      console.error("ADD BLOG ERROR:", err);
+      alert("Blog not added");
+    }
   }
 
   // ---------------- START EDIT ----------------
   function startEdit(blog) {
     setEditId(blog.id);
-    setTitle(blog.title);
-    setContent(blog.content);
+    setTitle(blog.title || "");
+    setContent(blog.content || "");
     setAuthor(blog.author || "");
-    setPreview(blog.thumbnail);
+    setPreview(blog.thumbnail || null);
     setFile(null);
   }
 
   // ---------------- UPDATE BLOG ----------------
   async function updateBlog() {
-    let imageUrl = preview;
-    const token = localStorage.getItem("adminToken");
+    try {
+      let imageUrl = preview;
+      const token = localStorage.getItem("adminToken");
 
-    if (file) {
-      imageUrl = await uploadToCloudinary();
+      if (file) {
+        imageUrl = await uploadToCloudinary();
+      }
+
+      const res = await fetch(`${API_BASE}/api/admin/blog/${editId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-token": token,
+        },
+        body: JSON.stringify({
+          title,
+          content,
+          thumbnail: imageUrl,
+          author,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Update failed");
+
+      await loadBlogs();
+      resetForm();
+    } catch (err) {
+      console.error("UPDATE BLOG ERROR:", err);
+      alert("Blog update failed");
     }
-
-    const res = await fetch(`${API_BASE}/api/admin/blog/${editId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-token": token,
-      },
-      body: JSON.stringify({
-        title,
-        content,
-        thumbnail: imageUrl,
-        author,
-      }),
-    });
-
-    if (!res.ok) return alert("Blog update failed");
-
-    await loadBlogs();
-    resetForm();
   }
 
   // ---------------- DELETE BLOG ----------------
   async function deleteBlog(id) {
     if (!confirm("Delete this blog?")) return;
 
-    const token = localStorage.getItem("adminToken");
+    try {
+      const token = localStorage.getItem("adminToken");
 
-    const res = await fetch(`${API_BASE}/api/admin/blog/${id}`, {
-      method: "DELETE",
-      headers: {
-        "x-admin-token": token,
-      },
-    });
+      const res = await fetch(`${API_BASE}/api/admin/blog/${id}`, {
+        method: "DELETE",
+        headers: {
+          "x-admin-token": token,
+        },
+      });
 
-    if (res.ok) {
-      setBlogs(blogs.filter((b) => b.id !== id));
+      if (!res.ok) throw new Error("Delete failed");
+
+      setBlogs((prev) => prev.filter((b) => b.id !== id));
+    } catch (err) {
+      console.error("DELETE BLOG ERROR:", err);
+      alert("Blog delete failed");
     }
   }
 
@@ -198,15 +216,15 @@ export default function AdminBlog() {
 
         {editId ? (
           <>
-            <button className="btn btn-warning mt-3 me-2" onClick={updateBlog}>
+            <button className="admin-btn admin-btn-warning mt-3 me-2" onClick={updateBlog}>
               Update Blog
             </button>
-            <button className="btn btn-secondary mt-3" onClick={resetForm}>
+            <button className="admin-btn admin-btn-secondary mt-3" onClick={resetForm}>
               Cancel
             </button>
           </>
         ) : (
-          <button className="btn btn-primary mt-3" onClick={addBlog}>
+          <button className="admin-btn admin-btn-primary mt-3" onClick={addBlog}>
             Add Blog
           </button>
         )}
@@ -224,24 +242,31 @@ export default function AdminBlog() {
               <img
                 src={blog.thumbnail}
                 style={{ width: "120px", borderRadius: "8px", marginTop: "8px" }}
+                alt={blog.title || ""}
               />
               <br />
               <small className="text-muted">{blog.author}</small>
             </div>
 
-            <div>
+            <div className="admin-actions">
               <button
-                className="btn btn-success btn-sm me-2"
+                type="button"
+                className="admin-icon-btn edit-btn"
                 onClick={() => startEdit(blog)}
+                title={`Edit ${blog.title}`}
+                aria-label={`Edit ${blog.title}`}
               >
-                Edit
+                <i className="bi bi-pencil-fill" />
               </button>
 
               <button
-                className="btn btn-danger btn-sm"
+                type="button"
+                className="admin-icon-btn delete-btn"
                 onClick={() => deleteBlog(blog.id)}
+                title={`Delete ${blog.title}`}
+                aria-label={`Delete ${blog.title}`}
               >
-                Delete
+                <i className="bi bi-trash-fill" />
               </button>
             </div>
           </li>
