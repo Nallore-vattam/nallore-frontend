@@ -18,9 +18,7 @@ export default function AdminLayout() {
       <div className={`admin-sidebar ${menuOpen ? "open" : ""}`}>
         <div className="sidebar-header">
           <h3>Admin Menu</h3>
-          <button className="close-btn" onClick={() => setMenuOpen(false)}>
-            ✖
-          </button>
+          
         </div>
 
         <ul className="sidebar-links">
