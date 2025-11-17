@@ -1,34 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./AdminLayout.css";
 
 export default function AdminLayout() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [authenticated, setAuthenticated] = useState(false);
 
-  // -------------------------------
-  // PROTECTED ROUTE CHECK
-  // -------------------------------
-  useEffect(() => {
-    const token = localStorage.getItem("adminToken"); // FIXED
-
-    if (!token) {
-      navigate("/admin/login");
-    } else {
-      setAuthenticated(true);
-    }
-  }, [navigate]);
-
-  // -------------------------------
-  // LOGOUT FUNCTION
-  // -------------------------------
   function logout() {
-    localStorage.removeItem("adminToken"); // FIXED
+    localStorage.removeItem("adminToken");
     navigate("/admin/login");
   }
-
-  if (!authenticated) return null; // Prevent UI flash
 
   return (
     <div className="admin-layout">
@@ -69,7 +50,6 @@ export default function AdminLayout() {
         <Outlet />
       </main>
 
-      {/* Overlay */}
       {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)} />}
     </div>
   );
