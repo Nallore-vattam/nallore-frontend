@@ -30,10 +30,9 @@ export default function AdminLogin() {
         return;
       }
 
-      // Save token
-      localStorage.setItem("admin_auth", data.token);
+      // Save token with correct key
+      localStorage.setItem("adminToken", data.token);
 
-      // Redirect
       navigate("/admin/dashboard");
     } catch (error) {
       setErrorMsg("Server error. Try again.");

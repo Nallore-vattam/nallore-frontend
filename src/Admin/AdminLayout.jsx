@@ -11,7 +11,7 @@ export default function AdminLayout() {
   // PROTECTED ROUTE CHECK
   // -------------------------------
   useEffect(() => {
-    const token = localStorage.getItem("admin_auth");
+    const token = localStorage.getItem("adminToken"); // FIXED
 
     if (!token) {
       navigate("/admin/login");
@@ -24,11 +24,11 @@ export default function AdminLayout() {
   // LOGOUT FUNCTION
   // -------------------------------
   function logout() {
-    localStorage.removeItem("admin_auth");
+    localStorage.removeItem("adminToken"); // FIXED
     navigate("/admin/login");
   }
 
-  if (!authenticated) return null; // Prevent flicker
+  if (!authenticated) return null; // Prevent UI flash
 
   return (
     <div className="admin-layout">
@@ -44,12 +44,12 @@ export default function AdminLayout() {
 
         <ul className="sidebar-links">
           <li onClick={() => navigate("/admin/dashboard")}>📊 Dashboard</li>
-<li onClick={() => navigate("/admin/events")}>📅 Events</li>
-<li onClick={() => navigate("/admin/blog")}>📝 Blog</li>
-<li onClick={() => navigate("/admin/team")}>👥 Team</li>
-<li onClick={() => navigate("/admin/gallery/manage")}>🖼 Gallery</li>
-<li onClick={() => navigate("/admin/gallery-upload")}>⬆ Upload Images</li>
- </ul>
+          <li onClick={() => navigate("/admin/events")}>📅 Events</li>
+          <li onClick={() => navigate("/admin/blog")}>📝 Blog</li>
+          <li onClick={() => navigate("/admin/team")}>👥 Team</li>
+          <li onClick={() => navigate("/admin/gallery")}>🖼 Gallery</li>
+          <li onClick={() => navigate("/admin/gallery-upload")}>⬆ Upload Images</li>
+        </ul>
 
         <button className="logout-btn" onClick={logout}>
           Logout
@@ -69,7 +69,7 @@ export default function AdminLayout() {
         <Outlet />
       </main>
 
-      {/* Background dim when sidebar open */}
+      {/* Overlay */}
       {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)} />}
     </div>
   );

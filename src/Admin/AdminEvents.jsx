@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
-const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN;
 
 export default function AdminEvents() {
   const [events, setEvents] = useState([]);
@@ -23,11 +22,13 @@ export default function AdminEvents() {
     loadEvents();
   }, []);
 
-  // ⭐ ALWAYS LOAD FROM ADMIN API (IMPORTANT)
+  // Load events (admin protected)
   async function loadEvents() {
+    const token = localStorage.getItem("adminToken");
+
     const res = await fetch(`${API_BASE}/api/admin/events`, {
       headers: {
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
     });
 
@@ -41,6 +42,7 @@ export default function AdminEvents() {
     setPreview(URL.createObjectURL(f));
   };
 
+  // Upload to Cloudinary
   async function uploadToCloudinary() {
     const data = new FormData();
     data.append("file", file);
@@ -63,12 +65,13 @@ export default function AdminEvents() {
     }
 
     const imageUrl = await uploadToCloudinary();
+    const token = localStorage.getItem("adminToken");
 
     const res = await fetch(`${API_BASE}/api/admin/events`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
       body: JSON.stringify({
         title,
@@ -102,15 +105,15 @@ export default function AdminEvents() {
   // ---------------- UPDATE EVENT ----------------
   async function updateEvent() {
     let imageUrl = preview;
+    const token = localStorage.getItem("adminToken");
 
-    // Upload new image if selected
     if (file) imageUrl = await uploadToCloudinary();
 
     const res = await fetch(`${API_BASE}/api/admin/events/${editId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
       body: JSON.stringify({
         title,
@@ -134,10 +137,12 @@ export default function AdminEvents() {
   async function deleteEvent(id) {
     if (!confirm("Delete this event?")) return;
 
+    const token = localStorage.getItem("adminToken");
+
     const res = await fetch(`${API_BASE}/api/admin/events/${id}`, {
       method: "DELETE",
       headers: {
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
     });
 

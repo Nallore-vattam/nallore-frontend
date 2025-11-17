@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
-const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN;
 
 export default function AdminGallery() {
   const [items, setItems] = useState([]);
@@ -17,6 +16,7 @@ export default function AdminGallery() {
   async function load() {
     const catRes = await fetch(`${API_BASE}/api/gallery/categories`);
     const imgRes = await fetch(`${API_BASE}/api/gallery/images`);
+
     setCategories(await catRes.json());
     setItems(await imgRes.json());
   }
@@ -28,30 +28,41 @@ export default function AdminGallery() {
   }
 
   async function saveEdit(id) {
+    const token = localStorage.getItem("adminToken");
+
     await fetch(`${API_BASE}/api/admin/gallery/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
-      body: JSON.stringify({ title, category_key: categoryKey }),
+      body: JSON.stringify({
+        title,
+        category_key: categoryKey,
+      }),
     });
+
     setEditItem(null);
     load();
   }
 
   async function deleteItem(id) {
+    const token = localStorage.getItem("adminToken");
     if (!confirm("Delete this image?")) return;
+
     await fetch(`${API_BASE}/api/admin/gallery/${id}`, {
       method: "DELETE",
-      headers: { "x-admin-token": ADMIN_TOKEN },
+      headers: {
+        "x-admin-token": token,
+      },
     });
+
     load();
   }
 
   return (
-          <div className="container py-4 admin-gallery">     
-           <h2>Manage Gallery</h2>
+    <div className="container py-4 admin-gallery">
+      <h2>Manage Gallery</h2>
 
       <div className="row g-3 mt-3">
         {items.map((item) => (
@@ -113,6 +124,7 @@ export default function AdminGallery() {
                 >
                   Edit
                 </button>
+
                 <button
                   className="btn btn-sm btn-danger"
                   onClick={() => deleteItem(item.id)}

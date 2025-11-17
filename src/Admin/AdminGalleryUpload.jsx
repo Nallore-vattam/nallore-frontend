@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const AdminGalleryUpload = () => {
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+
+export default function AdminGalleryUpload() {
   const [categories, setCategories] = useState([]);
   const [preview, setPreview] = useState(null);
   const [form, setForm] = useState({
@@ -9,11 +11,8 @@ const AdminGalleryUpload = () => {
     category_key: "",
   });
 
-  // Change this to match your ADMIN_TOKEN from backend `.env
-const ADMIN_TOKEN = "anythingStrong123";
-
   useEffect(() => {
-    fetch("/api/gallery/categories")
+    fetch(`${API_BASE}/api/gallery/categories`)
       .then((res) => res.json())
       .then((data) => setCategories(data.filter((c) => c.key !== "all")));
   }, []);
@@ -27,14 +26,11 @@ const ADMIN_TOKEN = "anythingStrong123";
   async function uploadToCloudinary() {
     const data = new FormData();
     data.append("file", form.file);
-   data.append("upload_preset", "gallery_upload");
+    data.append("upload_preset", "gallery_upload");
 
     const res = await fetch(
-      `https://api.cloudinary.com/v1_1/dsvfhsusq/image/upload`,
-      {
-        method: "POST",
-        body: data,
-      }
+      "https://api.cloudinary.com/v1_1/dsvfhsusq/image/upload",
+      { method: "POST", body: data }
     );
 
     const json = await res.json();
@@ -43,18 +39,20 @@ const ADMIN_TOKEN = "anythingStrong123";
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     if (!form.file || !form.title || !form.category_key) {
       alert("Please fill all fields");
       return;
     }
 
     const imageUrl = await uploadToCloudinary();
+    const token = localStorage.getItem("adminToken");
 
-    const response = await fetch("/api/admin/gallery", {
+    const response = await fetch(`${API_BASE}/api/admin/gallery`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
       body: JSON.stringify({
         src: imageUrl,
@@ -115,6 +113,4 @@ const ADMIN_TOKEN = "anythingStrong123";
       </form>
     </div>
   );
-};
-
-export default AdminGalleryUpload;
+}

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
-const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN;
 
 export default function AdminTeam() {
   const [team, setTeam] = useState([]);
@@ -56,12 +55,13 @@ export default function AdminTeam() {
     }
 
     const imageUrl = await uploadToCloudinary();
+    const token = localStorage.getItem("adminToken");
 
     const res = await fetch(`${API_BASE}/api/admin/team`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
       body: JSON.stringify({
         name,
@@ -90,6 +90,7 @@ export default function AdminTeam() {
   // ---------------- UPDATE MEMBER ----------------
   async function updateMember() {
     let imageUrl = preview;
+    const token = localStorage.getItem("adminToken");
 
     if (file) {
       imageUrl = await uploadToCloudinary();
@@ -99,7 +100,7 @@ export default function AdminTeam() {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
       body: JSON.stringify({
         name,
@@ -119,10 +120,13 @@ export default function AdminTeam() {
   // ---------------- DELETE MEMBER ----------------
   async function deleteMember(id) {
     if (!confirm("Delete this member?")) return;
+    const token = localStorage.getItem("adminToken");
 
     const res = await fetch(`${API_BASE}/api/admin/team/${id}`, {
       method: "DELETE",
-      headers: { "x-admin-token": ADMIN_TOKEN },
+      headers: {
+        "x-admin-token": token,
+      },
     });
 
     if (res.ok) {
@@ -228,6 +232,7 @@ export default function AdminTeam() {
                   objectFit: "cover",
                 }}
               />
+
               <div>
                 <strong>{member.name}</strong> <br />
                 <span className="text-muted">{member.role}</span> <br />

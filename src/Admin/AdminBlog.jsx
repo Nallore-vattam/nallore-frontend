@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
-const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN;
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 export default function AdminBlog() {
   const [blogs, setBlogs] = useState([]);
@@ -22,10 +21,14 @@ export default function AdminBlog() {
     loadBlogs();
   }, []);
 
-  // ⭐ Load blogs from admin API ALWAYS
+  // ⭐ Load blogs (requires admin token)
   async function loadBlogs() {
+    const token = localStorage.getItem("adminToken");
+
     const res = await fetch(`${API_BASE}/api/admin/blog`, {
-      headers: { "x-admin-token": ADMIN_TOKEN }
+      headers: {
+        "x-admin-token": token
+      }
     });
 
     const data = await res.json();
@@ -45,10 +48,13 @@ export default function AdminBlog() {
     data.append("file", file);
     data.append("upload_preset", "gallery_upload");
 
-    const res = await fetch("https://api.cloudinary.com/v1_1/dsvfhsusq/image/upload", {
-      method: "POST",
-      body: data,
-    });
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dsvfhsusq/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
 
     const json = await res.json();
     return json.secure_url;
@@ -62,12 +68,13 @@ export default function AdminBlog() {
     }
 
     const imageUrl = await uploadToCloudinary();
+    const token = localStorage.getItem("adminToken");
 
     const res = await fetch(`${API_BASE}/api/admin/blog`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
       body: JSON.stringify({
         title,
@@ -96,6 +103,7 @@ export default function AdminBlog() {
   // ---------------- UPDATE BLOG ----------------
   async function updateBlog() {
     let imageUrl = preview;
+    const token = localStorage.getItem("adminToken");
 
     if (file) {
       imageUrl = await uploadToCloudinary();
@@ -105,7 +113,7 @@ export default function AdminBlog() {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-token": ADMIN_TOKEN,
+        "x-admin-token": token,
       },
       body: JSON.stringify({
         title,
@@ -125,9 +133,13 @@ export default function AdminBlog() {
   async function deleteBlog(id) {
     if (!confirm("Delete this blog?")) return;
 
+    const token = localStorage.getItem("adminToken");
+
     const res = await fetch(`${API_BASE}/api/admin/blog/${id}`, {
       method: "DELETE",
-      headers: { "x-admin-token": ADMIN_TOKEN },
+      headers: {
+        "x-admin-token": token,
+      },
     });
 
     if (res.ok) {
