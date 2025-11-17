@@ -18,6 +18,8 @@ import ContactPage from './pages/Contact';
 import BlogList from "./pages/BlogList";
 import BlogDetails from "./pages/BlogDetails";
 
+import AdminProtectedRoute from "./Admin/AdminProtectedRoute";
+
 import AdminLogin from "./Admin/AdminLogin";
 import AdminLayout from "./Admin/AdminLayout";
 import AdminDashboard from "./Admin/AdminDashboard";
@@ -36,16 +38,22 @@ function App() {
         <div className="App">
           <Routes>
 
-            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route 
+  path="/admin" 
+  element={
+    <AdminProtectedRoute>
+      <AdminLayout />
+    </AdminProtectedRoute>
+  }
+>
+  <Route path="dashboard" element={<AdminDashboard />} />
+  <Route path="events" element={<AdminEvents />} />
+  <Route path="blog" element={<AdminBlog />} />
+  <Route path="team" element={<AdminTeam />} />
+  <Route path="gallery" element={<AdminGallery />} />
+  <Route path="gallery-upload" element={<AdminGalleryUpload />} />
+</Route>
 
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route path="dashboard" element={<AdminDashboard />} />
-              <Route path="events" element={<AdminEvents />} />
-              <Route path="blog" element={<AdminBlog />} />
-              <Route path="team" element={<AdminTeam />} />
-<Route path="gallery" element={<AdminGallery />} />
-              <Route path="gallery-upload" element={<AdminGalleryUpload />} />
-            </Route>
 
             <Route
               path="*"
