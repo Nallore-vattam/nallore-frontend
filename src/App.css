@@ -2246,30 +2246,8 @@ p.tamil-font {
   margin-top: 20px;
 }
 
-/* Center and style the social icons */
-.social-icons {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-top: 15px;
-}
 
-.social-icons a i {
-  font-size: 24px;
-  color: white;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 10px;
-  border-radius: 50%;
-  transition: 0.3s ease;
-}
 
-.social-icons a i:hover {
-  background: white;
-  color: #4d5bff;
-  transform: scale(1.1);
-}
 
 /* Footer links */
 .footer-links li span {
@@ -2315,4 +2293,20 @@ p.tamil-font {
     text-align: center !important;
     margin-top: 10px;
   }
+}
+
+.blog-hero {
+  padding-top: 120px; /* adjust depending on your navbar height */
+}
+.blog-hero {
+  padding-top: 90px
+}
+.blog-details-page {
+  padding-top: 60px;  /* Adjust based on navbar height */
+}
+
+.blog-details-banner {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }

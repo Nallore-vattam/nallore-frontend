@@ -13,7 +13,8 @@ export default function BlogList() {
   }, []);
 
   return (
-    <div className="blog-list-page">
+   <div className="blog-details-page">
+
       
       {/* HERO SECTION */}
       <section className="page-hero blog-hero">
@@ -28,15 +29,16 @@ export default function BlogList() {
       </section>
 
       {/* ⭐ Back to Home Button */}
-      <Container className="mt-4 text-center">
-        <Button 
-          variant="secondary" 
-          href="/" 
-          className="px-4 py-2 fw-semibold"
-        >
-          ← Back to Home
-        </Button>
-      </Container>
+     <Container className="mt-4 text-center">
+  <Button 
+    variant="secondary"
+    href="/"
+    className="px-4 py-2 fw-semibold"
+  >
+    Back to Home
+  </Button>
+</Container>
+
 
       {/* BLOG LIST */}
       <Container className="my-5">
