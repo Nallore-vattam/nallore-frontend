@@ -2329,3 +2329,10 @@ p.tamil-font {
   border-color: #fd0d0d !important;
   color: #fff !important;
 }
+
+
+.btn-danger {
+  background-color: #fdfd0d !important;
+  border-color: #fded0d !important;
+  color: #fff !important;
+}
