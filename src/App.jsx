@@ -36,54 +36,129 @@ function App() {
         <ScrollToTop />
 
         <div className="App">
+
           <Routes>
 
-<Route path="/admin/login" element={<AdminLogin />} />
+            {/* ADMIN LOGIN */}
+            <Route path="/admin/login" element={<AdminLogin />} />
 
-{/* PROTECTED ADMIN AREA */}
-<Route
-  path="/admin"
-  element={
-    <AdminProtectedRoute>
-      <AdminLayout />
-    </AdminProtectedRoute>
-  }
->
-  <Route path="dashboard" element={<AdminDashboard />} />
-  <Route path="events" element={<AdminEvents />} />
-  <Route path="blog" element={<AdminBlog />} />
-  <Route path="team" element={<AdminTeam />} />
-  <Route path="gallery" element={<AdminGallery />} />
-  <Route path="gallery-upload" element={<AdminGalleryUpload />} />
-</Route>
-
+            {/* PROTECTED ADMIN AREA */}
             <Route
-              path="*"
+              path="/admin"
+              element={
+                <AdminProtectedRoute>
+                  <AdminLayout />
+                </AdminProtectedRoute>
+              }
+            >
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="events" element={<AdminEvents />} />
+              <Route path="blog" element={<AdminBlog />} />
+              <Route path="team" element={<AdminTeam />} />
+              <Route path="gallery" element={<AdminGallery />} />
+              <Route path="gallery-upload" element={<AdminGalleryUpload />} />
+            </Route>
+
+            {/* PUBLIC ROUTES */}
+            <Route
+              path="/"
               element={
                 <>
                   <Header />
                   <NavbarAutoClose />
-
-                  <main style={{ minHeight: "100vh" }}>
-                    <Routes>
-                      <Route path="/" element={<HomePage />} />
-                      <Route path="/about" element={<AboutPage />} />
-                      <Route path="/services" element={<ServicesPage />} />
-                      <Route path="/services/:serviceKey" element={<ServiceDetail />} />
-                      <Route path="/gallery" element={<GalleryPage />} />
-                      <Route path="/contact" element={<ContactPage />} />
-                      
-
-                      {/* Blog */}
-                      <Route path="/blog" element={<BlogList />} />
-                      <Route path="/blog/:id" element={<BlogDetails />} />
-                    </Routes>
-                  </main>
-
+                  <HomePage />
                   <Footer />
                 </>
               }
             />
+
+            <Route
+              path="/about"
+              element={
+                <>
+                  <Header />
+                  <NavbarAutoClose />
+                  <AboutPage />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/services"
+              element={
+                <>
+                  <Header />
+                  <NavbarAutoClose />
+                  <ServicesPage />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/services/:serviceKey"
+              element={
+                <>
+                  <Header />
+                  <NavbarAutoClose />
+                  <ServiceDetail />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/gallery"
+              element={
+                <>
+                  <Header />
+                  <NavbarAutoClose />
+                  <GalleryPage />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/contact"
+              element={
+                <>
+                  <Header />
+                  <NavbarAutoClose />
+                  <ContactPage />
+                  <Footer />
+                </>
+              }
+            />
+
+            {/* BLOG */}
+            <Route
+              path="/blog"
+              element={
+                <>
+                  <Header />
+                  <NavbarAutoClose />
+                  <BlogList />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/blog/:id"
+              element={
+                <>
+                  <Header />
+                  <NavbarAutoClose />
+                  <BlogDetails />
+                  <Footer />
+                </>
+              }
+            />
+
+            {/* 404 */}
+            <Route path="*" element={<h2>Page Not Found</h2>} />
 
           </Routes>
         </div>
