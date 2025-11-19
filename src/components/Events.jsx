@@ -104,7 +104,7 @@ const Events = () => {
           {/* RIGHT SIDE: BLOG PREVIEW */}
           <Col lg={4}>
             <h5 className={`fw-bold mb-3 ${getFontClass()}`}>
-              {t("latestArticles") || "Latest Articles"}
+              {t("latestArticles","Latest Articles")}
             </h5>
 
             {blogs.map((blog) => (

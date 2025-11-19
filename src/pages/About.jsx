@@ -84,28 +84,45 @@ const About = () => {
   return (
     <div className="about-page">
     
-      <section className="page-hero about-hero">
-        <div className="floating-elements">
-          <div className="floating-element"></div>
-          <div className="floating-element"></div>
-          <div className="floating-element"></div>
-        </div>
+    <section className="about-hero-new">
+  <div className="about-hero-inner">
 
-        <Container>
-          <Row>
-            <Col lg={8} className="mx-auto">
-              <div className="hero-content-box">
-                <h1 className={`hero-title ${getFontClass()}`}>
-                  {t("aboutNalloreVattam")}
-                </h1>
-                <p className={`hero-subtitle ${getFontClass()}`}>
-                  {t("aboutSubtitle")}
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+    {/* LEFT IMAGE SIDE */}
+    <div className="about-hero-image-wrapper slide-in-left">
+      <img
+        src="/images/content07.jpg"
+        alt="About Nallore Vattam"
+        className="about-hero-image"
+      />
+    </div>
+
+    {/* RIGHT TEXT SIDE */}
+    <div className="about-hero-text slide-in-right">
+      <h1 className={`about-hero-title ${getFontClass()}`}>
+        {t("aboutNalloreVattam")}
+      </h1>
+
+      <p className={`about-hero-subtitle ${getFontClass()}`}>
+        {t("aboutSubtitle")}
+      </p>
+
+      {/* Quote placeholder */}
+      <p className={`about-hero-quote ${getFontClass()}`}>
+        {t("aboutquote","All knowledge amounts to nothing when one fails to honour the source of wisdom",
+)}
+      </p>
+    </div>
+
+    {/* FLOATING PARTICLES */}
+    <div className="about-hero-particles">
+      <span className="p1"></span>
+      <span className="p2"></span>
+      <span className="p3"></span>
+      <span className="p4"></span>
+    </div>
+
+  </div>
+</section>
 
       <section className="section mission-vision-section" style={{ marginTop: "20px" }}>
         <Container>
@@ -198,9 +215,9 @@ const About = () => {
 
       <section className="section team-section state-coordinator-section">
         <Container>
-          <h2 className={`section-title text-center mb-5 ${getFontClass()}`}>
+          <h4 className={`section-title text-center mb-5 ${getFontClass()}`}>
            {t("stateLeadership" ,"State Leadership")} 
-          </h2>
+          </h4>
           <Row className="justify-content-center">
             <Col lg={6} md={8}>
               {team.state.map((member) => (
@@ -231,9 +248,9 @@ const About = () => {
 
       <section className="section team-section advisors-section bg-light">
         <Container>
-          <h2 className={`section-title text-center mb-5 ${getFontClass()}`}>
+          <h4 className={`section-title text-center mb-5 ${getFontClass()}`}>
             {t("seniorAdvisors","Senior Advisors")}
-          </h2>
+          </h4>
           <Row className="g-4">
             {team.advisor.map((member) => (
               <Col lg={4} md={6} key={member.id}>
@@ -261,9 +278,9 @@ const About = () => {
 
       <section className="section team-section zonal-coordinators-section">
         <Container>
-          <h2 className={`section-title text-center mb-5 ${getFontClass()}`}>
+          <h4 className={`section-title text-center mb-5 ${getFontClass()}`}>
             {t("zonalCoordinators","Zonal Coordinators")}
-          </h2>
+          </h4>
           <Row className="g-3">
             {team.zonal.map((member) => (
               <Col xl={3} lg={4} md={6} key={member.id}>
@@ -290,9 +307,9 @@ const About = () => {
 
       <section className="section team-section domain-admins-section bg-light">
         <Container>
-          <h2 className={`section-title text-center mb-5 ${getFontClass()}`}>
+          <h4 className={`section-title text-center mb-5 ${getFontClass()}`}>
             {t("domainAdministrators","Domain Administrators")}
-          </h2>
+          </h4>
           <Row className="g-2">
             {team.domain.map((member) => (
               <Col xl={2} lg={3} md={4} sm={6} key={member.id}>
@@ -319,9 +336,9 @@ const About = () => {
 
       <section className="section team-section district-coordinators-section">
         <Container>
-          <h2 className={`section-title text-center mb-5 ${getFontClass()}`}>
+          <h4 className={`section-title text-center mb-5 ${getFontClass()}`}>
             {t("districtCoordinators","District Coordinators")}
-          </h2>
+          </h4>
           <Row className="g-2">
             {team.district.map((member) => (
               <Col xl={2} lg={3} md={4} sm={6} key={member.id}>

@@ -187,28 +187,45 @@ const Services = () => {
 
   return (
     <div className="services-page page-fade">
-      {/* Modern Hero Section */}
-      <section className="page-hero services-hero">
-        <div className="floating-elements">
-          <div className="floating-element"></div>
-          <div className="floating-element"></div>
-          <div className="floating-element"></div>
-        </div>
-        <Container>
-          <Row>
-            <Col lg={8} className="mx-auto">
-              <div className="hero-content-box hero-fade">
-                <h1 className={`hero-title ${getFontClass()} fw-bold`}>
-                  {safeTranslate('ourServices', 'Our Services')}
-                </h1>
-                <p className={`hero-subtitle ${getFontClass()}`}>
-                  {safeTranslate('servicesSubtitle', 'Comprehensive community development programs designed to create lasting impact and sustainable change')}
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+     {/* Modern Services Hero Section */}
+<section className="services-hero-new">
+  <div className="services-hero-inner">
+
+    {/* LEFT TEXT SIDE */}
+    <div className="services-hero-text slide-in-left">
+      <h1 className={`services-hero-title ${getFontClass()} fw-bold`}>
+        {safeTranslate('ourServices', 'Our Services')}
+      </h1>
+
+      <p className={`services-hero-subtitle ${getFontClass()}`}>
+        {safeTranslate(
+          'servicesSubtitle',
+          'Comprehensive community development programs designed to create lasting impact and sustainable change'
+        )}
+      </p>
+       <p className={`services-hero-quote ${getFontClass()}`}>
+        {t("servicequote")}
+      </p>
+    </div>
+
+    {/* RIGHT IMAGE SIDE */}
+    <div className="services-hero-image-wrapper slide-in-right">
+      <img
+        src="/images/content06.png"  
+        className="services-hero-image"
+      />
+    </div>
+
+    {/* FLOATING PARTICLES */}
+    <div className="services-hero-particles">
+      <span className="p1"></span>
+      <span className="p2"></span>
+      <span className="p3"></span>
+      <span className="p4"></span>
+    </div>
+
+  </div>
+</section>
 
       {/* Service Navigation */}
       <div style={{ marginTop: -50 }}>

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useLanguage } from '../context/LanguageContext';
-import "../App.css";
+import "./App.css";
+
+
 
 const domains = [
   { name: 'Student Field', path: 'student-field', key: 'studentField' },

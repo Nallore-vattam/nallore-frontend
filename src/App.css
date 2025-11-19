@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;600;700&display=swap');
+
+
 /* Global Styles - Violet/Dark Blue Color Scheme */
 :root {
    --primary-color: #312e81; /* background base */
@@ -56,10 +59,18 @@ body {
 
 /* Font Classes with Tamil Size Adjustments */
 .tamil-font {
-  font-family: 'TAM', 'Latha', 'Noto Sans Tamil';
-  font-size: 1em;
-  line-height: 1;
+  font-family: 'Catamaran', sans-serif;
+  font-size: 0.92em !important;   /* makes size equal to English */
+  line-height: 1.25 !important;   /* better readability */
 }
+
+.navbar .tamil-font {
+  font-family: 'Catamaran', sans-serif !important;
+  font-size: 0.92em !important;
+  font-weight: 700 !important;   /* 🔥 MAKES IT BOLDER */
+  line-height: 1.2 !important;
+}
+
 
 .english-font {
   font-family: 'Kavivanar';
@@ -79,11 +90,11 @@ body {
   font-size: clamp(2rem, 5vw, 3.2rem) !important;
   line-height: 1.2;
 }
-
 .section-title.tamil-font {
-  font-size: clamp(1.8rem, 3.8vw, 2.3rem) !important;
-  line-height: 1.3;
+  font-size: clamp(1.4rem, 3vw, 1.8rem) !important;
+  line-height: 1.2;
 }
+
 
 .page-title.tamil-font {
   font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
@@ -761,59 +772,6 @@ html {
   box-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
 }
 
-/* Page Hero Sections */
-.page-hero,
-.gallery-hero,
-.services-hero,
-.about-hero,
-.contact-hero {
-  position: relative;
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  margin: 0;
-  padding-top: 80px;
-}
-
-.about-hero { background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 100%); }
-.services-hero { background: linear-gradient(135deg, #3730a3 0%, #6366f1 100%); }
-.gallery-hero { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
-.contact-hero { background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%); }
-
-.hero-content-box {
-  position: relative;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 2.5rem 2rem; /* Adjusted padding */
-  text-align: center;
-  max-width: 550px;
-  margin: 0 auto;
-  box-shadow: 0 12px 30px rgba(30, 27, 75, 0.25);
-  animation: slideInLeft 1s ease-out;
-}
-
-.hero-content-box .page-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.1;
-}
-
-.hero-content-box .page-subtitle {
-  font-size: clamp(1rem, 2vw, 1.2rem) !important;
-  color: rgba(255, 255, 255, 0.95);
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-}
 
 /* Section Styles */
 .section-padding {
@@ -821,7 +779,7 @@ html {
 }
 
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 3rem) !important;
+  font-size: clamp(1.4rem, 3vw, 1.8rem) !important;
   font-weight: 800;
   margin-bottom: 1.5rem; /* Reduced margin */
   text-align: center;
@@ -909,10 +867,6 @@ html {
     font-size: 0.9rem !important;
   }
   
-  .hero-content-box {
-    padding: 2rem 1.5rem;
-    margin: 0 1rem;
-  }
   
   .section-padding {
     padding: 3rem 0;
@@ -1166,158 +1120,6 @@ html {
     -webkit-text-fill-color: black !important;
     color: black !important;
   }
-}
-/* Premium Video Background Hero - Compact Size */
-.premium-hero {
-  position: relative;
-  padding: 90px 0 50px 0;
-  min-height: 45vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-.hero-video-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-.hero-video-bg::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(30, 27, 75, 0.88) 0%,
-    rgba(55, 48, 163, 0.78) 50%,
-    rgba(30, 27, 75, 0.88) 100%
-  );
-}
-
-/* COMPACT SIZE PREMIUM BOX */
-.premium-content-box {
-  position: relative;
-  z-index: 3;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(25px);
-  border-radius: 20px;
-  padding: 2.2rem 2rem;
-  text-align: center;
-  max-width: 550px;
-  margin: 0 auto;
-  box-shadow: 
-    0 15px 35px rgba(30, 27, 75, 0.2),
-    0 8px 20px rgba(30, 27, 75, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  animation: scaleIn 1s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.premium-content-box .premium-hero-title {
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 800;
-  margin-bottom: 1.2rem;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.1;
-}
-
-.premium-content-box .premium-hero-subtitle {
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
-  color: var(--text-dark);
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-  opacity: 0.9;
-}
-
-/* Make Services and Gallery use the same premium hero style */
-.services-page .premium-hero,
-.gallery-page .premium-hero {
-  position: relative;
-  padding: 90px 0 50px 0;
-  min-height: 45vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-.services-page .hero-video-bg,
-.gallery-page .hero-video-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-.services-page .hero-video-bg::after,
-.gallery-page .hero-video-bg::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(30, 27, 75, 0.88) 0%,
-    rgba(55, 48, 163, 0.78) 50%,
-    rgba(30, 27, 75, 0.88) 100%
-  );
-}
-
-.services-page .premium-content-box,
-.gallery-page .premium-content-box {
-  position: relative;
-  z-index: 3;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(25px);
-  border-radius: 20px;
-  padding: 2.2rem 2rem;
-  text-align: center;
-  max-width: 550px;
-  margin: 0 auto;
-  box-shadow: 
-    0 15px 35px rgba(30, 27, 75, 0.2),
-    0 8px 20px rgba(30, 27, 75, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  animation: scaleIn 1s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.services-page .premium-content-box .premium-hero-title,
-.gallery-page .premium-content-box .premium-hero-title {
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 800;
-  margin-bottom: 1.2rem;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.1;
-}
-
-.services-page .premium-content-box .premium-hero-subtitle,
-.gallery-page .premium-content-box .premium-hero-subtitle {
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
-  color: var(--text-dark);
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-  opacity: 0.9;
 }
 
 /* Particles for both Services and Gallery */
@@ -1980,10 +1782,6 @@ h6.tamil-font {
   line-height: 1.2;
 }
 
-.section-title.tamil-font {
-  font-size: clamp(1.8rem, 3.8vw, 2.3rem) !important;
-  line-height: 1.3;
-}
 
 .page-title.tamil-font {
   font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
@@ -2296,24 +2094,177 @@ p.tamil-font {
 }
 
 .blog-hero {
-  padding-top: 120px; /* adjust depending on your navbar height */
-}
-.blog-hero {
-  padding-top: 90px
-}
-.blog-details-page {
-  padding-top: 60px;  /* Adjust based on navbar height */
+  width: 100%;
+  padding: 110px 0 60px 0;   /* Top spacing for navbar + hero feel */
+  background: #eef2ff;       /* Same soft violet background */
+  min-height: 45vh;          /* Consistent height with other pages */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.blog-details-banner {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+/* Blog Details Page Spacing */
+.blog-details-page {
+  padding-top: 70px;        
+  background: #f8fafc;
 }
+
 .contact-section h6,
 .contact-section .contact-heading {
     color: #000 !important;
 }
 .contact-page h6 {
   color: #000 !important;
+}
+
+/* ================================
+   CONTACT HERO — COMPACT VERSION
+================================ */
+
+.contact-hero-new {
+  width: 100%;
+  min-height: 42vh;            /* ⬅ Reduced from 55vh */
+  padding: 90px 0 35px;        /* ⬅ Reduced top/bottom */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef2ff;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-hero-inner {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 10px;
+  position: relative;
+}
+
+/* IMAGE */
+.contact-hero-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-hero-image {
+  width: 100%;
+  max-width: 460px;            /* ⬅ Reduced from 520px */
+  border-radius: 20px;
+  
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+
+  object-fit: cover;
+  transform: translateY(0px);
+  transition: transform 0.35s ease;
+}
+
+.contact-hero-image:hover {
+  transform: translateY(-4px); /* Smaller hover */
+}
+
+/* TEXT */
+.contact-hero-text { 
+  flex: 1; 
+}
+
+.contact-hero-title {
+  font-size: clamp(2rem, 4vw, 2.6rem);   /* ⬅ Slightly reduced */
+  font-weight: 800;
+  color: #1e1b4b;
+  line-height: 1.2;
+}
+
+.contact-hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);   /* ⬅ Reduced */
+  color: #475569;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.contact-hero-quote {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #5e6470;
+  opacity: 0;
+  animation: slideInLeft 1s forwards 0.6s;
+  margin-top: 10px;
+}
+
+/* PARTICLES */
+.contact-hero-particles span {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(91, 110, 245, 0.15);
+  animation: floatParticle 8s infinite ease-in-out;
+}
+
+.contact-hero-particles .p1 { width: 60px; height: 60px; top: 12%; left: 6%; }
+.contact-hero-particles .p2 { width: 80px; height: 80px; bottom: 14%; right: 12%; }
+.contact-hero-particles .p3 { width: 35px; height: 35px; bottom: 28%; left: 20%; }
+.contact-hero-particles .p4 { width: 50px; height: 50px; top: 50%; right: 25%; }
+
+/* ANIMATIONS */
+.slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 1s ease forwards;
+}
+
+.slide-in-right {
+  opacity: 0;
+  animation: slideInRight 1s ease forwards;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes floatParticle {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .contact-hero-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .contact-hero-new {
+    min-height: 36vh;           /* ⬅ Compact mobile height */
+    padding: 100px 0 25px;
+  }
+
+  .contact-hero-image {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-hero-new {
+    min-height: 30vh;           /* ⬅ Even smaller for phones */
+    padding: 110px 0 20px;
+  }
+
+  .contact-hero-image {
+    max-width: 260px;
+  }
 }

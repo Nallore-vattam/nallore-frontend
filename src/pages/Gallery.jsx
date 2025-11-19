@@ -84,23 +84,45 @@ const Gallery = () => {
 
   return (
     <div className="gallery-page">
-      <section className="page-hero gallery-hero">
-        <div className="floating-elements">
-          <div className="floating-element" />
-          <div className="floating-element" />
-          <div className="floating-element" />
-        </div>
-        <Container>
-          <Row>
-            <Col lg={8} className="mx-auto">
-              <div className="hero-content-box">
-                <h1 className={`hero-title ${getFontClass()}`}>{t("photoGallery")}</h1>
-                <p className={`hero-subtitle ${getFontClass()}`}>{t("gallerySubtitle")}</p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+   {/* Modern Gallery Hero */}
+<section className="gallery-hero-new">
+  <div className="gallery-hero-inner">
+
+    {/* LEFT TEXT */}
+    <div className="gallery-hero-text slide-in-left">
+      <h1 className={`gallery-hero-title ${getFontClass()}`}>
+        {t("photoGallery")}
+      </h1>
+
+      <p className={`gallery-hero-subtitle ${getFontClass()}`}>
+        {t("gallerySubtitle")}
+      </p>
+
+      {/* Optional Quote */}
+      <p className={`gallery-hero-quote ${getFontClass()}`}>
+        {t("galleryquote")}
+      </p>
+    </div>
+
+    {/* RIGHT IMAGE */}
+    <div className="gallery-hero-image-wrapper slide-in-right">
+      <img
+        src="/images/content02.png"
+        alt="Gallery"
+        className="gallery-hero-image"
+      />
+    </div>
+
+    {/* PARTICLES */}
+    <div className="gallery-hero-particles">
+      <span className="p1"></span>
+      <span className="p2"></span>
+      <span className="p3"></span>
+      <span className="p4"></span>
+    </div>
+
+  </div>
+</section>
 
       <section className="gallery-filters-section">
         <div className="gallery-filter-container">

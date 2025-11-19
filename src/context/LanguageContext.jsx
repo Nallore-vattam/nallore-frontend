@@ -371,8 +371,12 @@ const translations = {
    domainAdministrators: "Domain Administrators",
    districtCoordinators: "District Coordinators",
 
-   
-
+   latestArticles: "Latest Articles",
+    
+   aboutquote:"All knowledge amounts to nothing when one fails to honour the source of wisdom",
+   galleryquote:"You cannot change your future, but you can change your habits, and surely your habits will change your future.",
+   servicequote:"It is superior to act with thoughtful awareness.Fill your mind with noble ideals and elevated thoughts,and by following them daily, create good actions.",
+   contactquote:"The true foundation of rights is duty.If we all fulfill our duties,the need to seek rights will not remain far away",
   },
   ta: {
     home: 'முகப்பு',
@@ -406,9 +410,7 @@ const translations = {
     service10: 'விழிப்புணர்வு களம்',
     galleryTitle: 'எங்கள் கேலரி',
     eventsTitle: 'வரவிருக்கும் நிகழ்வுகள்',
-    event1: 'கலாச்சார திருவிழா - ஜனவரி 15, 2024',
-    event2: 'ஆரோக்கிய முகாம் - பிப்ரவரி 20, 2024',
-    event3: 'கல்வி பணிப்பட்டறை - மார்ச் 10, 2024',
+   
     contactTitle: 'எங்களைத் தொடர்பு கொள்ள',
     name: 'உங்கள் பெயர்',
     email: 'உங்கள் மின்னஞ்சல்',
@@ -446,15 +448,9 @@ const translations = {
     ourJourney: 'எங்கள் பயணம்',
     ourLeadershipTeam: 'எங்கள் தலைமைக் குழு',
     ourServices: 'எங்கள் சேவைகள்',
-    servicesSubtitle: 'சமூக மேம்பாட்டுத் திட்டங்கள்',
+    servicesSubtitle: 'சமூக மேம்பாட்டுத் திட்டங்கள் மற்றும் சமூக நல முயற்சிகள்',
     keyFeatures: 'துணை களங்கள்',
     howItWorks: 'இது எவ்வாறு செயல்படுகிறது',
-     president: "தலைவர்",
-  secretary: "செயலாளர்",
-  treasurer: "பொருளாளர்", 
-  presidentDesc: "10 ஆண்டுகளுக்கும் மேலாக சமூக முன்முயற்சிகளை வழிநடத்துகிறார்",
-  secretaryDesc: "மகளிர் அதிகாரமளிப்பு திட்டங்களுக்காக அர்ப்பணிக்கப்பட்டவர்",
-  treasurerDesc: "நிதி மேலாண்மை மற்றும் வள ஒதுக்கீடு",
     frequentlyAskedQuestions: 'அடிக்கடி கேட்கப்படும் கேள்விகள்',
     register: 'பதிவு செய்க',
     apply: 'விண்ணப்பிக்கவும்',
@@ -746,8 +742,12 @@ const translations = {
     domainAdministrators : "கள நிர்வாகிகள்",
     districtCoordinators: "மாவட்ட ஒருங்கிணைப்பாளர்கள்",
 
+    latestArticles: "சமீபத்திய கட்டுரைகள்",
 
-  
+    aboutquote: "கற்றதனால் ஆய பயனென்கொல் வாலறிவன் \n நற்றாள் தொழாஅர் எனின்",
+    galleryquote:"உன் எதிர்காலத்தை நீ மாற்ற முடியாது, உன் பழக்கங்களை நீ மாற்றிக்கொள்ளலாம். நிச்சயமாக உன் பழக்கங்கள் உன் எதிர்காலத்தை மாற்றும்",
+    servicequote:"சிந்தித்து செயல் ஆற்றுவது மேலானது. மனதை உயர்ந்த இலட்சியங்களாலும் சிந்தனைகளாலும் நிரப்பி, அவற்றை தினமும் பின்பற்றி நல்ல செயல்களை உருவாக்கு",
+    contactquote:"உரிமைகளின் உண்மையான ஆதாரம் கடமையாகும். நாம் அனைவரும் நமது கடமைகளை நிறைவேற்றினால், உரிமைகள் தேடுவதற்கு வெகு தொலைவில் இருக்காது.",
   },
   hi: {
     home: 'होम',
@@ -756,7 +756,7 @@ const translations = {
     gallery: 'गैलरी',
     events: 'कार्यक्रम',
     contact: 'संपर्क करें',
-    heroTitle1: 'अच्छे लोगों का समूह में आपका स्वागत है',
+    heroTitle1: 'नल्लोर वट्टम में आपका स्वागत है',
     heroTitle2: 'सामाजिक विकास के लिए',
     heroTitle3: 'परंपरा को संरक्षित करना',
     heroSubtitle1: 'हमारे समुदाय की वृद्धि और प्रगति के लिए काम कर रहे हैं',
@@ -764,10 +764,10 @@ const translations = {
     heroSubtitle3: 'हमारी संस्कृति और विरासत की रक्षा करना',
     learnMore: 'अधिक जानें',
     getInvolved: 'हमसे जुड़ें',
-    aboutTitle: 'अच्छे लोगों का समूह,के बारे में',
-    aboutText1: 'अच्छे लोगों का समूह, हमारे क्षेत्र के सामाजिक, सांस्कृतिक और आर्थिक विकास के लिए समर्पित एक सामुदायिक संगठन है।',
+    aboutTitle: 'नल्लोर वट्टम,के बारे में',
+    aboutText1: 'नल्लोर वट्टम, हमारे क्षेत्र के सामाजिक, सांस्कृतिक और आर्थिक विकास के लिए समर्पित एक सामुदायिक संगठन है।',
     aboutText2: 'शिक्षा, स्वास्थ्य देखभाल पहल और सांस्कृतिक संरक्षण कार्यक्रमों के माध्यम से स्थायी विकास के अवसर पैदा करना हमारा मिशन है।',
-    aboutText3: 'अच्छे लोगों का समूह, हमारे क्षेत्र की सांस्कृतिक विरासत को बढ़ावा देने और संरक्षित करने के लिए समर्पित एक सामुदायिक संगठन है। 2005 में स्थापित, हम विभिन्न पृष्ठभूमि के लोगों को एक साथ ला रहे हैं ताकि हम अपनी साझा परंपराओं, मूल्यों और विरासत का जश्न मना सकें।',
+    aboutText3: 'नल्लोर वट्टम, हमारे क्षेत्र की सांस्कृतिक विरासत को बढ़ावा देने और संरक्षित करने के लिए समर्पित एक सामुदायिक संगठन है। 2005 में स्थापित, हम विभिन्न पृष्ठभूमि के लोगों को एक साथ ला रहे हैं ताकि हम अपनी साझा परंपराओं, मूल्यों और विरासत का जश्न मना सकें।',
     servicesTitle: 'हमारी सेवाएं',
     service1: 'छात्र डोमेन',
     service2: 'गांव डोमेन',
@@ -789,7 +789,7 @@ const translations = {
     email: 'आपका ईमेल',
     message: 'आपका संदेश',
     send: 'संदेश भेजें',
-    footerDescription: 'अच्छे लोगों का समूह सामाजिक विकास और सांस्कृतिक संरक्षण के लिए काम करने वाला एक संगठन है।',
+    footerDescription: 'नल्लोर वट्टम सामाजिक विकास और सांस्कृतिक संरक्षण के लिए काम करने वाला एक संगठन है।',
     quickLinks: 'त्वरित लिंक',
     contactInfo: 'संपर्क जानकारी',
     address: 'पेरियार पथ, चूलाइमेडु, चेन्नई-600094, तमिलनाडु, भारत',
@@ -798,7 +798,7 @@ const translations = {
     allRightsReserved: 'सर्वाधिकार सुरक्षित',
     privacyPolicy: 'गोपनीयता नीति',
     termsOfService: 'सेवा की शर्तें',
-    projectName: 'अच्छे लोगों का समूह',
+    projectName: 'नल्लोर वट्टम',
     photoGallery: 'फोटो गैलरी',
     gallerySubtitle: 'हमारे समुदाय की यात्रा, उपलब्धियों और उत्सवों की दृश्य कहानियाँ',
     allPhotos: 'सभी फोटो',
@@ -814,7 +814,7 @@ const translations = {
     workingHours: 'कार्य के घंटे',
     followUs: 'हमें फॉलो करें',
     contactSubtitle: 'हम आपसे सुनकर खुश होंगे। संपर्क करें और आइए एक बातचीत शुरू करें।',
-    aboutNalloreVattam: 'अच्छे लोगों का समूह के बारे में',
+    aboutNalloreVattam: 'नल्लोर वट्टम के बारे में',
     aboutSubtitle: 'एकता और विकास के माध्यम से मजबूत समुदाय का निर्माण',
     ourMission: 'हमारा मिशन',
     ourVision: 'हमारी दृष्टि',
@@ -1099,9 +1099,12 @@ youtubeTitle: "हमारा YouTube चैनल",
     domainAdministrators: "डोमेन प्रशासक",
     districtCoordinators: "जिला समन्वयक",
 
+    latestArticles: "नवीनतम लेख",
 
-
-
+    aboutquote:"सच्चे ज्ञान के प्रति श्रद्धा न हो तो सीखा हुआ सब व्यर्थ है।",
+    galleryquote:"आप अपना भविष्य नहीं बदल सकते, लेकिन आप अपनी आदतें बदल सकते हैं। निश्चित रूप से आपकी आदतें आपका भविष्य बदल देंगी।",
+    servicequote:"सोच-समझकर कार्य करना श्रेष्ठ है।अपने मन को उच्च आदर्शों और शुभ विचारों से भरें,और उन्हें प्रतिदिन अनुसरण करके अच्छे कार्यों का निर्माण करें।",
+    contactquote:"अधिकारों का वास्तविक आधार कर्तव्य है।यदि हम सभी अपने कर्तव्यों को पूरा करें,तो अधिकारों की तलाश बहुत दूर नहीं रह जाएगी।",
   }
 };
 

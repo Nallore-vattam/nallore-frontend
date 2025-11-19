@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 import { useLanguage } from '../context/LanguageContext';
+import "../App.css"; 
 
 const Contact = () => {
   const { currentLanguage, t } = useLanguage();
@@ -72,32 +73,44 @@ const Contact = () => {
 
   return (
     <div className="contact-page" >
-      {/* Modern Hero Section */}
-      <section className="page-hero contact-hero" >
-        {/* Animated Background Elements */}
-        <div className="floating-elements">
-          <div className="floating-element"></div>
-          <div className="floating-element"></div>
-          <div className="floating-element"></div>
-        </div>
+      {/* Modern Contact Hero Section */}
+<section className="contact-hero-new">
+  <div className="contact-hero-inner">
 
-        <Container>
-          <Row>
-            <Col lg={8} className="mx-auto">
-              <div className="hero-content-box">
-                <h1 className={`hero-title ${getFontClass()}`}>
-                  {t('contactTitle')}
-                </h1>
-                <p className={`hero-subtitle ${getFontClass()}`}>
-                  {t('contactSubtitle')}
-                </p>
-                
-                {/* Contact Info Preview */}
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+    {/* LEFT IMAGE */}
+    <div className="contact-hero-image-wrapper slide-in-left">
+      <img
+        src="/images/content02.png"
+        alt="Contact Us"
+        className="contact-hero-image"
+      />
+    </div>
+
+    {/* RIGHT TEXT */}
+    <div className="contact-hero-text slide-in-right">
+      <h1 className={`contact-hero-title ${getFontClass()}`}>
+        {t('contactTitle')}
+      </h1>
+
+      <p className={`contact-hero-subtitle ${getFontClass()}`}>
+        {t('contactSubtitle')}
+      </p>
+      <p className={`contact-hero-quote ${getFontClass()}`}>
+        {t("contactquote")}
+      </p>
+    </div>
+
+    {/* FLOATING PARTICLES */}
+    <div className="contact-hero-particles">
+      <span className="p1"></span>
+      <span className="p2"></span>
+      <span className="p3"></span>
+      <span className="p4"></span>
+    </div>
+
+  </div>
+</section>
+
 
       {/* Rest of your contact content remains the same... */}
       <section className="section contact-main-section"  style={{ marginTop: "20px" }}>
