@@ -8,6 +8,7 @@ const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 const AdminContact = () => {
   const [messages, setMessages] = useState([]);
 
+  // Load all messages
   const fetchMessages = async () => {
     try {
       const res = await axios.get(`${API_BASE}/api/contact`);
@@ -17,6 +18,7 @@ const AdminContact = () => {
     }
   };
 
+  // Delete message
   const deleteMessage = async (id) => {
     if (!window.confirm("Delete this message?")) return;
 
@@ -69,12 +71,22 @@ const AdminContact = () => {
                   <td>{msg.message}</td>
                   <td>{new Date(msg.created_at).toLocaleString()}</td>
                   <td>
+                    {/* DELETE BUTTON */}
                     <button
                       className="btn btn-danger btn-sm"
                       onClick={() => deleteMessage(msg.id)}
                     >
                       Delete
                     </button>
+
+                    {/* WHATSAPP BUTTON (You can enable later)
+                    <button
+                      className="btn-whatsapp btn-sm"
+                      onClick={() => handleWhatsAppReply(msg)}
+                    >
+                      Reply
+                    </button>
+                    */}
                   </td>
                 </tr>
               ))
