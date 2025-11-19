@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import AdminLayout from "./AdminLayout";
 import "./AdminStyles.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
@@ -8,7 +7,6 @@ const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 const AdminContact = () => {
   const [messages, setMessages] = useState([]);
 
-  // Load all messages
   const fetchMessages = async () => {
     try {
       const res = await axios.get(`${API_BASE}/api/contact`);
@@ -18,7 +16,6 @@ const AdminContact = () => {
     }
   };
 
-  // Delete message
   const deleteMessage = async (id) => {
     if (!window.confirm("Delete this message?")) return;
 
@@ -35,66 +32,54 @@ const AdminContact = () => {
   }, []);
 
   return (
-    <AdminLayout>
-      <div className="container mt-4">
-        <h2 className="mb-4">Contact Messages</h2>
+    <div className="container mt-4">
+      <h2 className="mb-4">Contact Messages</h2>
 
-        <table className="table table-bordered table-striped">
-          <thead className="table-dark">
+      <table className="table table-bordered table-striped">
+        <thead className="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {messages.length === 0 ? (
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Subject</th>
-              <th>Message</th>
-              <th>Date</th>
-              <th>Action</th>
+              <td colSpan="8" className="text-center text-muted">
+                No messages found
+              </td>
             </tr>
-          </thead>
-
-          <tbody>
-            {messages.length === 0 ? (
-              <tr>
-                <td colSpan="8" className="text-center text-muted">
-                  No messages found
+          ) : (
+            messages.map((msg, index) => (
+              <tr key={msg.id}>
+                <td>{index + 1}</td>
+                <td>{msg.name}</td>
+                <td>{msg.email}</td>
+                <td>{msg.phone}</td>
+                <td>{msg.subject}</td>
+                <td>{msg.message}</td>
+                <td>{new Date(msg.created_at).toLocaleString()}</td>
+                <td>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => deleteMessage(msg.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
-            ) : (
-              messages.map((msg, index) => (
-                <tr key={msg.id}>
-                  <td>{index + 1}</td>
-                  <td>{msg.name}</td>
-                  <td>{msg.email}</td>
-                  <td>{msg.phone}</td>
-                  <td>{msg.subject}</td>
-                  <td>{msg.message}</td>
-                  <td>{new Date(msg.created_at).toLocaleString()}</td>
-                  <td>
-                    {/* DELETE BUTTON */}
-                    <button
-                      className="btn btn-danger btn-sm"
-                      onClick={() => deleteMessage(msg.id)}
-                    >
-                      Delete
-                    </button>
-
-                    {/* WHATSAPP BUTTON (You can enable later)
-                    <button
-                      className="btn-whatsapp btn-sm"
-                      onClick={() => handleWhatsAppReply(msg)}
-                    >
-                      Reply
-                    </button>
-                    */}
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
-    </AdminLayout>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
