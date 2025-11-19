@@ -3,6 +3,9 @@ import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap'
 import { useLanguage } from '../context/LanguageContext';
 import "../App.css"; 
 
+// 🔵 USE SAME API_BASE SYSTEM LIKE OTHER PAGES
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+
 const Contact = () => {
   const { currentLanguage, t } = useLanguage();
   const [formData, setFormData] = useState({
@@ -29,19 +32,38 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    setShowAlert(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
-    setTimeout(() => setShowAlert(false), 5000);
+
+    try {
+      // 🔵 USE API_BASE HERE
+      const response = await fetch(`${API_BASE}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setShowAlert(true);
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+
+        setTimeout(() => setShowAlert(false), 4000);
+      } else {
+        alert("Something went wrong!");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Server error!");
+    }
   };
 
   const contactInfo = [
@@ -72,56 +94,44 @@ const Contact = () => {
   ];
 
   return (
-    <div className="contact-page" >
-      {/* Modern Contact Hero Section */}
-<section className="contact-hero-new">
-  <div className="contact-hero-inner">
+    <div className="contact-page">
 
-    {/* LEFT IMAGE */}
-    <div className="contact-hero-image-wrapper slide-in-left">
-      <img
-        src="/images/content02.png"
-        alt="Contact Us"
-        className="contact-hero-image"
-      />
-    </div>
+      {/* Hero Section */}
+      <section className="contact-hero-new">
+        <div className="contact-hero-inner">
 
-    {/* RIGHT TEXT */}
-    <div className="contact-hero-text slide-in-right">
-      <h1 className={`contact-hero-title ${getFontClass()}`}>
-        {t('contactTitle')}
-      </h1>
+          <div className="contact-hero-image-wrapper slide-in-left">
+            <img src="/images/content02.png" alt="Contact Us" className="contact-hero-image" />
+          </div>
 
-      <p className={`contact-hero-subtitle ${getFontClass()}`}>
-        {t('contactSubtitle')}
-      </p>
-      <p className={`contact-hero-quote ${getFontClass()}`}>
-        {t("contactquote")}
-      </p>
-    </div>
+          <div className="contact-hero-text slide-in-right">
+            <h1 className={`contact-hero-title ${getFontClass()}`}>{t('contactTitle')}</h1>
+            <p className={`contact-hero-subtitle ${getFontClass()}`}>{t('contactSubtitle')}</p>
+            <p className={`contact-hero-quote ${getFontClass()}`}>{t("contactquote")}</p>
+          </div>
 
-    {/* FLOATING PARTICLES */}
-    <div className="contact-hero-particles">
-      <span className="p1"></span>
-      <span className="p2"></span>
-      <span className="p3"></span>
-      <span className="p4"></span>
-    </div>
+          <div className="contact-hero-particles">
+            <span className="p1"></span>
+            <span className="p2"></span>
+            <span className="p3"></span>
+            <span className="p4"></span>
+          </div>
 
-  </div>
-</section>
+        </div>
+      </section>
 
-
-      {/* Rest of your contact content remains the same... */}
-      <section className="section contact-main-section"  style={{ marginTop: "20px" }}>
+      {/* Main Section */}
+      <section className="section contact-main-section" style={{ marginTop: "20px" }}>
         <Container>
           <Row className="g-5">
-            {/* Contact Form */}
+            
+            {/* LEFT: FORM */}
             <Col lg={8}>
               <Card className="contact-form-card">
                 <Card.Body className="p-4">
+
                   <h3 className={`mb-4 ${getFontClass()}`}>{t('sendMessage')}</h3>
-                  
+
                   {showAlert && (
                     <Alert variant="success" className={getFontClass()}>
                       {t('thankYouMessage')}
@@ -143,6 +153,7 @@ const Contact = () => {
                           />
                         </Form.Group>
                       </Col>
+
                       <Col md={6}>
                         <Form.Group className="mb-3">
                           <Form.Label className={getFontClass()}>{t('email')} *</Form.Label>
@@ -171,6 +182,7 @@ const Contact = () => {
                           />
                         </Form.Group>
                       </Col>
+
                       <Col md={6}>
                         <Form.Group className="mb-3">
                           <Form.Label className={getFontClass()}>{t('subject')}</Form.Label>
@@ -197,23 +209,21 @@ const Contact = () => {
                         placeholder={t('message')}
                       />
                     </Form.Group>
-<Button 
-  className="btn-about"
-  size="lg"
-  type="submit"
->
-  {t('send')}
-</Button>
+
+                    <Button className="btn-about" size="lg" type="submit">
+                      {t('send')}
+                    </Button>
                   </Form>
+
                 </Card.Body>
               </Card>
             </Col>
 
-            {/* Contact Information */}
+            {/* RIGHT: INFO */}
             <Col lg={4}>
               <div className="contact-info-sidebar">
                 <h4 className={`mb-4 ${getFontClass()}`}>{t('getInTouch')}</h4>
-                
+
                 {contactInfo.map((info, index) => (
                   <Card key={index} className="mb-3 contact-info-card">
                     <Card.Body className="p-3">
@@ -230,64 +240,44 @@ const Contact = () => {
                   </Card>
                 ))}
 
-                {/* Social Links */}
+                {/* Social Icons */}
                 <Card className="social-links-card">
                   <Card.Body className="p-3">
                     <h6 className={`mb-3 ${getFontClass()}`}>{t('followUs')}</h6>
                     <div className="social-links d-flex gap-3">
-                      <a href="#" className="text-primary">
-                        <i className="bi bi-facebook fs-4"></i>
-                      </a>
-                      <a href="#" className="text-primary">
-                        <i className="bi bi-twitter fs-4"></i>
-                      </a>
-                      <a href="#" className="text-primary">
-                        <i className="bi bi-instagram fs-4"></i>
-                      </a>
-                      <a href="#" className="text-primary">
-                        <i className="bi bi-youtube fs-4"></i>
-                      </a>
+                      <i className="bi bi-facebook fs-4 text-primary"></i>
+                      <i className="bi bi-twitter fs-4 text-primary"></i>
+                      <i className="bi bi-instagram fs-4 text-primary"></i>
+                      <i className="bi bi-youtube fs-4 text-primary"></i>
                     </div>
                   </Card.Body>
                 </Card>
+
               </div>
             </Col>
+
           </Row>
         </Container>
       </section>
 
-      {/* Map Section */}
-      <section className="section map-section"  style={{ marginTop: "20px" }}>
+      {/* Map */}
+      <section className="section map-section" style={{ marginTop: "20px" }}>
         <Container>
           <Row>
             <Col>
               <Card>
                 <Card.Body className="p-0">
-               <div
-              className="map-container"
-              style={{
-                height: "400px",
-                borderRadius: "15px",
-                overflow: "hidden"
-              }}
-            >
-              <iframe
-                title="Our Location – Padmanabha Nagar, Chennai"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.414791457346!2d80.21306887505368!3d13.058704587250376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526724ddda841b%3A0x273a359acdc674c8!2sNallore%20Vattam%2C%2023%2C%20Padmanaba%20Nagar%20Main%20Rd%2C%20Padmanabha%20Nagar%2C%20Choolaimedu%2C%20Chennai%2C%20Tamil%20Nadu%20600094!5e0!3m2!1sen!2sin!4v1731411145243!5m2!1sen!2sin"
-              ></iframe>
-
-
-                    <div className="text-center">
-                      <i className="bi bi-map text-muted" style={{ fontSize: '4rem' }}></i>
-                      <h5 className="mt-3 text-muted">{t('interactiveMap')}</h5>
-                      <p className="text-muted">{t('mapPlaceholder')}</p>
-                    </div>
+                  <div className="map-container" style={{ height: "400px", borderRadius: "15px", overflow: "hidden" }}>
+                    <iframe
+                      title="Our Location – Padmanabha Nagar, Chennai"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      loading="lazy"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.414791457346!2d80.21306887505368!3d13.058704587250376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526724ddda841b%3A0x273a359acdc674c8!2sNallore%20Vattam!5e0!3m2!1sen!2sin!4v1731411145243"
+                    ></iframe>
                   </div>
                 </Card.Body>
               </Card>
@@ -295,6 +285,7 @@ const Contact = () => {
           </Row>
         </Container>
       </section>
+
     </div>
   );
 };

@@ -28,6 +28,8 @@ export default function AdminLayout() {
           <li onClick={() => navigate("/admin/team")}>👥 Team</li>
           <li onClick={() => navigate("/admin/gallery")}>🖼 Gallery</li>
           <li onClick={() => navigate("/admin/gallery-upload")}>⬆ Upload Images</li>
+          <li onClick={() => navigate("/admin/contact")}>💬 Contact Messages</li>
+
         </ul>
 
         <button className="logout-btn" onClick={logout}>

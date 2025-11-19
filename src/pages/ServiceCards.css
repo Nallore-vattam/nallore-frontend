@@ -1050,3 +1050,36 @@ h6 {
   }
 }
 
+
+/* FIX — Force hover color to override .text-muted white */
+.service-detail-card .features-count-hover:hover {
+  color: #ffcc00 !important;
+  transform: scale(1.12) !important;
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.8) !important;
+}
+/* UNIVERSAL BUTTON SIZE FIX */
+.service-actions .btn,
+.service-actions .btn-white-glow,
+.service-action-btn {
+  padding: 6px 10px !important;     /* reduce height */
+  font-size: 0.8rem !important;      /* reduce text size */
+  border-radius: 6px !important;
+  height: auto !important;
+  white-space: nowrap;               /* prevent text wrapping */
+}
+/* DESKTOP BUTTON FIX */
+@media (min-width: 768px) {
+  .service-actions {
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  .service-actions .btn,
+  .service-actions .btn-white-glow {
+    padding: 6px 14px !important;
+    font-size: 0.85rem !important;
+    width: auto !important;       /* NO FULL WIDTH */
+    height: auto !important;
+    border-radius: 6px !important;
+  }
+}

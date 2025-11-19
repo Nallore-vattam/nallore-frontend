@@ -35,6 +35,7 @@ export default function AdminDashboard() {
         safeFetch(`${API_BASE}/api/blog`),
         safeFetch(`${API_BASE}/api/team`),
         safeFetch(`${API_BASE}/api/gallery/images`),
+         safeFetch(`${API_BASE}/api/contact`), 
       ]);
 
       console.log("Dashboard stats:", { events, blogs, team, gallery });
@@ -44,6 +45,7 @@ export default function AdminDashboard() {
         blogs: Array.isArray(blogs) ? blogs.length : 0,
         team: Array.isArray(team) ? team.length : 0,
         gallery: Array.isArray(gallery) ? gallery.length : 0,
+         contact: Array.isArray(contact) ? contact.length : 0,
       });
     } catch (err) {
       console.error("Dashboard load failed:", err);
@@ -84,6 +86,13 @@ export default function AdminDashboard() {
       link: "/admin/gallery-upload",
       color: "#dc3545",
     },
+    {
+  title: "Contact Messages",
+  icon: "bi-chat-dots",
+  link: "/admin/contact",
+  color: "#20c997",
+},
+
   ];
 
   if (loading) {
@@ -126,7 +135,7 @@ export default function AdminDashboard() {
             </Card.Body>
           </Card>
         </Col>
-
+        
         <Col md={3}>
           <Card className="stat-card shadow-sm">
             <Card.Body>
@@ -135,6 +144,16 @@ export default function AdminDashboard() {
             </Card.Body>
           </Card>
         </Col>
+
+        <Col md={3}>
+                <Card className="stat-card shadow-sm">
+                <Card.Body>
+                 <h3>{stats.contact}</h3>
+                <p>Contact Messages</p>
+             </Card.Body>
+         </Card>
+         </Col>
+
       </Row>
 
       <h3 className="fw-bold mb-4">Admin Tools</h3>

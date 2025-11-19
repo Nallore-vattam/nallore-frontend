@@ -2268,3 +2268,31 @@ p.tamil-font {
     max-width: 260px;
   }
 }
+p.english-font {
+  font-size: 1.05em !important;   /* Increase only paragraph English */
+  line-height: 1.6 !important;
+}
+.feature-item {
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.feature-item:hover {
+  background: #dce7ff !important;
+  border-color: #3b82f6 !important;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+/* MOBILE FIX — Make service buttons smaller */
+@media (max-width: 576px) {
+  .service-actions .btn,
+  .service-actions .btn-white-glow,
+  .service-action-btn {
+    width: 100%;
+    padding: 8px 10px !important;     /* smaller padding */
+    font-size: 0.8rem !important;      /* smaller text */
+    border-radius: 8px !important;     /* softer corners */
+    height: auto !important;           /* avoid large height */
+  }
+}

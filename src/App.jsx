@@ -28,6 +28,7 @@ import AdminBlog from "./Admin/AdminBlog";
 import AdminTeam from "./Admin/AdminTeam";
 import AdminGallery from "./Admin/AdminGallery";
 import AdminGalleryUpload from "./Admin/AdminGalleryUpload";
+import AdminContact from "./Admin/AdminContact";
 
 function App() {
   return (
@@ -57,6 +58,8 @@ function App() {
               <Route path="team" element={<AdminTeam />} />
               <Route path="gallery" element={<AdminGallery />} />
               <Route path="gallery-upload" element={<AdminGalleryUpload />} />
+              <Route path="contact" element={<AdminContact />} />
+
             </Route>
 
             {/* PUBLIC ROUTES */}

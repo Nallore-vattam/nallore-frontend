@@ -265,7 +265,7 @@ const Services = () => {
                           <h6 className={`${getFontClass()} mb-0 fw-semibold`}>
                             {safeTranslate('keyFeatures', 'Key Initiatives')}:
                           </h6>
-                          <small className="text-muted">
+                         <small className="text-muted features-count-hover">
                             {service.features.length} {safeTranslate('features', 'features')}
                           </small>
                         </div>

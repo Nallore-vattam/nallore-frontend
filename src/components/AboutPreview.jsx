@@ -41,9 +41,7 @@ const AboutPreview = () => {
               <h2 className={`section-title text-start ${getFontClass()}`}>
                 {t('aboutTitle', 'About Nallor Vattam')}
               </h2>
-              <p className={`about-text ${getFontClass()} mb-4`}>
-                {t('aboutText1', 'Nallor Vattam is a vibrant community organization dedicated to social welfare, cultural preservation, and educational development. We strive to create positive change through collaborative efforts and community engagement.')}
-              </p>
+              
               <p className={`about-text ${getFontClass()} mb-4`}>
                 {t('aboutText2', 'Our mission is to empower individuals and strengthen communities through various initiatives including educational programs, health camps, environmental awareness, and cultural events that celebrate our rich heritage.')}
               </p>
