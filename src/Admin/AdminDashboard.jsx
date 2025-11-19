@@ -30,7 +30,7 @@ export default function AdminDashboard() {
     setLoading(true);
 
     try {
-      const [events, blogs, team, gallery] = await Promise.all([
+      const [events, blogs, team, gallery,contact] = await Promise.all([
         safeFetch(`${API_BASE}/api/events`),
         safeFetch(`${API_BASE}/api/blog`),
         safeFetch(`${API_BASE}/api/team`),
@@ -38,7 +38,7 @@ export default function AdminDashboard() {
          safeFetch(`${API_BASE}/api/contact`), 
       ]);
 
-      console.log("Dashboard stats:", { events, blogs, team, gallery });
+      console.log("Dashboard stats:", { events, blogs, team, gallery,contact });
 
       setStats({
         events: Array.isArray(events) ? events.length : 0,
@@ -49,7 +49,7 @@ export default function AdminDashboard() {
       });
     } catch (err) {
       console.error("Dashboard load failed:", err);
-      setStats({ events: 0, blogs: 0, team: 0, gallery: 0 });
+      setStats({ events: 0, blogs: 0, team: 0, gallery: 0,contact: 0  });
     } finally {
       setLoading(false);
     }
@@ -155,7 +155,9 @@ export default function AdminDashboard() {
          </Col>
 
       </Row>
+       
 
+       
       <h3 className="fw-bold mb-4">Admin Tools</h3>
 
       <Row className="g-4">
