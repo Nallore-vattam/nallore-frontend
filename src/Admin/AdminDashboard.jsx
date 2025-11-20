@@ -102,7 +102,6 @@ export default function AdminDashboard() {
       link: "/admin/contact",
       color: "#20c997",
 
-      // FIXED red dot — no crash, no permanent dot
       showDot: stats?.unread > 0,
     },
   ];
@@ -130,7 +129,7 @@ export default function AdminDashboard() {
           </Card>
         </Col>
 
-        <Col md={3}>
+        <Col className="col-5-custom mb-3">
           <Card className="stat-card shadow-sm">
             <Card.Body>
               <h3>{stats.blogs}</h3>
@@ -139,7 +138,7 @@ export default function AdminDashboard() {
           </Card>
         </Col>
 
-        <Col md={3}>
+        <Col className="col-5-custom mb-3">
           <Card className="stat-card shadow-sm">
             <Card.Body>
               <h3>{stats.team}</h3>
@@ -148,7 +147,7 @@ export default function AdminDashboard() {
           </Card>
         </Col>
 
-        <Col md={3}>
+        <Col className="col-5-custom mb-3">
           <Card className="stat-card shadow-sm">
             <Card.Body>
               <h3>{stats.gallery}</h3>
@@ -157,7 +156,7 @@ export default function AdminDashboard() {
           </Card>
         </Col>
 
-        <Col md={3}>
+        <Col className="col-5-custom mb-3">
           <Card className="stat-card shadow-sm">
             <Card.Body>
               <h3>{stats.contact}</h3>
