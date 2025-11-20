@@ -2119,10 +2119,6 @@ p.tamil-font {
   color: #000 !important;
 }
 
-/* ================================
-   CONTACT HERO — COMPACT VERSION
-================================ */
-
 .contact-hero-new {
   width: 100%;
   min-height: 42vh;            /* ⬅ Reduced from 55vh */
@@ -2237,10 +2233,6 @@ p.tamil-font {
   50% { transform: translateY(-15px); }
 }
 
-/* ================================
-   RESPONSIVE
-================================ */
-
 @media (max-width: 768px) {
   .contact-hero-inner {
     flex-direction: column;
@@ -2296,21 +2288,3 @@ p.english-font {
     height: auto !important;           /* avoid large height */
   }
 }
-
-.section-title {
-  position: relative;
-  display: inline-block;   /* 👈 VERY IMPORTANT */
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  width: 50%;              /* underline width (you can adjust) */
-  height: 3px;
-  background: var(--primary-color);
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%); /* center align the underline */
-  border-radius: 4px;
-}
-

@@ -38,9 +38,10 @@ const AboutPreview = () => {
           </Col>
           <Col lg={6}>
             <div className="about-preview-content">
-              <h2 className={`section-title text-start ${getFontClass()}`}>
-                {t('aboutTitle', 'About Nallor Vattam')}
-              </h2>
+             <h2 className={`section-title text-center ${getFontClass()}`}>
+                  {t('aboutTitle', 'About Nallor Vattam')}
+                  </h2>
+
               
               <p className={`about-text ${getFontClass()} mb-4`}>
                 {t('aboutText2', 'Our mission is to empower individuals and strengthen communities through various initiatives including educational programs, health camps, environmental awareness, and cultural events that celebrate our rich heritage.')}
