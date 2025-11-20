@@ -30,27 +30,36 @@ export default function AdminDashboard() {
     setLoading(true);
 
     try {
-      const [events, blogs, team, gallery,contact] = await Promise.all([
+      const [events, blogs, team, gallery, contact] = await Promise.all([
         safeFetch(`${API_BASE}/api/events`),
         safeFetch(`${API_BASE}/api/blog`),
         safeFetch(`${API_BASE}/api/team`),
         safeFetch(`${API_BASE}/api/gallery/images`),
-         safeFetch(`${API_BASE}/api/contact`), 
+        safeFetch(`${API_BASE}/api/contact`),
       ]);
-
-      console.log("Dashboard stats:", { events, blogs, team, gallery,contact });
 
       setStats({
         events: Array.isArray(events) ? events.length : 0,
         blogs: Array.isArray(blogs) ? blogs.length : 0,
         team: Array.isArray(team) ? team.length : 0,
         gallery: Array.isArray(gallery) ? gallery.length : 0,
-         contact: Array.isArray(contact) ? contact.length : 0,
-         unread: contact.filter(m => !m.is_read).length, 
+        contact: Array.isArray(contact) ? contact.length : 0,
+
+        // FIXED unread logic for PostgreSQL
+        unread: contact.filter(
+          (m) => m.is_read === false || m.is_read === "f"
+        ).length,
       });
     } catch (err) {
       console.error("Dashboard load failed:", err);
-      setStats({ events: 0, blogs: 0, team: 0, gallery: 0,contact: 0,unread: 0  });
+      setStats({
+        events: 0,
+        blogs: 0,
+        team: 0,
+        gallery: 0,
+        contact: 0,
+        unread: 0,
+      });
     } finally {
       setLoading(false);
     }
@@ -88,17 +97,17 @@ export default function AdminDashboard() {
       color: "#dc3545",
     },
     {
-  title: "Contact Messages",
-  icon: "bi-chat-dots",
-  link: "/admin/contact",
-  color: "#20c997",
- showDot: stats?.unread > 0,
+      title: "Contact Messages",
+      icon: "bi-chat-dots",
+      link: "/admin/contact",
+      color: "#20c997",
 
-},
-
+      // FIXED red dot — no crash, no permanent dot
+      showDot: stats?.unread > 0,
+    },
   ];
 
-  if (loading) {
+  if (loading || !stats) {
     return (
       <div className="text-center py-5">
         <Spinner animation="border" />
@@ -138,7 +147,7 @@ export default function AdminDashboard() {
             </Card.Body>
           </Card>
         </Col>
-        
+
         <Col md={3}>
           <Card className="stat-card shadow-sm">
             <Card.Body>
@@ -149,18 +158,15 @@ export default function AdminDashboard() {
         </Col>
 
         <Col md={3}>
-                <Card className="stat-card shadow-sm">
-                <Card.Body>
-                 <h3>{stats.contact}</h3>
-                <p>Contact Messages</p>
-             </Card.Body>
-         </Card>
-         </Col>
-
+          <Card className="stat-card shadow-sm">
+            <Card.Body>
+              <h3>{stats.contact}</h3>
+              <p>Contact Messages</p>
+            </Card.Body>
+          </Card>
+        </Col>
       </Row>
-       
 
-       
       <h3 className="fw-bold mb-4">Admin Tools</h3>
 
       <Row className="g-4">
@@ -170,11 +176,14 @@ export default function AdminDashboard() {
               className="admin-tool-card shadow-sm"
               onClick={() => (window.location.href = item.link)}
             >
-             <div className="tool-icon position-relative" style={{ backgroundColor: item.color }}>
-  <i className={`bi ${item.icon}`}></i>
-  {item.showDot && <span className="red-dot"></span>}
-</div>
+              <div
+                className="tool-icon position-relative"
+                style={{ backgroundColor: item.color }}
+              >
+                <i className={`bi ${item.icon}`}></i>
 
+                {item.showDot && <span className="red-dot"></span>}
+              </div>
 
               <Card.Body className="text-center">
                 <h5 className="fw-bold">{item.title}</h5>

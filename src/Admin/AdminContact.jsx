@@ -6,14 +6,26 @@ const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
 const AdminContact = () => {
   const [messages, setMessages] = useState([]);
+  const [lastSeen, setLastSeen] = useState(null);
 
   const fetchMessages = async () => {
     try {
       const res = await axios.get(`${API_BASE}/api/contact`);
+      
+      // unread messages at top
       setMessages(res.data.sort((a, b) => a.is_read - b.is_read));
-
     } catch (err) {
       console.error("Error loading contact messages:", err);
+    }
+  };
+
+  // Mark ALL messages as read
+  const markAllRead = async () => {
+    try {
+      const res = await axios.put(`${API_BASE}/api/contact/mark-all-read`);
+      setLastSeen(res.data.read_at);
+    } catch (err) {
+      console.error("Mark all read error:", err);
     }
   };
 
@@ -27,22 +39,21 @@ const AdminContact = () => {
       console.error("Delete error:", err);
     }
   };
-  const markAsRead = async (id) => {
-  try {
-    await axios.put(`${API_BASE}/api/contact/read/${id}`);
-    fetchMessages();
-  } catch (err) {
-    console.error("Mark read error:", err);
-  }
-};
 
   useEffect(() => {
-    fetchMessages();
+    // IMPORTANT: mark read FIRST then load messages
+    markAllRead().then(fetchMessages);
   }, []);
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">Contact Messages</h2>
+      <h2 className="mb-2">Contact Messages</h2>
+
+      {lastSeen && (
+        <p className="text-muted mb-3">
+          Last visited: {new Date(lastSeen).toLocaleString()}
+        </p>
+      )}
 
       <table className="table table-bordered table-striped">
         <thead className="table-dark">
@@ -67,16 +78,14 @@ const AdminContact = () => {
             </tr>
           ) : (
             messages.map((msg, index) => (
-             <tr
+              <tr
                 key={msg.id}
                 className={!msg.is_read ? "unread-row" : ""}
-                onClick={() => markAsRead(msg.id)}>
-
+              >
                 <td>
-                 {index + 1}
-                 {!msg.is_read && <span className="small-red-dot"></span>}
-                 </td>
-
+                  {index + 1}
+                  {!msg.is_read && <span className="small-red-dot"></span>}
+                </td>
                 <td>{msg.name}</td>
                 <td>{msg.email}</td>
                 <td>{msg.phone}</td>
