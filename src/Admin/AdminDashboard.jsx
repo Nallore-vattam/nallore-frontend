@@ -50,7 +50,7 @@ export default function AdminDashboard() {
       });
     } catch (err) {
       console.error("Dashboard load failed:", err);
-      setStats({ events: 0, blogs: 0, team: 0, gallery: 0,contact: 0  });
+      setStats({ events: 0, blogs: 0, team: 0, gallery: 0,contact: 0,unread: 0  });
     } finally {
       setLoading(false);
     }
@@ -92,7 +92,8 @@ export default function AdminDashboard() {
   icon: "bi-chat-dots",
   link: "/admin/contact",
   color: "#20c997",
-  showDot: stats.unread > 0,
+ showDot: stats?.unread > 0,
+
 },
 
   ];
