@@ -109,3 +109,76 @@
   width: 20%;        /* 5 columns in a row */
   flex: 0 0 20%;
 }
+
+/* -------------------------------------------
+   MOBILE RESPONSIVE (max-width: 768px)
+--------------------------------------------*/
+@media (max-width: 768px) {
+
+  /* Stat cards: 2 per row on tablets/mobile */
+  .col-5-custom {
+    width: 50% !important;
+    flex: 0 0 50% !important;
+    margin-bottom: 12px;
+  }
+
+  .stat-card {
+    min-height: 85px;
+    padding: 10px 0;
+  }
+
+  .stat-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .stat-card p {
+    font-size: 11px;
+  }
+
+  /* Tool cards: 2 per row on tablets */
+  .admin-tool-card {
+    padding: 15px 10px;
+  }
+
+  .tool-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 14px;
+  }
+
+  .tool-icon i {
+    font-size: 24px;
+  }
+}
+
+/* -------------------------------------------
+   VERY SMALL MOBILE (max-width: 480px)
+--------------------------------------------*/
+@media (max-width: 480px) {
+
+  /* Stat cards: 1 per row on small mobile */
+  .col-5-custom {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  /* Tool cards: 1 per row on small mobile */
+  .admin-tool-card {
+    margin-bottom: 16px;
+  }
+
+  .tool-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tool-icon i {
+    font-size: 22px;
+  }
+
+  h2,
+  h3,
+  h5 {
+    text-align: center;
+  }
+}
