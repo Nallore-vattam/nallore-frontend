@@ -1,42 +1,41 @@
-/* ---------------------------------------
-   STAT CARDS (Dashboard)
-----------------------------------------*/
+
 .stat-card {
   text-align: center;
-  border-radius: 16px;
+  border-radius: 14px;
   background: linear-gradient(180deg, #ffffff, #f2f4ff);
-  padding: 22px 0;
-  box-shadow: 0 6px 22px rgba(109,109,238,0.18);
+  padding: 14px 0;                     /* reduced from 22px */
+  box-shadow: 0 4px 16px rgba(109,109,238,0.18);
   border: 1px solid rgba(109,109,238,0.12);
   position: relative;
   overflow: hidden;
   transition: transform .2s ease, box-shadow .2s ease;
+  min-height: 110px;                   /* fixes consistent small size */
 }
 
 .stat-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 32px rgba(109,109,238,0.26);
+  transform: translateY(-4px);         /* reduced hover distance */
+  box-shadow: 0 10px 24px rgba(109,109,238,0.26);
 }
 
 .stat-card h3 {
-  font-size: 2.6rem;
-  margin-bottom: 5px;
+  font-size: 2rem;                     /* reduced from 2.6rem */
+  margin-bottom: 4px;
   font-weight: 700;
   color: #5a4ff2;
 }
 
 .stat-card p {
   color: #6b7280;
-  font-size: 15px;
+  font-size: 13px;                     /* reduced from 15px */
   margin: 0;
 }
 
-/* neon glow on hover */
+/* Neon glow */
 .stat-card::after {
   content: "";
   position: absolute;
   inset: -50%;
-  background: radial-gradient(circle, rgba(109,109,238,0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(109,109,238,0.15), transparent 70%);
   opacity: 0;
   transition: opacity .25s ease;
 }
@@ -46,9 +45,6 @@
 }
 
 
-/* ---------------------------------------
-   ADMIN TOOL CARDS (Dashboard shortcuts)
-----------------------------------------*/
 .admin-tool-card {
   border-radius: 16px;
   padding: 20px 10px;
@@ -98,4 +94,14 @@
 .tool-icon i {
   color: white;
   font-size: 30px;
+}
+
+.red-dot {
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+  right: -4px;
 }

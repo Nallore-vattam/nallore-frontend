@@ -46,6 +46,7 @@ export default function AdminDashboard() {
         team: Array.isArray(team) ? team.length : 0,
         gallery: Array.isArray(gallery) ? gallery.length : 0,
          contact: Array.isArray(contact) ? contact.length : 0,
+         unread: contact.filter(m => !m.is_read).length, 
       });
     } catch (err) {
       console.error("Dashboard load failed:", err);
@@ -91,6 +92,7 @@ export default function AdminDashboard() {
   icon: "bi-chat-dots",
   link: "/admin/contact",
   color: "#20c997",
+  showDot: stats.unread > 0,
 },
 
   ];
@@ -167,9 +169,11 @@ export default function AdminDashboard() {
               className="admin-tool-card shadow-sm"
               onClick={() => (window.location.href = item.link)}
             >
-              <div className="tool-icon" style={{ backgroundColor: item.color }}>
-                <i className={`bi ${item.icon}`}></i>
-              </div>
+             <div className="tool-icon position-relative" style={{ backgroundColor: item.color }}>
+  <i className={`bi ${item.icon}`}></i>
+  {item.showDot && <span className="red-dot"></span>}
+</div>
+
 
               <Card.Body className="text-center">
                 <h5 className="fw-bold">{item.title}</h5>

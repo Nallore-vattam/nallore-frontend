@@ -362,3 +362,17 @@ small.text-muted, .text-muted {
   background: #1ebe5d;
   transform: scale(1.05);
 }
+
+.unread-row {
+  background: #fff4f4 !important;
+  font-weight: 600;
+}
+
+.small-red-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: red;
+  border-radius: 50%;
+  margin-left: 6px;
+}

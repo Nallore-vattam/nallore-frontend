@@ -10,7 +10,8 @@ const AdminContact = () => {
   const fetchMessages = async () => {
     try {
       const res = await axios.get(`${API_BASE}/api/contact`);
-      setMessages(res.data);
+      setMessages(res.data.sort((a, b) => a.is_read - b.is_read));
+
     } catch (err) {
       console.error("Error loading contact messages:", err);
     }
@@ -26,6 +27,14 @@ const AdminContact = () => {
       console.error("Delete error:", err);
     }
   };
+  const markAsRead = async (id) => {
+  try {
+    await axios.put(`${API_BASE}/api/contact/read/${id}`);
+    fetchMessages();
+  } catch (err) {
+    console.error("Mark read error:", err);
+  }
+};
 
   useEffect(() => {
     fetchMessages();
@@ -58,8 +67,16 @@ const AdminContact = () => {
             </tr>
           ) : (
             messages.map((msg, index) => (
-              <tr key={msg.id}>
-                <td>{index + 1}</td>
+             <tr
+                key={msg.id}
+                className={!msg.is_read ? "unread-row" : ""}
+                onClick={() => markAsRead(msg.id)}>
+
+                <td>
+                 {index + 1}
+                 {!msg.is_read && <span className="small-red-dot"></span>}
+                 </td>
+
                 <td>{msg.name}</td>
                 <td>{msg.email}</td>
                 <td>{msg.phone}</td>
