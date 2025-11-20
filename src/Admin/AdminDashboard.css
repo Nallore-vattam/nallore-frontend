@@ -104,3 +104,8 @@
   top: -4px;
   right: -4px;
 }
+
+.col-5-custom {
+  width: 20%;        /* 5 columns in a row */
+  flex: 0 0 20%;
+}

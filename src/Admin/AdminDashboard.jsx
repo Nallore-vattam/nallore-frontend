@@ -121,7 +121,7 @@ export default function AdminDashboard() {
       <h2 className="fw-bold mb-4">Admin Analytics Overview</h2>
 
       <Row className="g-4 mb-5">
-        <Col md={3}>
+        <Col className="col-5-custom mb-3">
           <Card className="stat-card shadow-sm">
             <Card.Body>
               <h3>{stats.events}</h3>
