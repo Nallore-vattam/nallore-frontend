@@ -2,24 +2,24 @@
 :root {
    --card-1-color: #011288;
   --card-1-bg: linear-gradient(135deg, #011288 0%,  #011288 100%);
-  --card-2-color: #0887d6;
-  --card-2-bg: linear-gradient(135deg,  #0887d6 0%, #0887d6 100%);
-  --card-3-color: #22d410;
-  --card-3-bg: linear-gradient(135deg,#22d410 0%, #22d410 100%);
-  --card-4-color: #9cd001;
-  --card-4-bg: linear-gradient(135deg, #9cd001 0%, #9cd001 100%);
-  --card-5-color: #fe5b00;
-  --card-5-bg: linear-gradient(135deg, #fe5b00 0%, #fe5b00 100%);
-  --card-6-color: #fe0000;
-  --card-6-bg: linear-gradient(135deg, #fe0000 0%, #fe0000 100%);
-  --card-7-color: #9e2932;
-  --card-7-bg: linear-gradient(135deg, #9e2932 0%, #9e2932 100%);
-  --card-8-color: #570a00;
-  --card-8-bg: linear-gradient(135deg, #570a00 0%, #570a00 100%);
-  --card-9-color: #e7b401;
-  --card-9-bg: linear-gradient(135deg, #e7b401 0%, #e7b401 100%);
-  --card-10-color: #012d1c;
-  --card-10-bg: linear-gradient(135deg, #012d1c 0%, #012d1c 100%);
+  --card-4-color: #0887d6;
+  --card-4-bg: linear-gradient(135deg,  #0887d6 0%, #0887d6 100%);
+  --card-9-color: #22d410;
+  --card-9-bg: linear-gradient(135deg,#22d410 0%, #22d410 100%);
+  --card-7-color: #9cd001;
+  --card-7-bg: linear-gradient(135deg, #9cd001 0%, #9cd001 100%);
+  --card-8-color: #fe5b00;
+  --card-8-bg: linear-gradient(135deg, #fe5b00 0%, #fe5b00 100%);
+  --card-3-color: #fe0000;
+  --card-3-bg: linear-gradient(135deg, #fe0000 0%, #fe0000 100%);
+  --card-2-color: #9e2932;
+  --card-2-bg: linear-gradient(135deg, #9e2932 0%, #9e2932 100%);
+  --card-10-color: #570a00;
+  --card-10-bg: linear-gradient(135deg, #570a00 0%, #570a00 100%);
+  --card-5-color: #e7b401;
+  --card-5-bg: linear-gradient(135deg, #e7b401 0%, #e7b401 100%);
+  --card-6-color: #012d1c;
+  --card-6-bg: linear-gradient(135deg, #012d1c 0%, #012d1c 100%);
 }
 
 /* Services Page Base Styles */
