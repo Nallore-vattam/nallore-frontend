@@ -44,8 +44,6 @@ export default function AdminDashboard() {
         team: Array.isArray(team) ? team.length : 0,
         gallery: Array.isArray(gallery) ? gallery.length : 0,
         contact: Array.isArray(contact) ? contact.length : 0,
-
-        // FIXED unread logic for PostgreSQL
         unread: contact.filter(
           (m) => m.is_read === false || m.is_read === "f"
         ).length,
@@ -101,7 +99,6 @@ export default function AdminDashboard() {
       icon: "bi-chat-dots",
       link: "/admin/contact",
       color: "#20c997",
-
       showDot: stats?.unread > 0,
     },
   ];
@@ -180,7 +177,6 @@ export default function AdminDashboard() {
                 style={{ backgroundColor: item.color }}
               >
                 <i className={`bi ${item.icon}`}></i>
-
                 {item.showDot && <span className="red-dot"></span>}
               </div>
 
