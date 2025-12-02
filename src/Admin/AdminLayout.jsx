@@ -55,11 +55,15 @@ export default function AdminLayout() {
           <li onClick={() => handleNavigate("/admin/gallery")}>🖼 Gallery</li>
           <li onClick={() => handleNavigate("/admin/gallery-upload")}>⬆ Upload Images</li>
 
-          {/* Contact With Red Notification Dot */}
-          <li onClick={() => handleNavigate("/admin/contact")}>
-            💬 Contact Messages
-            {unreadCount > 0 && <span className="notif-dot"></span>}
-          </li>
+         <li onClick={() => handleNavigate("/admin/contact")} className="contact-notif-item">
+  💬 Contact Messages
+
+  {/* Show bell only if unread exists */}
+  {unreadCount > 0 && (
+    <span className="contact-icons">🔔</span>
+  )}
+</li>
+
         </ul>
 
         <div className="sidebar-footer">
