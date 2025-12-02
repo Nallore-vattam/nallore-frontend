@@ -1,36 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./AdminLayout.css";
+
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
 export default function AdminLayout() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
 
+  // Fetch unread messages count
   useEffect(() => {
-    // Restore saved theme
-    const savedTheme = localStorage.getItem("adminTheme");
-    if (savedTheme === "dark") setDarkMode(true);
+    const fetchUnread = async () => {
+      try {
+        const res = await axios.get(`${API_BASE}/api/contact`);
+        const unread = res.data.filter(msg => !msg.is_read).length;
+        setUnreadCount(unread);
+      } catch (err) {
+        console.error("Unread fetch failed:", err);
+      }
+    };
+
+    fetchUnread();
+    const interval = setInterval(fetchUnread, 15000); // auto refresh every 15s
+    return () => clearInterval(interval);
   }, []);
 
-  function toggleTheme() {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem("adminTheme", newMode ? "dark" : "light");
-  }
-
-  function logout() {
+  const logout = () => {
     localStorage.removeItem("adminToken");
     navigate("/admin/login");
-  }
+  };
 
-  function handleNavigate(path) {
+  const handleNavigate = (path) => {
     navigate(path);
     if (window.innerWidth < 768) setMenuOpen(false);
-  }
+  };
 
   return (
-    <div className={`admin-layout ${darkMode ? "dark-mode" : ""}`}>
+    <div className="admin-layout">
 
       {/* Sidebar */}
       <div className={`admin-sidebar ${menuOpen ? "open" : ""}`}>
@@ -46,11 +54,15 @@ export default function AdminLayout() {
           <li onClick={() => handleNavigate("/admin/team")}>👥 Team</li>
           <li onClick={() => handleNavigate("/admin/gallery")}>🖼 Gallery</li>
           <li onClick={() => handleNavigate("/admin/gallery-upload")}>⬆ Upload Images</li>
-          <li onClick={() => handleNavigate("/admin/contact")}>💬 Contact Messages</li>
+
+          {/* Contact With Red Notification Dot */}
+          <li onClick={() => handleNavigate("/admin/contact")}>
+            💬 Contact Messages
+            {unreadCount > 0 && <span className="notif-dot"></span>}
+          </li>
         </ul>
 
         <div className="sidebar-footer">
-         
           <button className="logout-btn" onClick={logout}>🚪 Logout</button>
         </div>
       </div>
@@ -63,7 +75,7 @@ export default function AdminLayout() {
         <h4 className="topbar-title">Admin Panel</h4>
       </div>
 
-      {/* Main Content */}
+      {/* Page Content */}
       <main className="admin-content fade-in">
         <Outlet />
       </main>

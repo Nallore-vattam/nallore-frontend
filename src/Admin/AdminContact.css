@@ -1,0 +1,140 @@
+/* Top right download button */
+.btn-download {
+  background: #4e73df;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-download:hover {
+  background: #314dc9;
+  transform: scale(1.05);
+}
+
+/* Header layout */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Section Titles */
+.section-heading {
+  margin: 20px 0 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Last Seen Text */
+.last-seen {
+  margin: 15px 0;
+  font-size: 14px;
+  font-style: italic;
+  color: #777;
+}
+
+
+
+.contact-table-wrapper {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  border: 1px solid #eef0f4;
+}
+
+.contact-table-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+  letter-spacing: 0.5px;
+}
+
+/* Table container smooth scroll */
+.table-responsive {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+/* Table Style */
+.contact-table {
+  width: 100%;
+  border-collapse: collapse !important;
+  font-size: 15px;
+}
+
+.contact-table thead {
+  background: linear-gradient(90deg, #4e73df, #6c8bff);
+  color: white;
+}
+
+.contact-table thead th {
+  padding: 14px 10px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.contact-table tbody tr {
+  transition: 0.2s ease;
+}
+
+.contact-table tbody tr:hover {
+  background: #f3f6ff;
+  transform: translateX(3px);
+}
+
+.contact-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f0f2f7;
+}
+
+/* Delete Button */
+.btn-delete {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.btn-delete:hover {
+  background: #d9363e;
+  transform: scale(1.05);
+}
+
+/* Empty State */
+.no-messages {
+  text-align: center;
+  padding: 25px;
+  font-size: 16px;
+  color: #888;
+}
+
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+  transform: scale(1.05);
+}
+
+.unread-row {
+  background: #fff4f4 !important;
+  font-weight: 600;
+}
+
+.small-red-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: red;
+  border-radius: 50%;
+  margin-left: 6px;
+}

@@ -1,6 +1,4 @@
-/* -------------------------------------
-   SIDEBAR — NEON MATCHED WITH STYLE D
---------------------------------------*/
+
 
 .admin-layout {
   display: flex;
@@ -11,7 +9,7 @@
 /* Sidebar */
 .admin-sidebar {
   width: 260px;
-  background: linear-gradient(180deg, #6d6dee, #5b5be9);
+background: #1282A2;
   color: white;
   padding: 22px 20px;
   position: fixed;
@@ -304,3 +302,18 @@
   width: 100% !important;
 }
 
+.notif-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #ff3b3b;
+  border-radius: 50%;
+  margin-left: 6px;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
