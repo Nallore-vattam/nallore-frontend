@@ -88,8 +88,22 @@ const AdminContact = () => {
                 <td>{msg.name}</td>
                 <td>{msg.email}</td>
                 <td>{msg.phone}</td>
-               <td title={msg.subject} className="truncate">{msg.subject}</td>
-<td title={msg.message} className="truncate">{msg.message}</td>
+              <td 
+  onClick={() => alert(msg.subject)} 
+  title={msg.subject} 
+  className="truncate mobile-expand"
+>
+  {msg.subject}
+</td>
+
+<td 
+  onClick={() => alert(msg.message)} 
+  title={msg.message} 
+  className="truncate mobile-expand"
+>
+  {msg.message}
+</td>
+
 
                 <td>{new Date(msg.created_at).toLocaleString()}</td>
                 <td><button className="btn-delete" onClick={() => deleteMessage(msg.id)}>Delete</button></td>
@@ -127,8 +141,21 @@ const AdminContact = () => {
                 <td>{msg.name}</td>
                 <td>{msg.email}</td>
                 <td>{msg.phone}</td>
-               <td title={msg.subject} className="truncate">{msg.subject}</td>
-<td title={msg.message} className="truncate">{msg.message}</td>
+               <td 
+  onClick={() => alert(msg.subject)} 
+  title={msg.subject} 
+  className="truncate mobile-expand"
+>
+  {msg.subject}
+</td>
+
+<td 
+  onClick={() => alert(msg.message)} 
+  title={msg.message} 
+  className="truncate mobile-expand"
+>
+  {msg.message}
+</td>
 
                <td>
   {new Date(msg.created_at).toLocaleDateString("en-US", {

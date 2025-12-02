@@ -207,3 +207,11 @@ cursor: pointer;
   color: #3A57E8;
   transition: 0.2s ease;
 }
+
+/* Mobile tap expand support */
+@media (max-width: 768px) {
+  .mobile-expand {
+    cursor: pointer;
+    color: #3A57E8;
+  }
+}
